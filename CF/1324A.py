@@ -35,7 +35,6 @@ else:
 # endregion
 
 def func(l):
-    n = len(l)
     k = l[0] % 2
     for i in l:
         if i % 2 != k:
