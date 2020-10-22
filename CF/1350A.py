@@ -46,9 +46,9 @@ def f(n):
 
 
 def func(n, k):
-    if n&1==0:
-        return n+2*k
-    return n+2*(k-1)+f(n)
+    if n & 1 == 0:
+        return n + 2 * k
+    return n + 2 * (k - 1) + f(n)
 
 
 if __name__ == '__main__':
