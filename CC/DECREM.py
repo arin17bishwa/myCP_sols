@@ -42,6 +42,9 @@ def func(left, right):
 
 if __name__ == '__main__':
     st = ''
-    for _ in range(I()):
+    q = I()
+    answers = [' ' * 6] * q
+    for i in range(q):
         l, r = In()
-        print(func(l, r))
+        answers[i] = str(func(l, r))
+    stdout.write('\n'.join(answers))
