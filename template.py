@@ -89,8 +89,8 @@ else:
         return stdin.readline().split(' ')
 
 
-    def Out(whatever):
-        return stdout.write(whatever)
+def Out(whatever):
+    return stdout.write(whatever)
 
 # endregion
 
