@@ -94,7 +94,6 @@ def Out(whatever):
 
 # endregion
 
-
 # region bisection_methods
 from bisect import bisect_right, bisect_left
 
