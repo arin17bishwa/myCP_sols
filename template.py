@@ -145,6 +145,7 @@ def find_ge(a, x):
 '''
         Implementation wrt summation
 '''
+global tree, arr
 
 
 def eff_build(arr):
@@ -177,6 +178,31 @@ def _build(arr, seg, ind, l, r):  # zero indexed
     return seg[ind]
 
 
+def query(seg, ind, l, r, L, R):
+    if r < L or l > R:
+        return 0
+    if l >= L and r <= R:
+        return seg[ind]
+    mid = (l + r) // 2
+    left = query(seg, (ind << 1 | 1), l, mid, L, R)
+    right = query(seg, (ind << 1) + 2, mid + 1, r, L, R, )
+    return left + right  # Sum
+
+
+def point_update(seg, node, l, r, ind, val):
+    # print(node, l, r)
+    if ind < l or ind > r:
+        return
+    if r <= ind <= l:
+        seg[node] = val
+        arr[ind] = val
+        return
+    mid = (l + r) >> 1
+    point_update(seg, (node << 1 | 1), l, mid, ind, val)
+    point_update(seg, (node << 1) + 2, mid + 1, r, ind, val)
+    seg[node] = seg[(node << 1 | 1)] + seg[(node << 1) + 2]  # Sum
+
+
 # endregion
 
 # region persistent segment tree
@@ -188,7 +214,7 @@ R = []
 
 
 def create(n):
-    """create a persistant segment tree of size n"""
+    """create a persistent segment tree of size n"""
 
     ind = len(vals)
     vals.append(BIG)
@@ -297,7 +323,9 @@ class UnionFind:
 # endregion
 
 if __name__ == "__main__":
-    arr = [i for i in range(5)]
-    print(build(arr))
-    eff_build(arr)
+    arr = [i for i in range(1000000)]
+    tree = build(arr)
+    print(query(tree, 0, 0, len(arr) - 1, 0, 13000))
+    point_update(tree, 0, 0, len(arr) - 1, 0, 15)
+    print(query(tree, 0, 0, len(arr) - 1, 0, 130))
     pass
