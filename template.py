@@ -92,9 +92,10 @@ else:
 def Out(whatever):
     return stdout.write(whatever)
 
+
 # endregion
 
-# region bisection_methods
+# region bisection methods
 from bisect import bisect_right, bisect_left
 
 
@@ -140,5 +141,191 @@ def find_ge(a, x):
 
 # endregion
 
+# region segment-tree(personal)
+'''
+        Implementation wrt summation
+'''
+global tree, arr
+
+
+def eff_build(arr):
+    n = len(arr)
+    seg = [0] * ((n << 1) + 1)
+    for i in range(n):
+        seg[n + i] = arr[i]
+    for i in range(n - 1, 0, -1):
+        seg[i] = seg[i << 1] + seg[i << 1 | 1]
+    # print(seg)
+    return seg
+
+
+def build(arr):
+    n = len(arr)
+    seg = [0] * (4 * n + 1)
+    _build(arr, seg, 0, 0, n - 1)
+    return seg
+
+
+def _build(arr, seg, ind, l, r):  # zero indexed
+    if l == r:
+        seg[ind] = arr[l]
+        return seg[ind]
+
+    mid = (l + r) // 2
+    left = _build(arr, seg, (ind << 1) + 1, l, mid)
+    right = _build(arr, seg, (ind << 1) + 2, mid + 1, r)
+    seg[ind] = left + right
+    return seg[ind]
+
+
+def query(seg, ind, l, r, L, R):
+    if r < L or l > R:
+        return 0
+    if l >= L and r <= R:
+        return seg[ind]
+    mid = (l + r) // 2
+    left = query(seg, (ind << 1 | 1), l, mid, L, R)
+    right = query(seg, (ind << 1) + 2, mid + 1, r, L, R, )
+    return left + right  # Sum
+
+
+def point_update(seg, node, l, r, ind, val):
+    # print(node, l, r)
+    if ind < l or ind > r:
+        return
+    if r <= ind <= l:
+        seg[node] = val
+        arr[ind] = val
+        return
+    mid = (l + r) >> 1
+    point_update(seg, (node << 1 | 1), l, mid, ind, val)
+    point_update(seg, (node << 1) + 2, mid + 1, r, ind, val)
+    seg[node] = seg[(node << 1 | 1)] + seg[(node << 1) + 2]  # Sum
+
+
+# endregion
+
+# region persistent segment tree
+BIG = 10 ** 9
+
+vals = []
+L = []
+R = []
+
+
+def create(n):
+    """create a persistent segment tree of size n"""
+
+    ind = len(vals)
+    vals.append(BIG)
+
+    L.append(-1)
+    R.append(-1)
+
+    if n == 1:
+        L[ind] = -1
+        R[ind] = -1
+    else:
+        mid = n // 2
+        L[ind] = create(mid)
+        R[ind] = create(n - mid)
+    return ind
+
+
+def setter(ind, i, val, n):
+    """set set[i] = val for segment tree ind, of size n"""
+
+    ind2 = len(vals)
+    vals.append(BIG)
+
+    L.append(-1)
+    R.append(-1)
+
+    if n == 1:
+        vals[ind2] = val
+        return ind2
+
+    mid = n // 2
+    if i < mid:
+        L[ind2] = setter(L[ind], i, val, mid)
+        R[ind2] = R[ind]
+    else:
+        L[ind2] = L[ind]
+        R[ind2] = setter(R[ind], i - mid, val, n - mid)
+    vals[ind2] = min(vals[L[ind2]], vals[R[ind2]])
+    return ind2
+
+
+def minimum(ind, l, r, n):
+    """find mimimum of set[l:r] for segment tree ind, of size n"""
+
+    if l == 0 and r == n:
+        return vals[ind]
+    mid = n // 2
+    if r <= mid:
+        return minimum(L[ind], l, r, mid)
+    elif mid <= l:
+        return minimum(R[ind], l - mid, r - mid, n - mid)
+    else:
+        return min(minimum(L[ind], l, mid, mid), minimum(R[ind], 0, r - mid, n - mid))
+
+
+# endregion
+
+# region DisjointSetUnion
+class DisjointSetUnion:
+    def __init__(self, n):
+        self.parent = list(range(n))
+        self.size = [1] * n
+        self.num_sets = n
+
+    def find(self, a):
+        acopy = a
+        while a != self.parent[a]:
+            a = self.parent[a]
+        while acopy != a:
+            self.parent[acopy], acopy = a, self.parent[acopy]
+        return a
+
+    def union(self, a, b):
+        a, b = self.find(a), self.find(b)
+        if a != b:
+            if self.size[a] < self.size[b]:
+                a, b = b, a
+
+            self.num_sets -= 1
+            self.parent[b] = a
+            self.size[a] += self.size[b]
+
+    def set_size(self, a):
+        return self.size[self.find(a)]
+
+    def __len__(self):
+        return self.num_sets
+
+
+class UnionFind:
+    def __init__(self, n):
+        self.parent = list(range(n))
+
+    def find(self, a):
+        acopy = a
+        while a != self.parent[a]:
+            a = self.parent[a]
+        while acopy != a:
+            self.parent[acopy], acopy = a, self.parent[acopy]
+        return a
+
+    def union(self, a, b):
+        self.parent[self.find(b)] = self.find(a)
+
+
+# endregion
+
 if __name__ == "__main__":
+    arr = [i for i in range(1000000)]
+    tree = build(arr)
+    print(query(tree, 0, 0, len(arr) - 1, 0, 13000))
+    point_update(tree, 0, 0, len(arr) - 1, 0, 15)
+    print(query(tree, 0, 0, len(arr) - 1, 0, 130))
     pass
