@@ -50,7 +50,9 @@ void file_IO()
 
 void solve()
 {
-    cout<<"hello world";
+    unsigned int n;
+    cin>>n;
+    cout<<~n<<'\n';
 }
 
 
@@ -58,51 +60,9 @@ int main()
 {
     file_IO();
     int T = 1;
-    //cin >> T;
+    cin >> T;
     while (T--)
     {
         solve();
     }
 }
-
-
-
-/*
-void build(ll node,ll l,ll r) {
-    //cout<<l<<' '<<r;
-    if (l == r) {
-        tree[node] = arr[l];
-        return;
-    }
-    ll mid = (l + r) / 2;
-    build((node << 1) | 1, l, mid);
-    build((node << 1 )+ 2, mid + 1, r);
-    tree[node]=tree[node<<1|1]+tree[(node<<1)+2];
-}
-
-ll query(int node,int l,int r,int L,int R){
-    if(r<L || l>R){
-        return 0;
-    }
-    if(l>=L && r<=R){
-        return tree[node];
-    }
-    int mid=(l+r)/2;
-    ll left = query((node<<1)|1,l,mid,L,R);
-    ll right = query((node<<1)+2,mid+1,r,L,R);
-    return left+right;
-}
-
-void point_update(int node,int l, int r,int ind,ll val){
-    if(ind<l || r<ind)
-        return;
-    if (ind>=r && ind<=l){
-        tree[node]=val;
-        return;
-    }
-    int mid=(l+r)/2;
-    point_update((node<<1)|1,l,mid,ind,val);
-    point_update((node<<1)+2,mid+1,r,ind,val);
-    tree[node]=tree[node<<1|1]+tree[(node<<1)+2];
-}
-*/
