@@ -40,10 +40,10 @@ def Out(whatever):
 
 def func(arr: list):
     arr.sort()
-    n=len(arr)
-    ans=0
-    for i in range(1,n+1):
-        ans+=abs(arr[i-1]-i)
+    n = len(arr)
+    ans = 0
+    for i in range(1, n + 1):
+        ans += abs(arr[i - 1] - i)
     return ans
 
 
