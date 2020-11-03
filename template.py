@@ -195,7 +195,6 @@ def point_update(seg, node, l, r, ind, val):
         return
     if r <= ind <= l:
         seg[node] = val
-        arr[ind] = val
         return
     mid = (l + r) >> 1
     point_update(seg, (node << 1 | 1), l, mid, ind, val)
