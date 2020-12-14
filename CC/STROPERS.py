@@ -57,60 +57,19 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 # endregion
 
 
-def operate(s: list, number):
-    number -= 1
-    c = s.count('1')
-    n = len(s)
-    if c == n or c == 0:
-        return s
-    i = j = 0
-    while i < n:
-        f = 0
-        if s[i] == '1':
-            i += 1
-            continue
-        p = j = i + 1
-        # print(j)
-        c = 0
-        while j < n:
-
-            if s[j] == '1':
-                c += 1
-                if c == 2:
-                    f = 1
-                    i = j + 1
-                    break
-            j += 1
-        if f:
-            # print(1111111)
-            # print(i,p)
-            if p >= 2:
-                # print(s[p-1:i],s[i-1:p-2:-1])
-                s[p - 1:i] = s[i - 1:p - 2:-1]
-            else:
-                # print(s[p - 1:i], s[i - 1::-1])
-                s[p - 1:i] = s[i - 1::-1]
-            i -= 2
-
-        i += 1
-    if number:
-        return operate(s, number)
-    return s
-
-
 def func(s: str):
     n = len(s)
-    sub = []
-    for i in range(1, n + 1):
-        for j in range(n - i + 1):
-            sub.append(s[j:j + i])
-    # x = map(list, set(sub))
-    # print(sub)
-    # print(set(sub))
-    y = map(lambda x: operate(x, 3), map(list, sub))
-    z = list(map(''.join, y))
-    # print(set(z))
-    return len(set(z))
+    sub = {}
+
+    for i in range(n):
+        one = cnt = 0
+        for j in range(i, n):
+            if s[j] == '1':
+                one += 1
+            if one & 1:
+                cnt += 1
+            sub[(j - i + 1, one, cnt)] = 0
+    return len(sub)
 
 
 def main():
