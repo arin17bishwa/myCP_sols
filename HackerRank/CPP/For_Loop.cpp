@@ -3,21 +3,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int func(int n){
+int func(int k,) {
     string answer;
-    if(n<=9){
-        if (n==1)answer = "one";
-        else if (n==2)answer="two";
-        else if (n==3)answer="three";
-        else if (n==4)answer="four";
-        else if (n==5)answer="five";
-        else if (n==6)answer="six";
-        else if (n==7)answer="seven";
-        else if (n==8)answer="eight";
-        else if (n==9)answer="nine";
+    if(k <= 9){
+        if (k == 1)answer = "one";
+        else if (k == 2)answer="two";
+        else if (k == 3)answer="three";
+        else if (k == 4)answer="four";
+        else if (k == 5)answer="five";
+        else if (k == 6)answer="six";
+        else if (k == 7)answer="seven";
+        else if (k == 8)answer="eight";
+        else if (k == 9)answer="nine";
     }
     else {
-        if(n&1)answer="odd";
+        if(k & 1)answer="odd";
         else answer="even";
     }
     cout<<answer<<endl;
@@ -30,7 +30,7 @@ int main() {
     int a,b;
     cin>>a>>b;
     for(int i=a;i<=b;i++){
-        func(i);
+        func(i, 0);
     }
     return 0;
 }
