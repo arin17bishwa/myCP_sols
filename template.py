@@ -55,6 +55,18 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 # endregion
 
+
+def func():
+    pass
+
+
+def main():
+    pass
+
+
+if __name__ == '__main__':
+    main()
+
 # region smaller_fastio
 from sys import stdin, stdout
 
