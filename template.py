@@ -414,6 +414,25 @@ stirling_2 = lambda n, k: sum(((-1)**(k - j)) * nCr(k, j) * (j**n) for j in rang
 
 # endregion
 
+# region segmented sieve(for PRIMES)
+
+
+def func(left, right):
+    PRIMES=[]
+    arr = [True] * (right - left + 1)
+    for i in PRIMES:
+        for j in range(max(i * i, (left + i - 1) // i * i), right + 1, i):
+            arr[j - left] = False
+    if left == 1:
+        arr[0] = False
+    for i in range(right - left + 1):
+        if arr[i]:
+            print(left + i)
+    return
+
+# endregion
+
+
 if __name__ == "__main__":
     arr = [i for i in range(1000000)]
     tree = build(arr)
