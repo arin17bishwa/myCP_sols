@@ -1,4 +1,3 @@
-from math import gcd,sqrt
 # region fastio
 import os
 import sys
@@ -54,30 +53,41 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+
 # endregion
 
 
-def func(a,b):
-    x=gcd(a, b)
-    lim=int(sqrt(x))+1
-    ans=0
-    for i in range(1,lim+1):
-        if x%i==0:
-            ans+=2
-            print(ans,i)
-            z=x//i
-            if z==i:
-                ans-=1
-                break
-
+def factors(n):
+    ans = [n]
+    lim = int(pow(n, 0.5)) + 1
+    for i in range(2, lim):
+        if n % i == 0:
+            ans.append(i)
+            if i * i != n:
+                ans.append(n // i)
     return ans
 
 
+def check(arr, k):
+    x = arr[0] % k
+    for i in range(1, len(arr)):
+        if arr[i] % k != x:
+            return False
+    return True
+
+
 def main():
-    for _ in range(int(input())):
-        a,b=map(int,input().split())
-        print(func(a,b))
-    pass
+    m = int(input())
+    arr = [0] * m
+    for i in range(m):
+        arr[i] = int(input())
+    x = factors(abs(arr[0] - arr[1]))
+    ans = []
+    for i in x:
+        if check(arr, i):
+            ans.append(i)
+    ans.sort()
+    print(' '.join(map(str, ans)))
 
 
 if __name__ == '__main__':
