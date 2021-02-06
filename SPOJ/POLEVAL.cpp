@@ -47,11 +47,34 @@ void file_IO()
 
 //------- CODE STARTS HERE --------//
 
-//vector<int> adj[5005];
+vector<ll> coeff;
+int casenum=1;
 
-void solve()
+
+ll func(ll x){
+    ll ans=coeff[0];
+    int n=coeff.size();
+    for(int i=1;i<n;i++)
+        ans=x*ans+coeff[i];
+    return ans;
+}
+
+void solve(int t)
 {
-    cout<<"hello world";
+    cout<<"Case "<<casenum<<":\n";
+    casenum++;
+    ll ans,x,n,k;
+    vector<ll> xs;
+    // cin>>n;
+    n=t;
+    coeff.resize(n+1);
+    for(auto &it:coeff)cin>>it;
+    cin>>k;
+    for(int i=0;i<k;i++){
+        cin>>x;
+        cout<<func(x)<<endl;
+    }
+
 }
 
 
@@ -59,51 +82,11 @@ int main()
 {
     file_IO();
     int T = 1;
-    //cin >> T;
-    while (T--)
+    cin >> T;
+    while (T!=-1)
     {
-        solve();
+        solve(T);
+        cin>>T;
     }
 }
 
-
-
-/*
-void build(ll node,ll l,ll r) {
-    //cout<<l<<' '<<r;
-    if (l == r) {
-        tree[node] = arr[l];
-        return;
-    }
-    ll mid = (l + r) / 2;
-    build((node << 1) | 1, l, mid);
-    build((node << 1 )+ 2, mid + 1, r);
-    tree[node]=tree[node<<1|1]+tree[(node<<1)+2];
-}
-
-ll query(int node,int l,int r,int L,int R){
-    if(r<L || l>R){
-        return 0;
-    }
-    if(l>=L && r<=R){
-        return tree[node];
-    }
-    int mid=(l+r)/2;
-    ll left = query((node<<1)|1,l,mid,L,R);
-    ll right = query((node<<1)+2,mid+1,r,L,R);
-    return left+right;
-}
-
-void point_update(int node,int l, int r,int ind,ll val){
-    if(ind<l || r<ind)
-        return;
-    if (ind>=r && ind<=l){
-        tree[node]=val;
-        return;
-    }
-    int mid=(l+r)/2;
-    point_update((node<<1)|1,l,mid,ind,val);
-    point_update((node<<1)+2,mid+1,r,ind,val);
-    tree[node]=tree[node<<1|1]+tree[(node<<1)+2];
-}
-*/
