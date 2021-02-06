@@ -54,20 +54,21 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+
 # endregion
 
 
-def func(s,x,y):
-    freq=Counter(s)
-    fin_x=-freq.get('L',0)+freq.get('R',0)
-    fin_y=freq.get('U',0)-freq.get('D',0)
-    fx=fy=0
-    if fin_x==x and fin_y==y:
+def func(s, x, y):
+    freq = Counter(s)
+    fin_x = -freq.get('L', 0) + freq.get('R', 0)
+    fin_y = freq.get('U', 0) - freq.get('D', 0)
+    fx = fy = 0
+    if fin_x == x and fin_y == y:
         return 'YES'
-    if (fin_x<x and x-fin_x<=freq.get('L',0)) or (fin_x>x and fin_x-x<=freq.get('R',0)) or fin_x==x:
-        fx=1
-    if (fin_y<y and y-fin_y<=freq.get('D',0)) or (fin_y>y and fin_y-y<=freq.get('U',0)) or fin_y==y:
-        fy=1
+    if (fin_x < x and x - fin_x <= freq.get('L', 0)) or (fin_x > x and fin_x - x <= freq.get('R', 0)) or fin_x == x:
+        fx = 1
+    if (fin_y < y and y - fin_y <= freq.get('D', 0)) or (fin_y > y and fin_y - y <= freq.get('U', 0)) or fin_y == y:
+        fy = 1
 
     if fx and fy:
         return 'YES'
@@ -76,10 +77,10 @@ def func(s,x,y):
 
 def main():
     for _ in range(int(input())):
-        x,y=map(int,input().split())
-        s=input()
-        print(func(s,x,y))
-    pass
+        x, y = map(int, input().split())
+        s = input()
+        print(func(s, x, y))
+    return
 
 
 if __name__ == '__main__':

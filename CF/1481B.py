@@ -53,47 +53,48 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+
 # endregion
 
 
 def check_sort():
     global arr
-    n=len(arr)-1
-    for i in range(1,n):
-        if arr[i]>arr[i-1]:
+    n = len(arr) - 1
+    for i in range(1, n):
+        if arr[i] > arr[i - 1]:
             return 0
     return 1
 
 
 def func(k):
     global arr
-    ans=0
-    arr.append(-100000)
-    n=len(arr)
-    m1=max(arr)
-    if m1*n<k or check_sort():
+    ans = 0
+    arr.append(-1000000)
+    n = len(arr)
+    m1 = max(arr)
+    if m1 * n < k:
         return -1
     while k:
-        i=0
-        while i<n-1 and arr[i+1]<=arr[i]:
-            i+=1
-        if i==n-1:
+        i = 0
+        while i < n - 1 and arr[i + 1] <= arr[i]:
+            i += 1
+        if i == n - 1:
             return -1
-        arr[i]+=1
-        ans=i+1
-        k-=1
+        arr[i] += 1
+        ans = i + 1
+        k -= 1
     return ans
 
 
 def main():
     global arr
     for _ in range(int(input())):
-        n,k=map(int,input().split())
-        arr=list(map(int,input().split()))
+        n, k = map(int, input().split())
+        arr = list(map(int, input().split()))
         print(func(k))
-    pass
+    return
 
 
 if __name__ == '__main__':
-    arr=[]
+    arr = []
     main()
