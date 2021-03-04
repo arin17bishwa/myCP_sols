@@ -1,3 +1,4 @@
+import itertools, math
 # region fastio
 import os
 import sys
@@ -53,68 +54,53 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
-# endregion
-# region Stack
-from collections import deque
-
-
-class Stack(deque):
-    def empty(self):
-        return len(self) == 0
-
-    def top(self):
-        x = self.pop()
-        self.append(x)
-        return x
-
-    def bottom(self):
-        x = self.popleft()
-        self.appendleft(x)
-        return x
-
 
 # endregion
 
 
-def stack_sol():
-    s = Stack()
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = i = 0
-    # s.append(0)
-    while i < n:
-        if s.empty() or arr[s.top()] <= arr[i]:
-            s.append(i)
-            i += 1
+def intArr():
+    return map(int, input().split())
+
+
+def func(ans, i, f, *args):
+    global multiples
+    n = len(multiples)
+    if i == n - 1:
+        if f == 0:
+            return ans / multiples[i]
         else:
-            x = s.pop()
-            if s.empty():
-                ans = max(ans, arr[x] * i)
-            else:
-                ans = max(ans, arr[x] * (i - s.top() - 1))
-    while not s.empty():
-        x = s.pop()
-        if s.empty():
-            ans = max(ans, arr[x] * i)
-        else:
-            ans = max(ans, arr[x] * (i - s.top() - 1))
-    print(ans)
-    return
+            return ans * multiples[i]
+    return func(ans, i + 1, 0) * func(ans, i + 1, 1)
 
 
 def main():
+    global p, multiples
+    initial = float(input())
     n = int(input())
-    arr = list(map(int, input().split()))
-    ans = 0
     for i in range(n):
-        x = arr[i]
-        for j in range(i, n):
-            x = min(x, arr[j])
-            ans = max(ans, x * (j - i + 1))
-    print(ans)
-    return
+        x = input().split(':')[1].split(';')
+        for j in x:
+            if "Might Multiplier" in j:
+                p = float(j.split('x')[1])
+                multiples.append(p)
+                break
+    perms = [''.join(i) for i in itertools.product('01', repeat=len(multiples))]
+    n = len(multiples)
+    arr = []
+    for i in perms:
+        p = initial
+        for j in range(n):
+            if i[j] == '1':
+                p *= multiples[j]
+            else:
+                p /= multiples[j]
+        arr.append(p)
+    x = sum(map(math.log, arr))
+    x /= len(arr)
+    return math.exp(x)
 
 
 if __name__ == '__main__':
-    stack_sol()
-    # main()
+    multiples = []
+    p = 0
+    print(main())

@@ -1,3 +1,4 @@
+from math import ceil
 # region fastio
 import os
 import sys
@@ -53,68 +54,39 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
-# endregion
-# region Stack
-from collections import deque
-
-
-class Stack(deque):
-    def empty(self):
-        return len(self) == 0
-
-    def top(self):
-        x = self.pop()
-        self.append(x)
-        return x
-
-    def bottom(self):
-        x = self.popleft()
-        self.appendleft(x)
-        return x
-
 
 # endregion
 
 
-def stack_sol():
-    s = Stack()
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = i = 0
-    # s.append(0)
-    while i < n:
-        if s.empty() or arr[s.top()] <= arr[i]:
-            s.append(i)
-            i += 1
+def func(arr):
+    n = len(arr)
+    arr.sort()
+    start = arr[0][2]
+    ans = 0
+    for i in range(1, n):
+        nxt = arr[i][2]
+        if nxt > start:
+            start = nxt
+            continue
         else:
-            x = s.pop()
-            if s.empty():
-                ans = max(ans, arr[x] * i)
-            else:
-                ans = max(ans, arr[x] * (i - s.top() - 1))
-    while not s.empty():
-        x = s.pop()
-        if s.empty():
-            ans = max(ans, arr[x] * i)
-        else:
-            ans = max(ans, arr[x] * (i - s.top() - 1))
-    print(ans)
-    return
+            x = max(1, ceil((1 + start - nxt) / arr[i][1]))
+            ans += x
+            start = nxt + x * arr[i][1]
+
+    return ans
 
 
 def main():
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        x = arr[i]
-        for j in range(i, n):
-            x = min(x, arr[j])
-            ans = max(ans, x * (j - i + 1))
-    print(ans)
+    for _ in range(int(input())):
+        n = int(input())
+        w = list(map(int, input().split()))
+        l0 = list(map(int, input().split()))
+        arr = [(0, 0, 0) for _ in range(n)]
+        for i in range(n):
+            arr[i] = (w[i], l0[i], i + 1)
+        print(func(arr))
     return
 
 
 if __name__ == '__main__':
-    stack_sol()
-    # main()
+    main()

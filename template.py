@@ -56,6 +56,14 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 # endregion
 
 
+def intArr():
+    return map(int,input().split())
+
+
+def In():
+    return int(input())
+
+
 def func():
     pass
 
@@ -518,6 +526,27 @@ class LazySegmentTree:
 
     def __repr__(self):
         return "LazySegmentTree({0})".format(self.data)
+# endregion
+
+
+# region Stack
+from collections import deque
+
+
+class Stack(deque):
+    def empty(self):
+        return len(self)==0
+
+    def top(self):
+        x=self.pop()
+        self.append(x)
+        return x
+
+    def bottom(self):
+        x=self.popleft()
+        self.appendleft(x)
+        return x
+
 # endregion
 
 

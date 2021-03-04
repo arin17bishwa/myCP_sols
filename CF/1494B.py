@@ -53,68 +53,58 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
-# endregion
-# region Stack
-from collections import deque
-
-
-class Stack(deque):
-    def empty(self):
-        return len(self) == 0
-
-    def top(self):
-        x = self.pop()
-        self.append(x)
-        return x
-
-    def bottom(self):
-        x = self.popleft()
-        self.appendleft(x)
-        return x
-
 
 # endregion
 
 
-def stack_sol():
-    s = Stack()
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = i = 0
-    # s.append(0)
-    while i < n:
-        if s.empty() or arr[s.top()] <= arr[i]:
-            s.append(i)
-            i += 1
-        else:
-            x = s.pop()
-            if s.empty():
-                ans = max(ans, arr[x] * i)
-            else:
-                ans = max(ans, arr[x] * (i - s.top() - 1))
-    while not s.empty():
-        x = s.pop()
-        if s.empty():
-            ans = max(ans, arr[x] * i)
-        else:
-            ans = max(ans, arr[x] * (i - s.top() - 1))
-    print(ans)
-    return
+def intArr():
+    return map(int, input().split())
+
+
+def In():
+    return int(input())
+
+
+def check(l1: list, l2: list):
+    u, l, d, r = l2
+    if u[0] == 1 or l[0] == 1:
+        u[0] = l[0] = 1
+    if u[2] == 1 or r[0] == 1:
+        u[2] = r[0] = 1
+    if d[0] == 1 or l[2] == 1:
+        d[0] = l[2] = 1
+    if d[2] == 1 or r[2] == 1:
+        d[2] = r[2] = 1
+    l2 = [u, l, d, r]
+    for i in range(4):
+        if l1[i] != sum(l2[i]):
+            return 0
+    return 1
+
+
+def func(n, u, r, d, l0):
+    l1 = [u, l0, d, r]
+    temp = [[] for _ in range(4)]
+    for i in range(4):
+        temp[i] = [[0, min(n - 2, l1[i]), 0], [1, max(0, min(n - 2, l1[i] - 1)), 0],
+                   [0, max(0, min(n - 2, l1[i] - 1)), 1], [1, max(0, min(n - 2, l1[i] - 2)), 1]]
+    for a in temp[0]:
+        for b in temp[1]:
+            for c in temp[2]:
+                for p in temp[3]:
+                    tempo = [a.copy(), b.copy(), c.copy(), p.copy()]
+                    if check(l1, tempo):
+                        return 'YES'
+
+    return 'NO'
 
 
 def main():
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        x = arr[i]
-        for j in range(i, n):
-            x = min(x, arr[j])
-            ans = max(ans, x * (j - i + 1))
-    print(ans)
+    for _ in range(In()):
+        n, u, r, d, l0 = intArr()
+        print(func(n, u, r, d, l0))
     return
 
 
 if __name__ == '__main__':
-    stack_sol()
-    # main()
+    main()

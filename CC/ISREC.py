@@ -53,68 +53,57 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
-# endregion
-# region Stack
-from collections import deque
-
-
-class Stack(deque):
-    def empty(self):
-        return len(self) == 0
-
-    def top(self):
-        x = self.pop()
-        self.append(x)
-        return x
-
-    def bottom(self):
-        x = self.popleft()
-        self.appendleft(x)
-        return x
-
 
 # endregion
 
 
-def stack_sol():
-    s = Stack()
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = i = 0
-    # s.append(0)
-    while i < n:
-        if s.empty() or arr[s.top()] <= arr[i]:
-            s.append(i)
-            i += 1
-        else:
-            x = s.pop()
-            if s.empty():
-                ans = max(ans, arr[x] * i)
-            else:
-                ans = max(ans, arr[x] * (i - s.top() - 1))
-    while not s.empty():
-        x = s.pop()
-        if s.empty():
-            ans = max(ans, arr[x] * i)
-        else:
-            ans = max(ans, arr[x] * (i - s.top() - 1))
-    print(ans)
-    return
+def func(n, m, arr):
+    x = y = (-1, -1)
+    l1 = [(-1, -1) for _ in range(n)]
+    f = 1
+    for i in range(n):
+        p = arr[i]
+        try:
+            start = p.index('1')
+        except ValueError:
+            continue
+        last = start
+        f = 0
+        for j in range(m):
+            if p[j] == '1':
+                last = j
+        l1[i] = (start, last)
+
+    if f:
+        return 'NO'
+
+    for i in range(n):
+        if l1[i][0] != -1:
+            x = (l1[i], i)
+            break
+
+    for i in range(n - 1, -1, -1):
+        if l1[i][0] != -1:
+            y = (l1[i], i)
+            break
+
+    for i in range(x[1], y[1] + 1):
+        if l1[i][0] != x[0][0] or l1[i][1] != y[0][1]:
+            return 'NO'
+        p = arr[i]
+        for j in range(x[0][0], y[0][1] + 1):
+            if p[j] == '0':
+                return 'NO'
+    return 'YES'
 
 
 def main():
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        x = arr[i]
-        for j in range(i, n):
-            x = min(x, arr[j])
-            ans = max(ans, x * (j - i + 1))
-    print(ans)
+    for _ in range(int(input())):
+        n, m = map(int, input().split())
+        arr = [input() for _ in range(n)]
+        print(func(n, m, arr))
     return
 
 
 if __name__ == '__main__':
-    stack_sol()
-    # main()
+    main()

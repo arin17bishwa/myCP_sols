@@ -1,3 +1,4 @@
+import collections
 # region fastio
 import os
 import sys
@@ -54,67 +55,39 @@ sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 # endregion
-# region Stack
-from collections import deque
 
 
-class Stack(deque):
-    def empty(self):
-        return len(self) == 0
-
-    def top(self):
-        x = self.pop()
-        self.append(x)
-        return x
-
-    def bottom(self):
-        x = self.popleft()
-        self.appendleft(x)
-        return x
+def intArr():
+    return map(int,input().split())
 
 
-# endregion
-
-
-def stack_sol():
-    s = Stack()
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = i = 0
-    # s.append(0)
-    while i < n:
-        if s.empty() or arr[s.top()] <= arr[i]:
-            s.append(i)
-            i += 1
-        else:
-            x = s.pop()
-            if s.empty():
-                ans = max(ans, arr[x] * i)
-            else:
-                ans = max(ans, arr[x] * (i - s.top() - 1))
-    while not s.empty():
-        x = s.pop()
-        if s.empty():
-            ans = max(ans, arr[x] * i)
-        else:
-            ans = max(ans, arr[x] * (i - s.top() - 1))
-    print(ans)
-    return
+def func():
+    pass
 
 
 def main():
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        x = arr[i]
-        for j in range(i, n):
-            x = min(x, arr[j])
-            ans = max(ans, x * (j - i + 1))
-    print(ans)
-    return
+    with open('/home/bishwajit/PycharmProjects/CP/All/Others/HashCode 2021/a.txt') as f:
+        x=f.readline()
+        D,I,S,V,F=map(int,x.split())
+        streets={}
+        intersection_matrix=[[-1]*I for i in range(I)]
+        path_lengths=[0]*S
+        street_queues=[collections.deque() for _ in range(S)]
+        numbering=0
+        for i in range(S):
+            x=f.readline().split()
+            start,end,name,length=x
+            if name not in streets:
+                streets[name]=numbering
+                path_lengths[numbering]=int(length)
+                x+=1
+
+            intersection_matrix[int(start)][int(end)]=streets[name]
+
+
+
+
 
 
 if __name__ == '__main__':
-    stack_sol()
-    # main()
+    main()

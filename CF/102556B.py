@@ -54,67 +54,38 @@ sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 # endregion
-# region Stack
-from collections import deque
+
+days = {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
 
 
-class Stack(deque):
-    def empty(self):
-        return len(self) == 0
-
-    def top(self):
-        x = self.pop()
-        self.append(x)
-        return x
-
-    def bottom(self):
-        x = self.popleft()
-        self.appendleft(x)
-        return x
+def leap(n):
+    if (n % 100 == 0 and n % 400 == 0) or (n % 100 != 0 and n % 4 == 0):
+        return 1
+    return 0
 
 
-# endregion
+def intArr():
+    return map(int, input().split())
 
 
-def stack_sol():
-    s = Stack()
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = i = 0
-    # s.append(0)
-    while i < n:
-        if s.empty() or arr[s.top()] <= arr[i]:
-            s.append(i)
-            i += 1
-        else:
-            x = s.pop()
-            if s.empty():
-                ans = max(ans, arr[x] * i)
-            else:
-                ans = max(ans, arr[x] * (i - s.top() - 1))
-    while not s.empty():
-        x = s.pop()
-        if s.empty():
-            ans = max(ans, arr[x] * i)
-        else:
-            ans = max(ans, arr[x] * (i - s.top() - 1))
-    print(ans)
-    return
+def how(n):
+    return n // 4 - n // 100 + n // 400
 
 
 def main():
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        x = arr[i]
-        for j in range(i, n):
-            x = min(x, arr[j])
-            ans = max(ans, x * (j - i + 1))
-    print(ans)
-    return
+    a, b = intArr()
+    p = k * ((b - a + 1) % 104206969)
+    leaps = how(b) - how(a)
+    if leap(a):
+        leaps += 1
+    p += (leaps % 104206969) * 229
+    return p % 104206969
 
 
 if __name__ == '__main__':
-    stack_sol()
-    # main()
+    k = 0
+    for i in range(1, 13):
+        for j in range(1, days[i] + 1):
+            k += int(str(i) + str(j))
+
+    print(main())

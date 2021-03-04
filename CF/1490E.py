@@ -53,68 +53,57 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
-# endregion
-# region Stack
-from collections import deque
-
-
-class Stack(deque):
-    def empty(self):
-        return len(self) == 0
-
-    def top(self):
-        x = self.pop()
-        self.append(x)
-        return x
-
-    def bottom(self):
-        x = self.popleft()
-        self.appendleft(x)
-        return x
-
 
 # endregion
 
 
-def stack_sol():
-    s = Stack()
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = i = 0
-    # s.append(0)
-    while i < n:
-        if s.empty() or arr[s.top()] <= arr[i]:
-            s.append(i)
-            i += 1
+def intArr():
+    return map(int, input().split())
+
+
+def check(x):
+    global arr
+    n = len(arr)
+    k = arr[x]
+    for i in range(n):
+        if i == x:
+            continue
+        if k < arr[i]:
+            return 0
+        k += arr[i]
+    return 1
+
+
+def func():
+    global arr
+    l1 = arr[:]
+    arr.sort()
+    n = len(arr)
+    low, high = 0, n - 1
+    while low < high:
+        mid = (low + high) >> 1
+        if check(mid):
+            high = mid
         else:
-            x = s.pop()
-            if s.empty():
-                ans = max(ans, arr[x] * i)
-            else:
-                ans = max(ans, arr[x] * (i - s.top() - 1))
-    while not s.empty():
-        x = s.pop()
-        if s.empty():
-            ans = max(ans, arr[x] * i)
-        else:
-            ans = max(ans, arr[x] * (i - s.top() - 1))
-    print(ans)
-    return
+            low = mid + 1
+    answers = []
+    lim = arr[high]
+    for i in range(n):
+        if l1[i] >= lim:
+            answers.append(i + 1)
+    print(len(answers))
+    return answers
 
 
 def main():
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        x = arr[i]
-        for j in range(i, n):
-            x = min(x, arr[j])
-            ans = max(ans, x * (j - i + 1))
-    print(ans)
+    global arr
+    for _ in range(int(input())):
+        _ = int(input())
+        arr = list(intArr())
+        print(*func())
     return
 
 
 if __name__ == '__main__':
-    stack_sol()
-    # main()
+    arr = []
+    main()

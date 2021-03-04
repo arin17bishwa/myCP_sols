@@ -53,68 +53,35 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
-# endregion
-# region Stack
-from collections import deque
-
-
-class Stack(deque):
-    def empty(self):
-        return len(self) == 0
-
-    def top(self):
-        x = self.pop()
-        self.append(x)
-        return x
-
-    def bottom(self):
-        x = self.popleft()
-        self.appendleft(x)
-        return x
-
 
 # endregion
 
 
-def stack_sol():
-    s = Stack()
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = i = 0
-    # s.append(0)
-    while i < n:
-        if s.empty() or arr[s.top()] <= arr[i]:
-            s.append(i)
-            i += 1
-        else:
-            x = s.pop()
-            if s.empty():
-                ans = max(ans, arr[x] * i)
+def func():
+    global arr
+    n = len(arr)
+    for i in range(n):
+        if i & 1:
+            if arr[i] == 'z':
+                arr[i] = 'y'
             else:
-                ans = max(ans, arr[x] * (i - s.top() - 1))
-    while not s.empty():
-        x = s.pop()
-        if s.empty():
-            ans = max(ans, arr[x] * i)
+                arr[i] = 'z'
         else:
-            ans = max(ans, arr[x] * (i - s.top() - 1))
-    print(ans)
-    return
+            if arr[i] == 'a':
+                arr[i] = 'b'
+            else:
+                arr[i] = 'a'
+    return ''.join(arr)
 
 
 def main():
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        x = arr[i]
-        for j in range(i, n):
-            x = min(x, arr[j])
-            ans = max(ans, x * (j - i + 1))
-    print(ans)
+    global arr
+    for _ in range(int(input())):
+        arr = list(input())
+        print(func())
     return
 
 
 if __name__ == '__main__':
-    stack_sol()
-    # main()
+    arr = []
+    main()

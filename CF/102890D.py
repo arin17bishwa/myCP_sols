@@ -53,68 +53,52 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
-# endregion
-# region Stack
-from collections import deque
-
-
-class Stack(deque):
-    def empty(self):
-        return len(self) == 0
-
-    def top(self):
-        x = self.pop()
-        self.append(x)
-        return x
-
-    def bottom(self):
-        x = self.popleft()
-        self.appendleft(x)
-        return x
-
 
 # endregion
 
 
-def stack_sol():
-    s = Stack()
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = i = 0
-    # s.append(0)
+def intArr():
+    return map(int, input().split())
+
+
+def In():
+    return int(input())
+
+
+def func(s: str, k):
+    n = len(s)
+    arr = []
+    i = j = 0
+    tot = 0
     while i < n:
-        if s.empty() or arr[s.top()] <= arr[i]:
-            s.append(i)
+        x = s[i]
+        if x.isdigit():
+            p = int(x)
             i += 1
+            while i < n and s[i].isdigit():
+                p = 10 * p + int(s[i])
+                i += 1
+            tot += p
+            arr.append((p, s[i]))
+            i += 1
+            continue
         else:
-            x = s.pop()
-            if s.empty():
-                ans = max(ans, arr[x] * i)
-            else:
-                ans = max(ans, arr[x] * (i - s.top() - 1))
-    while not s.empty():
-        x = s.pop()
-        if s.empty():
-            ans = max(ans, arr[x] * i)
-        else:
-            ans = max(ans, arr[x] * (i - s.top() - 1))
-    print(ans)
-    return
+            arr.append((1, s[i]))
+            tot += 1
+            i += 1
+    if tot > k:
+        return 'unfeasible'
+    ans = ''.join(map(lambda item: item[0] * item[1], arr))
+    return ans
 
 
 def main():
-    n = int(input())
-    arr = list(map(int, input().split()))
-    ans = 0
-    for i in range(n):
-        x = arr[i]
-        for j in range(i, n):
-            x = min(x, arr[j])
-            ans = max(ans, x * (j - i + 1))
-    print(ans)
+    for _ in range(In()):
+        s, k = input().split()
+        k = int(k)
+        print(func(s, k))
     return
 
 
 if __name__ == '__main__':
-    stack_sol()
-    # main()
+    main()
