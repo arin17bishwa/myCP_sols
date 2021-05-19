@@ -1,4 +1,3 @@
-import heapq
 # region fastio
 import os
 import sys
@@ -54,38 +53,30 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+
 # endregion
 
 
-def func(l1,l2):
-    n=len(l1)
-    aoki=sum(l1)
-    ans=takashi=0
-    arr=[(-l1[i],-l2[i]) for i in range(n)]
-    heapq.heapify(arr)
-    # print(arr)
-    while n>0:
-        x=heapq.heappop(arr)
-        a,b=-x[0],-x[1]
-        takashi+=(a+b)
-        aoki-=a
-        ans+=1
-        n-=1
-        if aoki<takashi:
-            return ans
+def intArr():
+    return map(int, input().split())
 
-    return ans
+
+def In():
+    return int(input())
 
 
 def main():
-    n=int(input())
-    l1=[0]*n
-    l2=[0]*n
+    n = In()
+    l1 = [tuple(intArr()) for _ in range(n)]
+    diff = -sum(map(lambda x: x[0], l1))
+    if diff > 0:
+        return 0
+    arr = sorted([2 * i[0] + i[1] for i in l1], reverse=True)
     for i in range(n):
-        l1[i],l2[i]=map(int,input().split())
-    print(func(l1,l2))
-    return
+        diff += arr[i]
+        if diff > 0:
+            return i + 1
 
 
 if __name__ == '__main__':
-    main()
+    print(main())

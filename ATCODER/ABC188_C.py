@@ -53,23 +53,24 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+
 # endregion
 
 
 def main():
-    k=int(input())
-    arr=list(map(int,input().split()))
-    n=1<<k
-    l1=[(arr[i],i+1) for i in range(n)]
-    jump=1
-    while jump<(1<<(k-1)):
-        i=0
-        while i<n:
-            if l1[i][0]<l1[i+jump][0]:
-                l1[i]=l1[i+jump]
-            i+=(jump<<1)
-        jump=jump<<1
-    if l1[0][0]<l1[jump][0]:
+    k = int(input())
+    arr = list(map(int, input().split()))
+    n = 1 << k
+    l1 = [(arr[i], i + 1) for i in range(n)]
+    jump = 1
+    while jump < (1 << (k - 1)):
+        i = 0
+        while i < n:
+            if l1[i][0] < l1[i + jump][0]:
+                l1[i] = l1[i + jump]
+            i += (jump << 1)
+        jump = jump << 1
+    if l1[0][0] < l1[jump][0]:
         return l1[0][1]
     return l1[jump][1]
 

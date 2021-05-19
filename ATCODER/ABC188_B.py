@@ -53,6 +53,7 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+
 # endregion
 
 
@@ -61,13 +62,13 @@ def func():
 
 
 def main():
-    n=int(input())
-    a=list(map(int,input().split()))
-    b=list(map(int,input().split()))
-    ans=0
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
     for i in range(n):
-        ans+=a[i]*b[i]
-    if ans==0:
+        ans += a[i] * b[i]
+    if ans == 0:
         return 'Yes'
     return 'No'
 

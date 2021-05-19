@@ -53,12 +53,13 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+
 # endregion
 
 
 def main():
-    a,b=map(int,input().split())
-    if abs(a-b)<3:
+    a, b = map(int, input().split())
+    if abs(a - b) < 3:
         print('Yes')
     else:
         print('No')
