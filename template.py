@@ -57,7 +57,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
@@ -69,7 +69,9 @@ def func():
 
 
 def main():
-    pass
+    for _ in range(In()):
+        print(func())
+    return
 
 
 if __name__ == '__main__':
