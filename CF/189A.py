@@ -1,22 +1,6 @@
-#region normal solution
-# c=0
-# def func(n,l):
-#     l = sorted(l[1:])
-#     l1=[]
-#     for i in l:
-#         for j in l:
-#             if i+j not in l1:
-#                 l1.append(i+j)
-#     f = 1
-#     while f:
-#         if n in l1:
-#             pass
-#
-#
-# l=list(map(int,input().split()))
-# n=l[0]
-# print(func(n,l))
-#endregion
+import sys
+
+sys.setrecursionlimit(100000)
 
 # region fastio
 import os
@@ -73,37 +57,44 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+
 # endregion
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
     return int(input())
 
 
-def func(n):
-    global dp,a,b,c
-    if n<1:
+def fun(rem):
+    global dp
+    if rem == 0:
         return 0
-    
+    if rem < 0:
+        return -float('inf')
+    if rem in dp:
+        return dp[rem]
+    x = max(fun(rem - a) + 1, 1 + fun(rem - b), 1 + fun(rem - c))
+    dp[rem] = x
+    return x
+
+
+def func():
+    global n, a, b, c
+    n, a, b, c = intArr()
+    return fun(n)
 
 
 def main():
-    global dp,a,b,c
-    n,a,b,c=intArr()
-    dp=[-float('inf')]*(n+1)
-    # for i in {a, b, c}:
-    #     dp[i]=1
-    dp[a]=1
-    dp[b]=1
-    dp[c]=1
-    print(func(n))
+    for _ in range(1):
+        print(func())
+    return
 
 
 if __name__ == '__main__':
-    dp=[]
-    a=b=c=0
+    dp = {}
+    a = b = c = n = 0
     main()
