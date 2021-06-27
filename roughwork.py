@@ -4,7 +4,7 @@ import shutil
 
 
 def func():
-    base_address = '/home/bishwajit/PycharmProjects/Edureka_datascience/ground 2/gallery-dl/'
+    base_address = '/home/bishwajit/PycharmProjects/gallery/'
     walk = list(os.walk(base_address))
     for x in walk:
         address = x[0]
@@ -18,8 +18,8 @@ def func():
 
 def copier():
     skipped=copied=0
-    base_address = '/home/bishwajit/PycharmProjects/Edureka_datascience/ground 2/gallery-dl/imgur/'
-    temp_base_address = '/home/bishwajit/PycharmProjects/Edureka_datascience/ground 2/TEMP/'
+    base_address = '/home/bishwajit/PycharmProjects/witter/'
+    temp_base_address = '/home/bishwajit/PycharmProjects/TEMP/'
 
     walk = list(os.walk(base_address))
     sub_dirs=walk[0][1]
