@@ -65,19 +65,15 @@ def In():
     return int(input())
 
 
-def func(n,k):
-    mod=int(1e9)+7
-    if k==1:
-        return (n-1)%mod
-    ans= ((1 << k) - 1) * (n - 1)
-    ans=max(ans, ((1 << k) - 2) * (n - 1) + 1)
-    return ans%mod
+def func(n, k):
+    mod = int(1e9) + 7
+    return pow(n, k, mod)
 
 
 def main():
     for _ in range(In()):
-        n,k=intArr()
-        print(func(n,k))
+        n, k = intArr()
+        print(func(n, k))
     return
 
 
