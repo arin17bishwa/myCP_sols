@@ -56,6 +56,16 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 # endregion
 
 
+def ynDec(function):
+    def inner1(*args, **kwargs):
+        res = function(*args, **kwargs)
+        if res:
+            return 'YES'
+        return 'NO'
+
+    return inner1
+
+
 def intArr():
     return map(int, input().split())
 
