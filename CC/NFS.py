@@ -68,7 +68,8 @@ def In():
 ANSWERS = ['No', 'Yes']
 
 
-def func(u, v, a, s):
+def func():
+    u, v, a, s = intArr()
     x = u * u - v * v
     if x <= 2 * a * s:
         return 1
@@ -77,8 +78,7 @@ def func(u, v, a, s):
 
 def main():
     for _ in range(In()):
-        u, v, a, s = intArr()
-        print(ANSWERS[func(u, v, a, s)])
+        print('Yes' if func() else 'No')
     return
 
 
