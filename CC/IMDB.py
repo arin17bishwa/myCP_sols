@@ -65,22 +65,17 @@ def In():
     return int(input())
 
 
-def func(arr, x):
-    arr.sort()
-    n = len(arr)
-    for i in range(n):
-        if arr[i][1] <= x:
-            return -arr[i][0]
+def func():
+    n, x = intArr()
+    arr = [list(intArr()) for _ in range(n)]
+    arr = [(i, j) for i, j in arr if i <= x]
+    arr.sort(key=lambda x: x[-1], reverse=True)
+    return arr[0][1]
 
 
 def main():
     for _ in range(In()):
-        n, x = intArr()
-        arr = [(0, 0) for _ in range(n)]
-        for i in range(n):
-            s, r = intArr()
-            arr[i] = (-r, s)
-        print(func(arr, x))
+        print(func())
     return
 
 
