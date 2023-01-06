@@ -53,6 +53,7 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
+
 # endregion
 
 
@@ -65,19 +66,16 @@ def In():
 
 
 def func():
-    a,b,c,d,k=intArr()
-    dist=abs(a-c)+abs(b-d)
-    if dist>k:
-        return 'NO'
-    if (dist-k)%2==1:
-        return 'NO'
-
-    return 'YES'
+    a, b, c, d, k = intArr()
+    dist = abs(a - c) + abs(b - d)
+    if dist > k or (dist - k) % 2 == 1:
+        return 0
+    return 1
 
 
 def main():
     for _ in range(In()):
-        print(func())
+        print('YES' if func() else 'NO')
     return
 
 
