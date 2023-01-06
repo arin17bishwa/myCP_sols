@@ -57,10 +57,22 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 # endregion
 
 
+def intArr():
+    return map(int, input().split())
+
+
+def In():
+    return int(input())
+
+
+def func():
+    a, b = intArr()
+    return ((b - a) << 1) | 1
+
+
 def main():
-    for _ in range(int(input())):
-        a, b = map(int, input().split())
-        print((b - a) << 1 | 1)
+    for _ in range(In()):
+        print(func())
     return
 
 
