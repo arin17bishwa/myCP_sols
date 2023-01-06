@@ -61,12 +61,18 @@ def intArr():
     return map(int, input().split())
 
 
+def In():
+    return int(input())
+
+
+def func():
+    n, k = intArr()
+    return n if k == 0 else n % k
+
+
 def main():
-    for _ in range(int(input())):
-        n, k = map(int, intArr())
-        if k == 0:
-            k = n + 1
-        print(n % k)
+    for _ in range(In()):
+        print(func())
     return
 
 
