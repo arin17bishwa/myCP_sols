@@ -4,7 +4,8 @@ from typing import *
 import sys
 import time
 
-sys.stdin = open('/home/bishwajit/HDD/PycharmPro/myCP_sols/in.txt', 'r')
+
+# sys.stdin = open('/media/bishwajit/HDD/PycharmPro/myCP_sols/in.txt', 'r')
 
 
 # # region fastio
@@ -135,59 +136,247 @@ class TreeNode:
         self.right = right
 
 
-class Solution:
-
-    def completeRows(self, n: int) -> int:
-        # code here
-        lo, hi = 1, 10 ** 8
-        ans = 1
-        while lo <= hi:
-            # print(lo, hi)
-            mid = (lo + hi) // 2
-            x = (mid * (mid + 1)) // 2
-            if x <= n:
-                lo = mid + 1
-                ans = mid
-            else:
-                hi = mid - 1
-                # ans = hi
-        return ans
+from itertools import groupby
+from collections import defaultdict
 
 
-def funct(a):
-    s = Solution()
-    return s.completeRows(a)
-
-
-def fun1(tempChange):
-    arr = tempChange
-    n = len(arr)
-    pre = arr[:]
-    for i in range(1, n):
-        pre[i] += pre[i - 1]
-    ans = -float('inf')
+def func(s: str, k: int):
+    l1 = [(i, len(list(j))) for i, j in groupby(s)]
+    n = len(l1)
+    curr = ans = j = cnt = 0
+    freq = [0] * 26
     for i in range(n):
-        if i == 0:
-            ls = pre[0]
-            rs = pre[-1]
-        else:
-            ls = pre[i]
-            rs = pre[-1] - pre[i - 1]
-        ans = max(ans, max(ls, rs))
+        while j <= i and cnt > k:
+            curr -= l1[j][1]
+            _ch = ord(l1[j][0]) - 97
+            freq[_ch] -= l1[j][1]
+            if freq[_ch] == 0:
+                cnt -= 1
+            j += 1
+        if cnt == k:
+            ans = max(curr, ans)
+        ch_ord = ord(l1[j][0]) - 97
+        if freq[ch_ord] == 0:
+            cnt += 1
+        freq[ch_ord] += l1[i][1]
     return ans
+
+
+from collections import defaultdict
+
+
+class Trie:
+
+    def __init__(self):
+        self.d = defaultdict(Trie)
+        self.count = 0
+
+    def insert(self, word: str):
+        curr = self
+        for ch in word:
+            curr = curr.d[ch]
+            curr.count += 1
+
+    def get_count(self, word: str) -> int:
+        ans = 0
+        curr = self
+        for ch in word:
+            curr = curr.d[ch]
+            if curr.count == 0:
+                return 0
+        return curr.count
+
+
+def nearest_smaller(arr: list):
+    n = len(arr)
+    s = []
+    ans = []
+    for i in range(n):
+        x = arr[i]
+        while s and s[-1] >= arr[i]:
+            s.pop()
+        if not s:
+            ans.append(-1)
+        else:
+            ans.append(s[-1])
+        s.append(arr[i])
+    return ans
+
+
+def driver_code_1():
+    _ = input()
+    arr = list(map(int, input().split()))
+    print(*nearest_smaller(arr))
+
+
+def min_sum_subarray(arr: list, k: int):
+    n = len(arr)
+    s = sum(arr)
+    k = n - k
+    ans = curr = sum(arr[1:k + 1])
+    prev = arr[0]
+    for i in range(k + 1, n):
+        x = arr[i - k]
+        curr -= x
+        prev += x
+        curr += arr[i]
+        ans = min(curr, ans)
+    return ans
+
+
+def driver_code_2():
+    n, k = (map(int, input().split()))
+    arr = list(map(int, input().split()))
+    print(sum(arr) - min_sum_subarray(arr, k))
 
 
 def main():
     _t1 = time.perf_counter()
     while 1:
         try:
-            a = In()
+            # a = In()
             # a, b = intArr()
-            print(funct(a))
+            s = input()
+            k = In()
+            print(func(s, k))
             print('-' * 60)
         except EOFError as e:
             break
     print(time.perf_counter() - _t1)
+
+
+from collections import defaultdict
+from sys import setrecursionlimit
+
+setrecursionlimit(10 ** 5 + 5)
+
+
+def getVisibleProfilesCount(connection_nodes: int, connection_from: list, connection_to: list, queries: list):
+    g = defaultdict(list)
+    for i, j in zip(connection_from, connection_to):
+        g[i].append(j)
+        g[j].append(i)
+    for i in range(1, connection_nodes + 1):
+        g[i].append(i)
+    curr = 0
+    vis = set()
+    ans = defaultdict(lambda: 1)
+
+    def dfs(u: int):
+        nonlocal curr, vis, _vis, g
+        vis.add(u)
+        _vis.add(u)
+        curr += 1
+        for v in g[u]:
+            if (u != v) and (v not in vis):
+                dfs(v)
+
+    for i in range(1, connection_nodes + 1):
+        if i in vis:
+            continue
+        _vis = set()
+        curr = 0
+        dfs(i)
+        for j in _vis:
+            ans[j] = curr
+
+    return [ans[i] for i in queries]
+
+
+def getEarliestMeetTime(events: list, k: int):
+    arr = events
+    n = len(arr)
+    l1 = [0] * (24 * 60 + 1)
+    m = len(l1)
+
+    def parse_time(s: str):
+        return tuple(map(int, s.split(':')))
+
+    def parse_min(t: int):
+        return '{:02d}:{:02d}'.format(t // 60, t % 60)
+
+    for i in arr:
+        _, _, st, e = i.split()
+        a, b = parse_time(st)
+        c, d = parse_time(e)
+        l1[a * 60 + b] += 1
+        l1[c * 60 + d + 1] -= 1
+    for i in range(1, m):
+        l1[i] += l1[i - 1]
+    curr = 0
+    for i in range(k):
+        curr += l1[i]
+
+    if curr == 0:
+        return '00:00'
+
+    for i in range(k, m - 1):
+        curr += l1[i]
+        curr -= l1[i - k]
+        if curr == 0:
+            return parse_min(i - k + 1)
+    return '-1'
+
+
+def orderConfirmation(orderID: int) -> int:
+    ans = 1
+    for i in str(orderID):
+        ans *= int(i)
+    return ans
+
+
+def noOfProducts(order: list, disAmount: int) -> int:
+    return sum(disAmount % i == 0 for i in order)
+
+
+def func(arr: list):
+    n = len(arr)
+    ans = []
+    curr = []
+
+    def backtrack(idx: int):
+        if idx == n:
+            ans.append(''.join(curr))
+            return
+        for ch in arr[idx]:
+            curr.append(ch)
+            backtrack(idx + 1)
+            curr.pop()
+
+    backtrack(0)
+    print(ans)
+
+
+def main():
+    n = 7
+    e = 4
+    l1 = [1, 2, 3, 5]
+    l2 = [2, 3, 4, 6]
+    q = [1, 3, 5, 7]
+    n = 5
+    e = 4
+    l1 = [2, 2, 1, 1, ]
+    l2 = [1, 3, 3, 4]
+    q = [4, 2, 5]
+    n = 2
+    l1 = [
+        'a b 12:00 23:59',
+        'c d 00:00 13:00'
+    ]
+    k = 1
+    l1 = [
+        'a b 12:00 18:59',
+        'a b 00:00 11:00'
+    ]
+    k = 60
+    # print(getVisibleProfilesCount(n, l1, l2, q))
+    # print(getEarliestMeetTime(l1, k))
+    l1 = [
+        'ab',
+        'xy',
+        'mn'
+    ]
+    func(arr=l1)
 
 
 if __name__ == '__main__':

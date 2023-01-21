@@ -1,51 +1,96 @@
-import os,heapq,random,sys
-from functools import total_ordering
-import shutil
+from typing import *
+from collections import defaultdict
 
 
-def func():
-    base_address = '/home/bishwajit/PycharmProjects/gallery/'
-    walk = list(os.walk(base_address))
-    for x in walk:
-        address = x[0]
-        files = x[2]
-        full_addresses = list(map(lambda i: os.path.join(address, i), files))
-        for file in full_addresses:
-            with open(file, 'w') as f:
-                print('cleaning: {}'.format(file))
-        print('-' * 25)
+class TrieNode:
+    def __init__(self):
+        self.nodes = defaultdict(TrieNode)
+        self.is_word = False
+
+    def has_node(self, key: str) -> bool:
+        return self.nodes.get(key) is not None
+
+    def get_next_node(self, key: str):
+        return self.nodes[key]
+
+    def __str__(self):
+        return f"({self.nodes},{self.is_word})"
 
 
-def copier():
-    skipped=copied=0
-    base_address = '/home/bishwajit/PycharmProjects/witter/'
-    temp_base_address = '/home/bishwajit/PycharmProjects/TEMP/'
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
 
-    walk = list(os.walk(base_address))
-    sub_dirs=walk[0][1]
-    for sub_dir in sub_dirs:
-        flag = 1
-        orig_dir=list(os.walk(os.path.join(walk[0][0],sub_dir)))
-        for file_address in orig_dir[0][2]:
-            orig_file_address=os.path.join(orig_dir[0][0],file_address)
-            temp_file_address=os.path.join(temp_base_address,file_address)
+    def insert(self, word: str) -> None:
+        curr = self.root
+        for ch in word:
+            curr = curr.get_next_node(ch)
+        curr.is_word = True
 
-            if os.path.getsize(orig_file_address)<10:
-                if flag:
-                    flag=0
-                    print('Skipped ',orig_file_address)
-                skipped+=1
-                continue
+    def search(self, word: str) -> bool:
+        curr = self.root
+        for ch in word:
+            if not curr.has_node(ch):
+                return False
+            curr = curr.get_next_node(ch)
+        return curr.is_word
 
-            shutil.copy2(orig_file_address,temp_file_address)
-            copied+=1
-            print('Transfer {}/{}'.format(sub_dir,file_address),end='--->')
-            with open(orig_file_address,'w') as f:
-                print('Cleaned')
-        print('-' * 25)
-    print('Skipped:{}\nCopied:{}'.format(skipped,copied))
-    return
+    def startsWith(self, prefix: str) -> bool:
+        curr = self.root
+        for ch in prefix:
+            if not curr.has_node(ch):
+                return False
+            curr = curr.get_next_node(ch)
+        return True
+
+
+from collections import deque
+
+
+def func(n: int, s: str):
+    l1 = deque(list(s))
+    freq = [0] * 26
+
+    for i in l1:
+        freq[ord(i) - 97] += 1
+    l2 = []
+    ans = []
+    i = 0
+    while l1:
+        x = l1.popleft()
+        _x = ord(x) - 97
+        if _x == i:
+            ans.append(x)
+        else:
+            l2.append(x)
+        freq[_x] -= 1
+        if freq[_x] == 0:
+            i += 1
+    while l2:
+        ans.append(l2.pop())
+    return ''.join(ans)
+
+
+class A:
+    def __init__(self, name=''):
+        self.name = name
+
+    def __repr__(self):
+        return f'{self.name}Layer'
+
+
+class B(A):
+    def __init__(self, size):
+        super().__init__('B')
+        self.size = size
+
+
+class C(A):
+    def __init__(self, size):
+        super().__init__('C')
+        self.size = size
 
 
 if __name__ == '__main__':
-    copier()
+    s = 'add'
+    print(func(len(s), s))

@@ -1,16 +1,30 @@
-# This is a sample Python script.
+# while this should theoretically work on all platforms, it has only been tested on linux
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import sys
+import socket
+
+ADDRESS = '0.cloud.chals.io'
+PORT = '21668'
+sys.argv = [1, ADDRESS, PORT]
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# helper function that reads a socket line by line
+def s_readline(s):
+    # zero the buffer
+    buf = ""
+    while True:
+        # read a byte from the socket into the buffer array
+        c = s.recv(1)
+        c = c.decode()
+        if c == "\n":
+            break
+        buf += c
+    return buf
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# usage
+if len(sys.argv) != 3:
+    print("USAGE: python3 " + sys.argv[0] + " <host> <port>")
+    exit()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
