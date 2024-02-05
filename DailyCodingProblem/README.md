@@ -1,0 +1,1 @@
+Folder for solutions of problems from https://www.dailycodingproblem.com/
