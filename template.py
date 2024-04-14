@@ -74,20 +74,28 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
 
 
 # region YES/NO Decorator
 
-def ynDec(function):
+
+def yn_dec(function, letter_case="upper"):
     def inner1(*args, **kwargs):
         res = function(*args, **kwargs)
+        if letter_case == "upper":
+            return "YES" if res else "NO"
+        if letter_case == "title":
+            return "Yes" if res else "No"
+        if letter_case == "lower":
+            return "yes" if res else "no"
         if res:
-            return 'YES'
-        return 'NO'
+            return "YES"
+        return "NO"
 
     return inner1
+
 
 # endregion
 
@@ -108,7 +116,7 @@ def S():
 
 
 def Sn():
-    return stdin.readline().split(' ')
+    return stdin.readline().split(" ")
 
 
 def Out(whatever):
@@ -122,7 +130,7 @@ from bisect import bisect_right, bisect_left
 
 
 def index(a, x):
-    'Locate the leftmost value exactly equal to x'
+    "Locate the leftmost value exactly equal to x"
     i = bisect_left(a, x)
     if i != len(a) and a[i] == x:
         return i
@@ -130,7 +138,7 @@ def index(a, x):
 
 
 def find_lt(a, x):
-    'Find rightmost value less than x'
+    "Find rightmost value less than x"
     i = bisect_left(a, x)
     if i:
         return a[i - 1]
@@ -138,7 +146,7 @@ def find_lt(a, x):
 
 
 def find_le(a, x):
-    'Find rightmost value less than or equal to x'
+    "Find rightmost value less than or equal to x"
     i = bisect_right(a, x)
     if i:
         return a[i - 1]
@@ -146,7 +154,7 @@ def find_le(a, x):
 
 
 def find_gt(a, x):
-    'Find leftmost value greater than x'
+    "Find leftmost value greater than x"
     i = bisect_right(a, x)
     if i != len(a):
         return a[i]
@@ -154,7 +162,7 @@ def find_gt(a, x):
 
 
 def find_ge(a, x):
-    'Find leftmost item greater than or equal to x'
+    "Find leftmost item greater than or equal to x"
     i = bisect_left(a, x)
     if i != len(a):
         return a[i]
@@ -164,9 +172,9 @@ def find_ge(a, x):
 # endregion
 
 # region segment-tree(personal)
-'''
+"""
         Implementation wrt summation
-'''
+"""
 global tree, arr
 
 
@@ -207,7 +215,14 @@ def query(seg, ind, l, r, L, R):
         return seg[ind]
     mid = (l + r) // 2
     left = query(seg, (ind << 1 | 1), l, mid, L, R)
-    right = query(seg, (ind << 1) + 2, mid + 1, r, L, R, )
+    right = query(
+        seg,
+        (ind << 1) + 2,
+        mid + 1,
+        r,
+        L,
+        R,
+    )
     return left + right  # Sum
 
 
@@ -227,7 +242,7 @@ def point_update(seg, node, l, r, ind, val):
 # endregion
 
 # region persistent segment tree
-BIG = 10 ** 9
+BIG = 10**9
 
 vals = []
 L = []
@@ -293,6 +308,7 @@ def minimum(ind, l, r, n):
 
 # endregion
 
+
 # region DisjointSetUnion
 class DisjointSetUnion:
     def __init__(self, n):
@@ -343,6 +359,7 @@ class UnionFind:
 
 # endregion
 
+
 # region sieve of Eratosthenes
 def prime_sieve(n):
     """returns a sieve of primes >= 5 and < n"""
@@ -367,8 +384,13 @@ def prime_list(n):
         res.append(3)
     if n > 4:
         sieve = prime_sieve(n + 1)
-        res.extend(3 * i + 1 | 1 for i in range(1, (n + 1) // 3 + (n % 6 == 1)) if not (sieve[i >> 3] >> (i & 7)) & 1)
+        res.extend(
+            3 * i + 1 | 1
+            for i in range(1, (n + 1) // 3 + (n % 6 == 1))
+            if not (sieve[i >> 3] >> (i & 7)) & 1
+        )
     return res
+
 
 # endregion
 
@@ -381,6 +403,7 @@ from functools import reduce
 
 def memoize(f):
     """memoization decorator for a function taking one or more arguments"""
+
     class memodict(dict):
         def __getitem__(self, *key):
             return dict.__getitem__(self, key)
@@ -424,7 +447,9 @@ def stirling_2_recursive(n, k):
 
 nCr = lambda n, r: reduce(op.mul, range(n - r + 1, n + 1), 1) // math.factorial(r)
 
-multinomial = lambda k: math.factorial(sum(k)) // reduce(op.mul, (math.factorial(i) for i in k))
+multinomial = lambda k: math.factorial(sum(k)) // reduce(
+    op.mul, (math.factorial(i) for i in k)
+)
 
 derangements = lambda n: int(math.factorial(n) / math.e + 0.5)
 
@@ -432,9 +457,13 @@ bell = lambda n: sum(stirling_2_recursive(k, n) for k in range(n + 1))
 
 catalan = lambda n: nCr(2 * n, n) // (n + 1)
 
-euler = lambda n, k: sum((1 - 2 * (j & 1)) * nCr(n + 1, j) * ((k + 1 - j)**n) for j in range(k + 1))
+euler = lambda n, k: sum(
+    (1 - 2 * (j & 1)) * nCr(n + 1, j) * ((k + 1 - j) ** n) for j in range(k + 1)
+)
 
-stirling_2 = lambda n, k: sum(((-1)**(k - j)) * nCr(k, j) * (j**n) for j in range(k + 1)) // math.factorial(k)
+stirling_2 = lambda n, k: sum(
+    ((-1) ** (k - j)) * nCr(k, j) * (j**n) for j in range(k + 1)
+) // math.factorial(k)
 
 # endregion
 
@@ -442,7 +471,7 @@ stirling_2 = lambda n, k: sum(((-1)**(k - j)) * nCr(k, j) * (j**n) for j in rang
 
 
 def func(left, right):
-    PRIMES=[]
+    PRIMES = []
     arr = [True] * (right - left + 1)
     for i in PRIMES:
         for j in range(max(i * i, (left + i - 1) // i * i), right + 1, i):
@@ -453,6 +482,7 @@ def func(left, right):
         if arr[i]:
             print(left + i)
     return
+
 
 # endregion
 
@@ -470,7 +500,7 @@ class LazySegmentTree:
         self._lazy = [0] * (2 * _size)
 
         self.data = [default] * (2 * _size)
-        self.data[_size:_size + self._len] = data
+        self.data[_size : _size + self._len] = data
         for i in reversed(range(_size)):
             self.data[i] = func(self.data[i + i], self.data[i + i + 1])
 
@@ -496,7 +526,9 @@ class LazySegmentTree:
         """make the changes to idx be known to its ancestors"""
         idx >>= 1
         while idx:
-            self.data[idx] = self._func(self.data[2 * idx], self.data[2 * idx + 1]) + self._lazy[idx]
+            self.data[idx] = (
+                self._func(self.data[2 * idx], self.data[2 * idx + 1]) + self._lazy[idx]
+            )
             idx >>= 1
 
     def add(self, start, stop, value):
@@ -542,6 +574,8 @@ class LazySegmentTree:
 
     def __repr__(self):
         return "LazySegmentTree({0})".format(self.data)
+
+
 # endregion
 
 
@@ -551,19 +585,21 @@ from collections import deque
 
 class Stack(deque):
     def empty(self):
-        return len(self)==0
+        return len(self) == 0
 
     def top(self):
-        x=self.pop()
+        x = self.pop()
         self.append(x)
         return x
 
     def bottom(self):
-        x=self.popleft()
+        x = self.popleft()
         self.appendleft(x)
         return x
 
+
 # endregion
+
 
 # region SortedList
 class SortedList:
@@ -572,7 +608,7 @@ class SortedList:
         values = sorted(iterable)
         self._len = _len = len(values)
         self._load = _load
-        self._lists = _lists = [values[i:i + _load] for i in range(0, _len, _load)]
+        self._lists = _lists = [values[i : i + _load] for i in range(0, _len, _load)]
         self._list_lens = [len(_list) for _list in _lists]
         self._mins = [_list[0] for _list in _lists]
         self._fen_tree = []
@@ -743,7 +779,7 @@ class SortedList:
         _len = self._len
         self.discard(value)
         if _len == self._len:
-            raise ValueError('{0!r} not in list'.format(value))
+            raise ValueError("{0!r} not in list".format(value))
 
     def pop(self, index=-1):
         """Remove and return value at `index` in sorted list."""
@@ -798,7 +834,9 @@ class SortedList:
 
     def __repr__(self):
         """Return string representation of sorted list."""
-        return 'SortedList({0})'.format(list(self))
+        return "SortedList({0})".format(list(self))
+
+
 # endregion
 
 
