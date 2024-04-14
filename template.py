@@ -81,7 +81,9 @@ if __name__ == "__main__":
 # region YES/NO Decorator
 
 
-def yn_dec(function, letter_case="upper"):
+def yn_dec(function):
+    letter_case: str = "upper"
+
     def inner1(*args, **kwargs):
         res = function(*args, **kwargs)
         if letter_case == "upper":
