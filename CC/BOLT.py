@@ -67,8 +67,8 @@ def In():
 
 
 def func():
-    a,b,c,d=map(float,input().split())
-    return 'YES' if round(100/(a*b*c*d),2)<9.58 else 'NO'
+    a, b, c, d = map(float, input().split())
+    return "YES" if round(100 / (a * b * c * d), 2) < 9.58 else "NO"
 
 
 def main():
@@ -77,5 +77,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

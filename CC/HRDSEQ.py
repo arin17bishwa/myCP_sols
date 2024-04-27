@@ -11,7 +11,7 @@ l2 = [0, 0]
 for i in range(n - 2):
     len1 = len(l1)
     p = l1[len1 - 1]
-    if p not in l1[:len1 - 1]:
+    if p not in l1[: len1 - 1]:
         q = "0"
     else:
         q = str(l2[1:].index(p) + 1)

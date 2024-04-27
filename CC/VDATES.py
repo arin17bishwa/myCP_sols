@@ -68,10 +68,10 @@ def In():
 def func():
     d, l, r = intArr()
     if d < l:
-        return 'Too Early'
+        return "Too Early"
     if d > r:
-        return 'Too Late'
-    return 'Take second dose now'
+        return "Too Late"
+    return "Take second dose now"
 
 
 def main():
@@ -80,5 +80,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

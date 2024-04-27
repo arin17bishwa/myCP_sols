@@ -1,9 +1,10 @@
 """Partially completed (30 points)"""
-from random import randint
+
 # region fastio
 import os
 import sys
 from io import BytesIO, IOBase
+from random import randint
 
 BUFSIZE = 8192
 
@@ -76,5 +77,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

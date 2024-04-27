@@ -1,5 +1,6 @@
 from sys import setrecursionlimit
-setrecursionlimit(10 ** 6)
+
+setrecursionlimit(10**6)
 
 
 # region fastio
@@ -64,8 +65,8 @@ def merge(l, m, r):
     global arr
     n1 = m - l + 1
     n2 = r - m
-    L = arr[l:m + 1]
-    R = arr[m + 1:r + 1]
+    L = arr[l : m + 1]
+    R = arr[m + 1 : r + 1]
     i = j = k = temp = 0
 
     while i < n1 and j < n2:
@@ -73,7 +74,7 @@ def merge(l, m, r):
             arr[l + k] = L[i]
             i += 1
         else:
-            temp += (n1 - i)
+            temp += n1 - i
             arr[l + k] = R[j]
             j += 1
         k += 1
@@ -88,7 +89,7 @@ def merge(l, m, r):
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
@@ -108,10 +109,10 @@ def invCount(l, r):
 
 def func():
     global arr
-    n=In()
-    _=input()
-    arr=list(intArr())
-    return invCount(0,n-1)
+    n = In()
+    _ = input()
+    arr = list(intArr())
+    return invCount(0, n - 1)
 
 
 def main():
@@ -119,7 +120,7 @@ def main():
     return
 
 
-if __name__ == '__main__':
-    arr=[]
-    ans=0
+if __name__ == "__main__":
+    arr = []
+    ans = 0
     main()

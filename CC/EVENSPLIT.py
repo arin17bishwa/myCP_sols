@@ -70,7 +70,7 @@ def func():
     s = input()
     if n < 3:
         return s
-    return ''.join(sorted(s))
+    return "".join(sorted(s))
 
 
 def main():
@@ -79,5 +79,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

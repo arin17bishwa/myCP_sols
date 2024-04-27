@@ -70,7 +70,7 @@ def func():
     l2 = intArr()
     _ = next(l1), next(l2)
     l1, l2 = list(l1), list(l2)
-    ans = float('inf')
+    ans = float("inf")
     for i in l1:
         for j in l2:
             ans = min(abs(i - j), ans)
@@ -83,5 +83,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

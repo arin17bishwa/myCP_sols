@@ -65,7 +65,7 @@ def func(n):
     ans = 0
     k = 5
     while k <= n:
-        ans += (n // k)
+        ans += n // k
         k *= 5
     return ans
 
@@ -77,5 +77,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

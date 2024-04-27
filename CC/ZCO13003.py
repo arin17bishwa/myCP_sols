@@ -1,4 +1,4 @@
-from bisect import bisect_left, bisect, bisect_right
+from bisect import bisect_left
 
 
 def find_lt(a, x):

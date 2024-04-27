@@ -66,8 +66,8 @@ def In():
 
 
 def func():
-    a,b,x=intArr()
-    return max(0, (b-a)//x+((b-a)%x!=0))
+    a, b, x = intArr()
+    return max(0, (b - a) // x + ((b - a) % x != 0))
 
 
 def main():
@@ -76,5 +76,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

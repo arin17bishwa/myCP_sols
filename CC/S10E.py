@@ -8,7 +8,7 @@ def comp(s):
         del l1[0]
         l1.append(i)
 
-    return (c)
+    return c
 
 
 l = []
@@ -22,6 +22,3 @@ for i in range(t):
 
 for i in l:
     print(i)
-
-
-

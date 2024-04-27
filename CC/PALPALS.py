@@ -68,10 +68,10 @@ def In():
 def func(s):
     chars = [0] * 26
     for i in s:
-        chars[ord(i) - ord('a')] += 1
+        chars[ord(i) - ord("a")] += 1
     if sum(map(lambda x: x % 2, chars)) <= sum(map(lambda x: x >> 1, chars)):
-        return 'YES'
-    return 'NO'
+        return "YES"
+    return "NO"
 
 
 def main():
@@ -81,5 +81,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

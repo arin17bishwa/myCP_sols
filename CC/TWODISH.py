@@ -66,15 +66,15 @@ def In():
 
 
 def func():
-    n,a,b,c=intArr()
-    return b>=n and (a+c)>=n
+    n, a, b, c = intArr()
+    return b >= n and (a + c) >= n
 
 
 def main():
     for _ in range(In()):
-        print('YES' if func() else 'NO')
+        print("YES" if func() else "NO")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

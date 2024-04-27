@@ -68,8 +68,8 @@ def In():
 def func(n: int, arr: list):
     for i in range(n - 1):
         if arr[i] < arr[i + 1]:
-            return 'Yes'
-    return 'No'
+            return "Yes"
+    return "No"
 
 
 def main():
@@ -80,5 +80,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

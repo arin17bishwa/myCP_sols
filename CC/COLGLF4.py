@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(500000)
 # region fastio
 import os
@@ -67,64 +68,64 @@ def In():
     return int(input())
 
 
-def func(n,e,h,a,b,c):
-    if n>e and n>h:
-        return pow(10,18)
+def func(n, e, h, a, b, c):
+    if n > e and n > h:
+        return pow(10, 18)
 
-    ans=pow(10,18)
-    l1=1
+    ans = pow(10, 18)
+    l1 = 1
 
-    if e>=2*n:
-        ans=min(ans,n*a)
-    if h>=3*n:
-        ans=min(ans,n*b)
+    if e >= 2 * n:
+        ans = min(ans, n * a)
+    if h >= 3 * n:
+        ans = min(ans, n * b)
 
-    if e>=n and h>=n:
-        ans=min(ans,n*c)
+    if e >= n and h >= n:
+        ans = min(ans, n * c)
 
-    if (e//2>=1) and ((n-e//2)*3 <= h):
-        if a<b:
-            x = min(n-1, e//2)
+    if (e // 2 >= 1) and ((n - e // 2) * 3 <= h):
+        if a < b:
+            x = min(n - 1, e // 2)
         else:
-            x = max(l1, n - h//3)
+            x = max(l1, n - h // 3)
 
-        y = (a-b) * x + b * n
+        y = (a - b) * x + b * n
         ans = min(ans, y)
 
-    if (e>n) and ((e + h) >= (2*n)):
-        if a<c:
-            x = min(n-1, e-n)
-        else :
-            x = max(l1, n-h)
+    if (e > n) and ((e + h) >= (2 * n)):
+        if a < c:
+            x = min(n - 1, e - n)
+        else:
+            x = max(l1, n - h)
 
-        y = (a-c) * x + n * c
+        y = (a - c) * x + n * c
         ans = min(ans, y)
 
-    if ((h-n)//2)>=(n-e) and ((h-n)//2)>0:
-        if b<c:
-            x = min(n - 1, (h - n)//2)
+    if ((h - n) // 2) >= (n - e) and ((h - n) // 2) > 0:
+        if b < c:
+            x = min(n - 1, (h - n) // 2)
         else:
             x = max(l1, n - e)
 
-        y=(b-c)*x + n*c
-        ans=min(ans,y)
+        y = (b - c) * x + n * c
+        ans = min(ans, y)
 
-    if n>2 and h>3 and e>2:
-        ans=min(ans,a+b+c+func(n-3, e-3, h-4, a, b, c))
+    if n > 2 and h > 3 and e > 2:
+        ans = min(ans, a + b + c + func(n - 3, e - 3, h - 4, a, b, c))
 
     return ans
 
 
 def main():
     for _ in range(In()):
-        n,e,h,a,b,c = intArr()
-        ans=func(n,e,h,a,b,c)
-        if ans==pow(10,18):
+        n, e, h, a, b, c = intArr()
+        ans = func(n, e, h, a, b, c)
+        if ans == pow(10, 18):
             print(-1)
         else:
             print(ans)
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

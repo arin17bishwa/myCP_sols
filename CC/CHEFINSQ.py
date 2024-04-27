@@ -109,7 +109,9 @@ def stirling_2_recursive(n, k):
 
 nCr = lambda n, r: reduce(op.mul, range(n - r + 1, n + 1), 1) // math.factorial(r)
 
-multinomial = lambda k: math.factorial(sum(k)) // reduce(op.mul, (math.factorial(i) for i in k))
+multinomial = lambda k: math.factorial(sum(k)) // reduce(
+    op.mul, (math.factorial(i) for i in k)
+)
 
 derangements = lambda n: int(math.factorial(n) / math.e + 0.5)
 
@@ -117,9 +119,13 @@ bell = lambda n: sum(stirling_2_recursive(k, n) for k in range(n + 1))
 
 catalan = lambda n: nCr(2 * n, n) // (n + 1)
 
-euler = lambda n, k: sum((1 - 2 * (j & 1)) * nCr(n + 1, j) * ((k + 1 - j) ** n) for j in range(k + 1))
+euler = lambda n, k: sum(
+    (1 - 2 * (j & 1)) * nCr(n + 1, j) * ((k + 1 - j) ** n) for j in range(k + 1)
+)
 
-stirling_2 = lambda n, k: sum(((-1) ** (k - j)) * nCr(k, j) * (j ** n) for j in range(k + 1)) // math.factorial(k)
+stirling_2 = lambda n, k: sum(
+    ((-1) ** (k - j)) * nCr(k, j) * (j**n) for j in range(k + 1)
+) // math.factorial(k)
 
 # endregion
 
@@ -129,7 +135,7 @@ from bisect import bisect_right, bisect_left
 
 
 def find_le(a, x):
-    'Find rightmost value less than or equal to x'
+    "Find rightmost value less than or equal to x"
     i = bisect_right(a, x)
     if i:
         return i - 1
@@ -137,7 +143,7 @@ def find_le(a, x):
 
 
 def find_ge(a, x):
-    'Find leftmost item greater than or equal to x'
+    "Find leftmost item greater than or equal to x"
     i = bisect_left(a, x)
     if i != len(a):
         return i
@@ -156,8 +162,8 @@ def main():
         z = arr[k - 1]
         x = find_ge(arr, z)
         y = find_le(arr, z)
-        print(nCr(y - x + 1, k-x))
+        print(nCr(y - x + 1, k - x))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

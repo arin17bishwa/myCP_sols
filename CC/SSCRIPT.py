@@ -70,15 +70,15 @@ def In():
 def func():
     n, k = intArr()
     s = input()
-    c = s[:k].count('*')
+    c = s[:k].count("*")
     if c == k:
-        return 'YES'
+        return "YES"
     for i in range(k, n):
-        c += s[i] == '*'
-        c -= s[i - k] == '*'
+        c += s[i] == "*"
+        c -= s[i - k] == "*"
         if c == k:
-            return 'YES'
-    return 'NO'
+            return "YES"
+    return "NO"
 
 
 def main():
@@ -87,5 +87,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

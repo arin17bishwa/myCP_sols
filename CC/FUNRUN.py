@@ -1,10 +1,6 @@
 # cook your dish here
-import math
-from functools import reduce
-from bisect import bisect_left, bisect, bisect_right
-from itertools import accumulate
-from math import sqrt
 from math import gcd
+from math import sqrt
 
 
 def transformer(i):

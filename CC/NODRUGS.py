@@ -79,7 +79,7 @@ def func():
     if k < 1:
         return 0
     diff = top_speed - friend_speed
-    no_dose = (diff // k)
+    no_dose = diff // k
     if not no_dose * k + friend_speed > top_speed:
         no_dose += 1
     return no_dose < l
@@ -87,9 +87,9 @@ def func():
 
 def main():
     for _ in range(In()):
-        print('Yes' if func() else 'No')
+        print("Yes" if func() else "No")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

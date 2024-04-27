@@ -57,7 +57,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
@@ -69,33 +69,33 @@ def func():
 
 
 def main():
-    n,m=intArr()
-    x=[0]*n
-    y=x[:]
-    a=[0]*m
-    b=a[:]
-    c=a[:]
-    d=a[:]
+    n, m = intArr()
+    x = [0] * n
+    y = x[:]
+    a = [0] * m
+    b = a[:]
+    c = a[:]
+    d = a[:]
 
     for i in range(n):
-        p,q=intArr()
-        x[i]=p
-        y[i]=q
+        p, q = intArr()
+        x[i] = p
+        y[i] = q
 
     for i in range(m):
-        a[i],b[i],c[i],d[i]=intArr()
+        a[i], b[i], c[i], d[i] = intArr()
 
     for i in range(m):
-        if a[i]>c[i]:
-            a[i],c[i]=c[i],a[i]
-            b[i],d[i]=d[i],b[i]
+        if a[i] > c[i]:
+            a[i], c[i] = c[i], a[i]
+            b[i], d[i] = d[i], b[i]
 
-        if i&1:
-            print('{} {}'.format(1000001-a[i],int(1e6)-b[i]))
+        if i & 1:
+            print("{} {}".format(1000001 - a[i], int(1e6) - b[i]))
         else:
-            print('{} {}'.format(-a[i],-b[i]-1))
+            print("{} {}".format(-a[i], -b[i] - 1))
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

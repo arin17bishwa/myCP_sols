@@ -70,12 +70,12 @@ def func(s):
     a = b = 0
     x = y = n // 2
     for i in range(0, n, 2):
-        if s[i] == '1':
+        if s[i] == "1":
             a += 1
         x -= 1
         if a > b + y or b > a + x:
             return i + 1
-        if s[i + 1] == '1':
+        if s[i + 1] == "1":
             b += 1
         y -= 1
         if a > b + y or b > a + x:
@@ -91,5 +91,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

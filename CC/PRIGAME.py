@@ -60,8 +60,8 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 def func(x, y):
     global arr
     if arr[x] > y:
-        return 'Divyam'
-    return 'Chef'
+        return "Divyam"
+    return "Chef"
 
 
 def main():
@@ -71,7 +71,7 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     N = 1 + int(1e6)
     primes = [1] * N
     arr = [0] * N

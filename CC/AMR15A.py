@@ -73,9 +73,9 @@ def func():
 
 def main():
     for _ in range(1):
-        print('READY FOR BATTLE' if func() else 'NOT READY')
+        print("READY FOR BATTLE" if func() else "NOT READY")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

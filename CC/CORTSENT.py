@@ -71,16 +71,16 @@ def func():
     for x in arr[1:]:
         if x.islower():
             if any(map(lambda y: not (97 <= ord(y) <= 109), x)):
-                return 'NO'
+                return "NO"
 
         elif x.isupper():
             if any(map(lambda y: not (78 <= ord(y) <= 90), x)):
-                return 'NO'
+                return "NO"
 
         else:
-            return 'NO'
+            return "NO"
 
-    return 'YES'
+    return "YES"
 
 
 def main():
@@ -89,5 +89,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

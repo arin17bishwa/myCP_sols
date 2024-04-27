@@ -15,7 +15,7 @@ def S():
 
 
 def Sn():
-    return stdin.readline().split(' ')
+    return stdin.readline().split(" ")
 
 
 def Out(whatever):
@@ -24,12 +24,13 @@ def Out(whatever):
 
 # endregion
 
+
 # region sieve of Eratosthenes
 def prime_sieve(n):
     """returns a sieve of primes >= 5 and < n"""
     flag = n % 6 == 2
     sieve = bytearray((n // 3 + flag >> 3) + 1)
-    for i in range(1, int(n ** 0.5) // 3 + 1):
+    for i in range(1, int(n**0.5) // 3 + 1):
         if not (sieve[i >> 3] >> (i & 7)) & 1:
             k = (3 * i + 1) | 1
             for j in range(k * k // 3, n // 3 + flag, 2 * k):
@@ -48,7 +49,11 @@ def prime_list(n):
         res.append(3)
     if n > 4:
         sieve = prime_sieve(n + 1)
-        res.extend(3 * i + 1 | 1 for i in range(1, (n + 1) // 3 + (n % 6 == 1)) if not (sieve[i >> 3] >> (i & 7)) & 1)
+        res.extend(
+            3 * i + 1 | 1
+            for i in range(1, (n + 1) // 3 + (n % 6 == 1))
+            if not (sieve[i >> 3] >> (i & 7)) & 1
+        )
     return res
 
 
@@ -66,15 +71,15 @@ def func(n, arr):
             j += 1
         else:
             ans[i] = x[arr[i]]
-    return ' '.join(map(str, ans))
+    return " ".join(map(str, ans))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     PRIMES = prime_list(pow(10, 6) << 2)
     t = I()
-    answers = [' '] * t
+    answers = [" "] * t
     for i in range(t):
         size = I()
         ar = list(In())
         answers[i] = func(size, ar)
-    Out('\n'.join(answers))
+    Out("\n".join(answers))

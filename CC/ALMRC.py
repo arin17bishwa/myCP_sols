@@ -1,13 +1,13 @@
 """
 FROM https://www.codechef.com/viewsolution/61973024
 """
-from typing import List
-from sys import setrecursionlimit
 
 # region fastio
 import os
 import sys
 from io import BytesIO, IOBase
+from sys import setrecursionlimit
+from typing import List
 
 BUFSIZE = 8192
 
@@ -60,7 +60,7 @@ sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 # endregion
-setrecursionlimit(10 ** 5 + 5)
+setrecursionlimit(10**5 + 5)
 
 
 def intArr():
@@ -144,7 +144,7 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     factorial = [1]
     nums = [0]
     v = []

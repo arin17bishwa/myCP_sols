@@ -1,9 +1,8 @@
-from math import log2
-
 # region fastio
 import os
 import sys
 from io import BytesIO, IOBase
+from math import log2
 
 BUFSIZE = 8192
 

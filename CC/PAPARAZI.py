@@ -57,7 +57,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
@@ -66,46 +66,44 @@ def In():
 
 def func():
     global arr
-    n=len(arr)
-    if n==2:
+    n = len(arr)
+    if n == 2:
         return 1
 
-    l1=[[0,0] for _ in range(n)]
+    l1 = [[0, 0] for _ in range(n)]
     for i in range(n):
-        l1[i]=[i+1,arr[i]]
-    l2=[]
+        l1[i] = [i + 1, arr[i]]
+    l2 = []
     l2.extend(l1[:2])
-    ans=0
-    k=2
+    ans = 0
+    k = 2
 
-    for i in range(2,n):
-        while len(l2)>=2:
-            p=(l2[k-1][1]-l2[k-2][1])/(l2[k-1][0]-l2[k-2][0])
-            q=(l1[i][1]-l2[k-1][1])/(l1[i][0]-l2[k-1][0])
-            if p<=q:
+    for i in range(2, n):
+        while len(l2) >= 2:
+            p = (l2[k - 1][1] - l2[k - 2][1]) / (l2[k - 1][0] - l2[k - 2][0])
+            q = (l1[i][1] - l2[k - 1][1]) / (l1[i][0] - l2[k - 1][0])
+            if p <= q:
                 l2.pop()
-                k-=1
+                k -= 1
             else:
                 break
 
         l2.append(l1[i])
-        k+=1
-        ans=max(ans,l2[k-1][0]-l2[k-2][0])
+        k += 1
+        ans = max(ans, l2[k - 1][0] - l2[k - 2][0])
 
     return ans
-
-
 
 
 def main():
     global arr
     for _ in range(In()):
-        _=In()
-        arr=list(intArr())
+        _ = In()
+        arr = list(intArr())
         print(func())
     return
 
 
-if __name__ == '__main__':
-    arr=[]
+if __name__ == "__main__":
+    arr = []
     main()

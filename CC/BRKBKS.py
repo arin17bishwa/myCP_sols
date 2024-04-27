@@ -1,4 +1,4 @@
-s = ''
+s = ""
 
 
 def func(l1):
@@ -21,6 +21,6 @@ def func(l1):
 
 for _ in range(int(input())):
     l1 = [int(i) for i in input().split()]
-    s = s + str(func(l1)) + '\n'
+    s = s + str(func(l1)) + "\n"
 
 print(s)

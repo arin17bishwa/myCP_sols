@@ -64,15 +64,19 @@ def intArr():
 def In():
     return int(input())
 
+
 from itertools import groupby
+
+
 def func():
-    n,k=intArr()
-    s=input()
-    ans=0
-    for i,j in groupby(s):
-        if i=='0':
-            ans+=len(tuple(j))//k
+    n, k = intArr()
+    s = input()
+    ans = 0
+    for i, j in groupby(s):
+        if i == "0":
+            ans += len(tuple(j)) // k
     return ans
+
 
 def main():
     for _ in range(In()):
@@ -80,5 +84,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

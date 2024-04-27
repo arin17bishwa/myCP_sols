@@ -66,7 +66,7 @@ def In():
 
 
 def func():
-    return In()-len(set(intArr()))
+    return In() - len(set(intArr()))
 
 
 def main():
@@ -75,5 +75,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

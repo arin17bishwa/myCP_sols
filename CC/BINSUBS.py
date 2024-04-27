@@ -60,12 +60,12 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 def func():
     n = int(input())
     s = input()
-    ones = s.count('1')
+    ones = s.count("1")
     zeros = n - ones
     ans = min(ones, zeros)
     c0 = c1 = 0
     for i in s:
-        if i == '1':
+        if i == "1":
             c1 += 1
         else:
             c0 += 1
@@ -79,5 +79,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -66,14 +66,14 @@ def In():
 
 
 def func(x, y, n):
-    ans = ['0'] * n
+    ans = ["0"] * n
     for i in range(n):
         s = input()
-        f = s.count('F')
-        p = s.count('P')
+        f = s.count("F")
+        p = s.count("P")
         if f >= x or (f == x - 1 and p >= y):
-            ans[i] = '1'
-    return ''.join(ans)
+            ans[i] = "1"
+    return "".join(ans)
 
 
 def main():
@@ -84,5 +84,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -60,8 +60,8 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 def func(x, y, k, n):
     diff = abs(x - y)
     if diff % (2 * k) == 0:
-        return 'Yes'
-    return 'No'
+        return "Yes"
+    return "No"
 
 
 def main():
@@ -72,5 +72,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

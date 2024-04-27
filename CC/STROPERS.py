@@ -64,7 +64,7 @@ def func(s: str):
     for i in range(n):
         one = cnt = 0
         for j in range(i, n):
-            if s[j] == '1':
+            if s[j] == "1":
                 one += 1
             if one & 1:
                 cnt += 1
@@ -80,5 +80,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

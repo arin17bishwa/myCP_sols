@@ -4,7 +4,7 @@ def func(s):
     i = 0
     len1 = len(s)
     if len1 < 3:
-        return 'NO'
+        return "NO"
     while i < len1:
         j = i
         if j == len1:
@@ -20,12 +20,12 @@ def func(s):
         tot = tot + len(str(c)) + 1
     # print(s,tot,len1)
     if tot < len1:
-        return 'YES'
-    return 'NO'
+        return "YES"
+    return "NO"
 
 
-st = ''
+st = ""
 for _ in range(int(input())):
     s = input()
-    st = st + func(s) + '\n'
+    st = st + func(s) + "\n"
 print(st)

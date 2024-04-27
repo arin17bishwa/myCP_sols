@@ -58,12 +58,12 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 def main():
     for _ in range(int(input())):
-        s=input()
-        if 'P' in s and 'C' in s and 'M' in s:
-            print('YES')
+        s = input()
+        if "P" in s and "C" in s and "M" in s:
+            print("YES")
         else:
-            print('NO')
+            print("NO")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

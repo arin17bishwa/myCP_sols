@@ -65,56 +65,52 @@ def In():
 
 
 def dist(arr):
-    ans=0
-    n=len(arr)
-    for i in range(1,n):
-        if arr[i]==arr[i-1]:
-            ans+=1
-        ans+=1
+    ans = 0
+    n = len(arr)
+    for i in range(1, n):
+        if arr[i] == arr[i - 1]:
+            ans += 1
+        ans += 1
 
     return ans
 
 
 def func():
-    n,k=intArr()
-    l1=list(input())
-    arr=list(intArr())
-    ans=[]
-    y=dist(l1)
+    n, k = intArr()
+    l1 = list(input())
+    arr = list(intArr())
+    ans = []
+    y = dist(l1)
     for i in arr:
-        temp=0
-        x=l1[i-1]
+        temp = 0
+        x = l1[i - 1]
         # print(l1,temp)
-        if i!=1:
-            if x==l1[i-2]:
-                temp-=1
+        if i != 1:
+            if x == l1[i - 2]:
+                temp -= 1
             else:
-                temp+=1
-        if i!=n:
+                temp += 1
+        if i != n:
             # print(x,l1[i])
-            if x==l1[i]:
+            if x == l1[i]:
                 # print(1)
-                temp-=1
+                temp -= 1
             else:
                 # print(2)
-                temp+=1
-        l1[i-1]=str(int(not(int(x))))
-        y+=temp
+                temp += 1
+        l1[i - 1] = str(int(not (int(x))))
+        y += temp
         ans.append(y)
     return ans
-
-
-
-
 
 
 def main():
     for _ in range(In()):
         # ans=(func())
-        print(*func(),sep='\n')
+        print(*func(), sep="\n")
         # print(ans,sep='\n')
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

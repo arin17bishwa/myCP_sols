@@ -65,7 +65,7 @@ def In():
 
 
 def func():
-    n=In()
+    n = In()
     return pow(2, n - 1, int(1e9) + 7)
 
 
@@ -75,5 +75,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

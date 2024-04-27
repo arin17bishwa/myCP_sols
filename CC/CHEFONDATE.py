@@ -67,7 +67,7 @@ def In():
 
 def func():
     x, y = intArr()
-    return 'YES' if x >= y else 'NO'
+    return "YES" if x >= y else "NO"
 
 
 def main():
@@ -76,5 +76,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

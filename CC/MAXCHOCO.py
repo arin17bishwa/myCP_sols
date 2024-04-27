@@ -57,7 +57,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
@@ -69,10 +69,10 @@ def func():
 
 
 def main():
-    x=In()
-    print(1000*(x//500)+x%1000)
+    x = In()
+    print(1000 * (x // 500) + x % 1000)
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

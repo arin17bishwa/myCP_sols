@@ -62,23 +62,24 @@ from collections import deque
 
 class Stack(deque):
     def empty(self):
-        return len(self)==0
+        return len(self) == 0
 
     def top(self):
-        x=self.pop()
+        x = self.pop()
         self.append(x)
         return x
 
     def bottom(self):
-        x=self.popleft()
+        x = self.popleft()
         self.appendleft(x)
         return x
+
 
 # endregion
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
@@ -86,22 +87,22 @@ def In():
 
 
 def f(l1):
-    st=Stack()
-    ans=[]
-    n=len(l1)
+    st = Stack()
+    ans = []
+    n = len(l1)
     for i in range(n):
         ans.append(n)
-        while len(st)>0 and st.top()[0]<=l1[i]:
-            ans[st.top()[1]]=i
+        while len(st) > 0 and st.top()[0] <= l1[i]:
+            ans[st.top()[1]] = i
             st.pop()
-        st.append((arr[i],i))
+        st.append((arr[i], i))
     return ans
 
 
 def func():
     global arr
-    n=len(arr)
-    left,right=f(arr[::-1]),f(arr)
+    n = len(arr)
+    left, right = f(arr[::-1]), f(arr)
 
     pass
 
@@ -109,11 +110,11 @@ def func():
 def main():
     global arr
     for _ in range(In()):
-        n=In()
-        arr=list(intArr())
+        n = In()
+        arr = list(intArr())
         print(func())
 
 
-if __name__ == '__main__':
-    arr=[]
+if __name__ == "__main__":
+    arr = []
     main()

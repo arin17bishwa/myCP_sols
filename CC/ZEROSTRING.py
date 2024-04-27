@@ -67,7 +67,7 @@ def In():
 
 def func():
     n = In()
-    one = input().count('1')
+    one = input().count("1")
     zero = n - one
     return min(one, zero + 1)
 
@@ -78,5 +78,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

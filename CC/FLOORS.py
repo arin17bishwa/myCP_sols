@@ -1,10 +1,9 @@
-from typing import Iterable, Callable
-from math import ceil
-
 # region fast io
 import os
 import sys
 from io import BytesIO, IOBase
+from math import ceil
+from typing import Iterable, Callable
 
 BUFSIZE = 8192
 

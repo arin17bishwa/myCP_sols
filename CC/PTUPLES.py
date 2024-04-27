@@ -65,7 +65,7 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     MAXN = int(1e6) + 1
     answers = [0] * (int(1e6) + 1)
     primes = [1] * MAXN

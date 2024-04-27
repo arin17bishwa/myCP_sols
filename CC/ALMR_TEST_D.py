@@ -1,10 +1,11 @@
 """
 FROM https://www.codechef.com/viewsolution/61937321
 """
-from collections import defaultdict
+
 # region fastio
 import os
 import sys
+from collections import defaultdict
 from io import BytesIO, IOBase
 
 BUFSIZE = 8192
@@ -76,7 +77,7 @@ class Query:
         self.x = x
 
     def __str__(self):
-        return '({},{},{})'.format(self.u, self.v, self.x)
+        return "({},{},{})".format(self.u, self.v, self.x)
 
     def __repr__(self):
         return self.__str__()
@@ -168,7 +169,7 @@ class Solution(object):
         self.dfs_size(1, 0)
         self.dfs_cnt(1, 0, 0)
         answers = self._solving()
-        return '\n'.join(answers)
+        return "\n".join(answers)
 
     def _solving(self):
         ans = []
@@ -180,7 +181,7 @@ class Solution(object):
             elif b > a:
                 curr = str(v)
             else:
-                curr = 'Draw'
+                curr = "Draw"
             ans.append(curr)
         return ans
 
@@ -196,5 +197,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

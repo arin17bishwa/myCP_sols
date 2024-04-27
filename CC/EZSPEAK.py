@@ -70,7 +70,7 @@ def func():
     s = input()
     for i in range(n - 3):
         # print(s[i:i + 4], all((ch not in s[i:i + 4]) for ch in 'aeiou'))
-        if all((ch not in s[i:i + 4]) for ch in 'aeiou'):
+        if all((ch not in s[i : i + 4]) for ch in "aeiou"):
             return 0
     if n < 4:
         return 1
@@ -79,9 +79,9 @@ def func():
 
 def main():
     for _ in range(In()):
-        print('YES' if func() else 'NO')
+        print("YES" if func() else "NO")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

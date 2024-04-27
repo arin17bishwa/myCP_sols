@@ -70,9 +70,13 @@ def main():
         n = In()
         arr = list(intArr())
         arr.sort()
-        print(max((arr[0] + 1) * (arr[1] - 1) + 1, (arr[n - 2] + 1) * (arr[n - 1] - 1) + 1))
+        print(
+            max(
+                (arr[0] + 1) * (arr[1] - 1) + 1, (arr[n - 2] + 1) * (arr[n - 1] - 1) + 1
+            )
+        )
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

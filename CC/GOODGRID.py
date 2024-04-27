@@ -62,8 +62,8 @@ def func():
     lim = int(pow(x, 0.5)) + 1
     for i in range(1, lim):
         if x % i == 0 and x // i <= n:
-            return 'Yes'
-    return 'No'
+            return "Yes"
+    return "No"
 
 
 def main():
@@ -72,5 +72,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

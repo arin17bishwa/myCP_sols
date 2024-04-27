@@ -1,4 +1,4 @@
-st = ''
+st = ""
 
 
 def func(l):
@@ -12,19 +12,19 @@ def func(l):
             if d[5] > 0:
                 d[5] -= 1
             else:
-                return 'NO'
+                return "NO"
         elif c == 10:
             if d[10] > 0:
                 d[10] -= 1
             elif d[5] > 1:
                 d[5] -= 1
             else:
-                return 'NO'
-    return 'YES'
+                return "NO"
+    return "YES"
 
 
 for _ in range(int(input())):
     n = int(input())
     l1 = list(map(int, input().split()))
-    st += str(func(l1)) + '\n'
+    st += str(func(l1)) + "\n"
 print(st)

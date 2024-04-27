@@ -61,11 +61,11 @@ def main():
     for _ in range(int(input())):
         a, b, c = map(int, input().split())
         if (a + b == c) or (a + c == b) or (b + c == a):
-            print('YES')
+            print("YES")
         else:
-            print('NO')
+            print("NO")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

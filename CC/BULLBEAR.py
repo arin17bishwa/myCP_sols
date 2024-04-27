@@ -68,10 +68,10 @@ def In():
 def func():
     x, y = intArr()
     if x > y:
-        return 'LOSS'
+        return "LOSS"
     elif x < y:
-        return 'PROFIT'
-    return 'NEUTRAL'
+        return "PROFIT"
+    return "NEUTRAL"
 
 
 def main():
@@ -80,5 +80,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

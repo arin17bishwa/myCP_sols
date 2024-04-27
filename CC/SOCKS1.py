@@ -69,7 +69,7 @@ def In():
 
 def func():
     arr = sorted(list(intArr()))
-    return 'YES' if arr[0] == arr[1] or arr[1] == arr[2] else 'NO'
+    return "YES" if arr[0] == arr[1] or arr[1] == arr[2] else "NO"
 
 
 def main():
@@ -78,5 +78,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

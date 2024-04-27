@@ -61,7 +61,7 @@ def func(s):
     n = len(s)
     if n & 1:
         return -1
-    one = s.count('1')
+    one = s.count("1")
     if one == n or one == 0:
         return -1
     ans = abs((n // 2) - one)
@@ -77,5 +77,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

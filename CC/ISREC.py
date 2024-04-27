@@ -64,18 +64,18 @@ def func(n, m, arr):
     for i in range(n):
         p = arr[i]
         try:
-            start = p.index('1')
+            start = p.index("1")
         except ValueError:
             continue
         last = start
         f = 0
         for j in range(m):
-            if p[j] == '1':
+            if p[j] == "1":
                 last = j
         l1[i] = (start, last)
 
     if f:
-        return 'NO'
+        return "NO"
 
     for i in range(n):
         if l1[i][0] != -1:
@@ -89,12 +89,12 @@ def func(n, m, arr):
 
     for i in range(x[1], y[1] + 1):
         if l1[i][0] != x[0][0] or l1[i][1] != y[0][1]:
-            return 'NO'
+            return "NO"
         p = arr[i]
         for j in range(x[0][0], y[0][1] + 1):
-            if p[j] == '0':
-                return 'NO'
-    return 'YES'
+            if p[j] == "0":
+                return "NO"
+    return "YES"
 
 
 def main():
@@ -105,5 +105,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

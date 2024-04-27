@@ -1,10 +1,9 @@
-from math import sqrt, gcd
-from functools import reduce
-
 # region fastio
 import os
 import sys
+from functools import reduce
 from io import BytesIO, IOBase
+from math import sqrt, gcd
 
 BUFSIZE = 8192
 
@@ -64,7 +63,7 @@ from bisect import bisect_right, bisect_left
 
 
 def index(a, x):
-    'Locate the leftmost value exactly equal to x'
+    "Locate the leftmost value exactly equal to x"
     i = bisect_left(a, x)
     if i != len(a) and a[i] == x:
         return i
@@ -72,7 +71,7 @@ def index(a, x):
 
 
 def find_lt(a, x):
-    'Find rightmost value less than x'
+    "Find rightmost value less than x"
     i = bisect_left(a, x)
     if i:
         return a[i - 1]
@@ -80,7 +79,7 @@ def find_lt(a, x):
 
 
 def find_le(a, x):
-    'Find rightmost value less than or equal to x'
+    "Find rightmost value less than or equal to x"
     i = bisect_right(a, x)
     if i:
         return a[i - 1]
@@ -88,7 +87,7 @@ def find_le(a, x):
 
 
 def find_gt(a, x):
-    'Find leftmost value greater than x'
+    "Find leftmost value greater than x"
     i = bisect_right(a, x)
     if i != len(a):
         return a[i]
@@ -96,7 +95,7 @@ def find_gt(a, x):
 
 
 def find_ge(a, x):
-    'Find leftmost item greater than or equal to x'
+    "Find leftmost item greater than or equal to x"
     i = bisect_left(a, x)
     if i != len(a):
         return a[i]
@@ -142,5 +141,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

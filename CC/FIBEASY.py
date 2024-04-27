@@ -14,7 +14,7 @@ def count(n):
     while p > 1:
         p = p // 2
         i = i + 1
-    return (i)
+    return i
 
 
 t = int(input())

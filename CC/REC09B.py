@@ -56,6 +56,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 # endregion
 
+
 def cart(a, b):
     return a * a + b * b
 
@@ -85,5 +86,5 @@ def main():
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

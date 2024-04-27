@@ -1,8 +1,7 @@
-from collections import OrderedDict
-
 # region fastio
 import os
 import sys
+from collections import OrderedDict
 from io import BytesIO, IOBase
 
 BUFSIZE = 8192
@@ -96,5 +95,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

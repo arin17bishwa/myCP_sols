@@ -64,7 +64,7 @@ def intArr():
 def func(arr):
     run = 0
     for i in arr:
-        if i == 'stop':
+        if i == "stop":
             if run == 0:
                 return 404
             run = 0
@@ -81,5 +81,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,7 +15,7 @@ def S():
 
 
 def Sn():
-    return stdin.readline().split(' ')
+    return stdin.readline().split(" ")
 
 
 def Out(whatever):
@@ -24,7 +24,7 @@ def Out(whatever):
 
 # endregion
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     d1, v1, d2, v2, p = In()
     for i in range(1, 1001):
         if max(0, i - d1 + 1) * v1 + max(0, i - d2 + 1) * v2 >= p:

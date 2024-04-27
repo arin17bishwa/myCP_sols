@@ -68,16 +68,16 @@ def In():
 def func():
     n = In()
     if n == 1:
-        return '3'
+        return "3"
     mod3 = n % 3
     mod9 = n % 9
     if mod9 == 0:
-        return ''.join(('4', '1' * (n - 1)))
+        return "".join(("4", "1" * (n - 1)))
     if mod3 == 0:
-        return '1' * n
+        return "1" * n
     if (n + (3 - mod3)) % 9 == 0:
-        return '{}{}'.format(4 + (3 - mod3), '1' * (n - 1))
-    return '{}{}'.format(1 + (3 - mod3), '1' * (n - 1))
+        return "{}{}".format(4 + (3 - mod3), "1" * (n - 1))
+    return "{}{}".format(1 + (3 - mod3), "1" * (n - 1))
 
 
 def main():
@@ -86,5 +86,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

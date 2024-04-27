@@ -1,4 +1,4 @@
-st = ''
+st = ""
 
 
 def func(l1, n):
@@ -14,6 +14,6 @@ def func(l1, n):
 for _ in range(int(input())):
     n = int(input())
     l1 = list(map(int, input().split()))
-    st += str(func(l1, n)) + '\n'
+    st += str(func(l1, n)) + "\n"
 
 print(st)

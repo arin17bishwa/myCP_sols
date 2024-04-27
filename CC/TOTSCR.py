@@ -70,11 +70,11 @@ def main():
             ans = 0
             s = arr[i]
             for j in range(k):
-                if s[j] == '1':
+                if s[j] == "1":
                     ans += points[j]
             print(ans)
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

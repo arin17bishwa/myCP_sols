@@ -3,7 +3,7 @@ def func(i):
 
 
 def main():
-    st = ''
+    st = ""
 
     for _ in range(int(input())):
         chef = morty = 0
@@ -18,12 +18,12 @@ def main():
             else:
                 morty += 1
         if chef > morty:
-            ans = '0 ' + str(chef)
+            ans = "0 " + str(chef)
         elif morty == chef:
-            ans = '2 ' + str(chef)
+            ans = "2 " + str(chef)
         else:
-            ans = '1 ' + str(morty)
-        st += str(ans) + '\n'
+            ans = "1 " + str(morty)
+        st += str(ans) + "\n"
     print(st[:-1])
 
 

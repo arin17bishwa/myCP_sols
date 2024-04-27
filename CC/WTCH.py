@@ -68,17 +68,17 @@ def In():
 def func():
     n = In()
     s = list(input())
-    if n==1:
-        return 1-s.count('1')
-    initial_ones=s.count('1')
-    if n>1 and s[0]==s[1]=='0':
-        s[0]='1'
-    for i in range(1,n-1):
-        if s[i-1:i+2]==['0']*3:
-            s[i]='1'
-    if n>1 and s[-1]==s[-2]=='0':
-        s[-1]='1'
-    return s.count('1')-initial_ones
+    if n == 1:
+        return 1 - s.count("1")
+    initial_ones = s.count("1")
+    if n > 1 and s[0] == s[1] == "0":
+        s[0] = "1"
+    for i in range(1, n - 1):
+        if s[i - 1 : i + 2] == ["0"] * 3:
+            s[i] = "1"
+    if n > 1 and s[-1] == s[-2] == "0":
+        s[-1] = "1"
+    return s.count("1") - initial_ones
 
 
 def main():
@@ -87,5 +87,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

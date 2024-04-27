@@ -1,5 +1,5 @@
 # cook your dish here
-st = ''
+st = ""
 
 
 def func(n):

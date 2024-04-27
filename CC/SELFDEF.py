@@ -1,9 +1,8 @@
-from typing import Iterable, Callable
-
 # region fast io
 import os
 import sys
 from io import BytesIO, IOBase
+from typing import Iterable, Callable
 
 BUFSIZE = 8192
 

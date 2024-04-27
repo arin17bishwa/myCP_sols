@@ -1,8 +1,8 @@
-st = ''
+st = ""
 
 
 def func(n):
-    s = ''
+    s = ""
     l = [[0] * n for i in range(n)]
     e, o = False, True
     even, odd = 1, 2
@@ -23,12 +23,12 @@ def func(n):
             e, o = o, e
     for i in l:
         for j in i:
-            s += str(j) + ' '
-        s += '\n'
+            s += str(j) + " "
+        s += "\n"
     return s[:-1]
 
 
 for _ in range(int(input())):
     n = int(input())
-    st += str(func(n)) + '\n'
+    st += str(func(n)) + "\n"
 print(st)

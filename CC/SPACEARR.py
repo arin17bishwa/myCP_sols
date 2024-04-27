@@ -73,11 +73,11 @@ def func():
     for i in range(n):
         x = i + 1 - arr[i]
         if x < 0:
-            return 'Second'
+            return "Second"
         ans += x
     if ans & 1:
-        return 'First'
-    return 'Second'
+        return "First"
+    return "Second"
 
 
 def main():
@@ -89,6 +89,6 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     arr = []
     main()

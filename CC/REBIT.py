@@ -25,7 +25,7 @@ class Conversion:
         self.capacity = capacity
         self.array = []
         self.output = []
-        self.precedence = {'&': 1, '|': 1, '^': 1}
+        self.precedence = {"&": 1, "|": 1, "^": 1}
 
     def isEmpty(self):
         return True if self.top == -1 else False
@@ -57,25 +57,25 @@ class Conversion:
 
     def infixToPostfix(self, exp):
         for i in exp:
-            if i == '#':
-                self.output.append('1')
-            elif i == '(':
+            if i == "#":
+                self.output.append("1")
+            elif i == "(":
                 self.push(i)
-            elif i == ')':
-                while ((not self.isEmpty()) and self.peek() != '('):
+            elif i == ")":
+                while (not self.isEmpty()) and self.peek() != "(":
                     a = self.pop()
                     self.output.append(a)
-                if (not self.isEmpty() and self.peek() != '('):
+                if not self.isEmpty() and self.peek() != "(":
                     return -1
                 else:
                     self.pop()
             else:
-                while (not self.isEmpty() and self.notGreater(i)):
+                while not self.isEmpty() and self.notGreater(i):
                     self.output.append(self.pop())
                 self.push(i)
         while not self.isEmpty():
             self.output.append(self.pop())
-        return ("".join(self.output))
+        return "".join(self.output)
 
 
 def printing(zero, one, a, den):
@@ -87,31 +87,41 @@ def printing(zero, one, a, den):
 
 
 def proband0(zeros, ones):
-    return (modularmultiplication(zeros[0], zeros[1]) + modularmultiplication(zeros[0],
-                                                                              ones[1]) + modularmultiplication(ones[0],
-                                                                                                               zeros[
-                                                                                                                   1])) % k
+    return (
+        modularmultiplication(zeros[0], zeros[1])
+        + modularmultiplication(zeros[0], ones[1])
+        + modularmultiplication(ones[0], zeros[1])
+    ) % k
 
 
 def proband1(zeros, ones):
-    return (modularmultiplication(ones[0], ones[1]))
+    return modularmultiplication(ones[0], ones[1])
 
 
 def probor0(zeros, ones):
-    return (modularmultiplication(zeros[0], zeros[1]))
+    return modularmultiplication(zeros[0], zeros[1])
 
 
 def probor1(zeros, ones):
-    return (modularmultiplication(ones[0], ones[1]) + modularmultiplication(zeros[0], ones[1]) + modularmultiplication(
-        ones[0], zeros[1])) % k
+    return (
+        modularmultiplication(ones[0], ones[1])
+        + modularmultiplication(zeros[0], ones[1])
+        + modularmultiplication(ones[0], zeros[1])
+    ) % k
 
 
 def probxor0(zeros, ones):
-    return (modularmultiplication(ones[0], ones[1]) + modularmultiplication(zeros[0], zeros[1])) % k
+    return (
+        modularmultiplication(ones[0], ones[1])
+        + modularmultiplication(zeros[0], zeros[1])
+    ) % k
 
 
 def probxor1(zeros, ones):
-    return (modularmultiplication(zeros[0], ones[1]) + modularmultiplication(ones[0], zeros[1])) % k
+    return (
+        modularmultiplication(zeros[0], ones[1])
+        + modularmultiplication(ones[0], zeros[1])
+    ) % k
 
 
 def func(s):
@@ -123,21 +133,21 @@ def func(s):
     c = 0
     for i in s:
         # print(zeros,ones)
-        if i == '&':
+        if i == "&":
             one = proband1(zeros[-2:], ones[-2:])
             zero = proband0(zeros[-2:], ones[-2:])
             ones = ones[:-2]
             ones.append(one)
             zeros = zeros[:-2]
             zeros.append(zero)
-        elif i == '|':
+        elif i == "|":
             one = probor1(zeros[-2:], ones[-2:])
             zero = probor0(zeros[-2:], ones[-2:])
             ones = ones[:-2]
             ones.append(one)
             zeros = zeros[:-2]
             zeros.append(zero)
-        elif i == '^':
+        elif i == "^":
             one = probxor1(zeros[-2:], ones[-2:])
             zero = probxor0(zeros[-2:], ones[-2:])
             ones = ones[:-2]

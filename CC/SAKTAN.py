@@ -16,7 +16,7 @@ def func(r, c, ro, co):
     orow = r - erow
     ocol = c - ecol
     count = (orow * ecol) + (erow * ocol)
-    return (count)
+    return count
 
 
 t = int(input())

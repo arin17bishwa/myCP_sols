@@ -8,11 +8,11 @@ def func(xd, yd):
         if v:
             y = k
             break
-    return ' '.join((str(x), str(y)))
+    return " ".join((str(x), str(y)))
 
 
 def main():
-    st = ''
+    st = ""
     for _ in range(int(input())):
         n = int(input())
         xd = dict()
@@ -21,7 +21,7 @@ def main():
             a, b = map(int, input().split())
             xd[a] = (xd.get(a, 0) + 1) % 2
             yd[b] = (yd.get(b, 0) + 1) % 2
-        st = '\n'.join((st, str(func(xd, yd))))
+        st = "\n".join((st, str(func(xd, yd))))
     print(st[1:])
 
 

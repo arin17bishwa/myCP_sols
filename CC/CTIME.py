@@ -79,8 +79,8 @@ def func():
 
     tot += max(0, x - prev[1])
     if tot < k:
-        return 'NO'
-    return 'YES'
+        return "NO"
+    return "YES"
 
 
 def main():
@@ -89,5 +89,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,8 +1,8 @@
-from math import ceil
 # region fastio
 import os
 import sys
 from io import BytesIO, IOBase
+from math import ceil
 
 BUFSIZE = 8192
 

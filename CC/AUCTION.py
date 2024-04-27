@@ -67,7 +67,7 @@ def In():
 
 def func():
     arr = list(intArr())
-    ans = ('Alice', 'Bob', 'Charlie')
+    ans = ("Alice", "Bob", "Charlie")
     return ans[arr.index(max(arr))]
 
 
@@ -77,5 +77,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

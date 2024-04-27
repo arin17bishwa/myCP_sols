@@ -15,7 +15,7 @@ def S():
 
 
 def Sn():
-    return stdin.readline().split(' ')
+    return stdin.readline().split(" ")
 
 
 def Out(whatever):
@@ -43,13 +43,13 @@ def func(n, k):
                 neg -= 1
             i -= 1
 
-    return ' '.join(map(str, arr))
+    return " ".join(map(str, arr))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     t = I()
-    answers = [' '] * t
+    answers = [" "] * t
     for i in range(t):
         m, x = In()
         answers[i] = str(func(m, x))
-    print('\n'.join(answers))
+    print("\n".join(answers))

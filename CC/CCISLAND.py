@@ -69,11 +69,11 @@ def main():
     for _ in range(In()):
         x, y, xr, yr, d = intArr()
         if min(x // xr, y // yr) >= d:
-            print('YES')
+            print("YES")
         else:
-            print('NO')
+            print("NO")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

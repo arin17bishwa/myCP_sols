@@ -1,13 +1,13 @@
-st = ''
+st = ""
 from sys import setrecursionlimit
 
-setrecursionlimit(10 ** 6)
+setrecursionlimit(10**6)
 
 global k
 
 
 def transformer(i):
-    if i == 'x':
+    if i == "x":
         return 0
     return 1
 
@@ -45,5 +45,5 @@ for _ in range(int(input())):
     # l2=input().split()
     # func(l1,n,m)
     # print(func(a,b))
-    st += str(func(l1)) + '\n'
+    st += str(func(l1)) + "\n"
 print(st)

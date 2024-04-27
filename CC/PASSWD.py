@@ -60,7 +60,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 def func(s):
     n = len(s)
     if n < 10:
-        return 'NO'
+        return "NO"
     x = y = z = w = 0
     for i in range(n):
         if s[i].islower():
@@ -69,11 +69,11 @@ def func(s):
             y = 1
         elif s[i].isdigit() and i != 0 and i != n - 1:
             z = 1
-        elif (s[i] in ['@', '#', '%', '&', '?']) and (i != 0 and i != n - 1):
+        elif (s[i] in ["@", "#", "%", "&", "?"]) and (i != 0 and i != n - 1):
             w = 1
     if x and y and z and w:
-        return 'YES'
-    return 'NO'
+        return "YES"
+    return "NO"
 
 
 def main():
@@ -83,5 +83,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -25,7 +25,7 @@ def Prime_factorization(n):  # with count of powers of each variable
     return l
 
 
-st = ''
+st = ""
 
 
 def func(x, k):

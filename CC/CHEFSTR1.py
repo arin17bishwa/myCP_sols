@@ -6,11 +6,11 @@ def func(n, l):
 
 
 def main():
-    st = ''
+    st = ""
     for _ in range(int(input())):
         n = int(input())
         l = list(map(int, input().split()))
-        st += str(func(n, l)) + '\n'
+        st += str(func(n, l)) + "\n"
     print(st)
 
 

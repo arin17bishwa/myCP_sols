@@ -1,5 +1,4 @@
 # cook your dish here
-import math
 
 st = ''
 

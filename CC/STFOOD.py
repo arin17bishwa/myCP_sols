@@ -57,7 +57,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
@@ -75,6 +75,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

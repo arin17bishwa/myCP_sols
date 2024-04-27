@@ -1,6 +1,6 @@
 from sys import setrecursionlimit
 
-setrecursionlimit(10 ** 6)
+setrecursionlimit(10**6)
 # region fastio
 import os
 import sys
@@ -92,18 +92,20 @@ def rec(s: list, used: int, end: int):
     if used:
         if n % 2 == 1:
             return 0
-        return s[:n // 2] == s[n // 2:n] and rec(s, used=0, end=n // 2 - 1)
+        return s[: n // 2] == s[n // 2 : n] and rec(s, used=0, end=n // 2 - 1)
     if n % 2 == 1:
         return rec(s, used=1, end=end - 1)
 
-    return rec(s, used=1, end=end - 1) or (s[:n // 2] == s[n // 2:n] and rec(s, used=0, end=n // 2 - 1))
+    return rec(s, used=1, end=end - 1) or (
+        s[: n // 2] == s[n // 2 : n] and rec(s, used=0, end=n // 2 - 1)
+    )
 
 
 def main():
     for _ in range(In()):
-        print('YES' if func() else 'NO')
+        print("YES" if func() else "NO")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

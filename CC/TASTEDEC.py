@@ -69,10 +69,10 @@ def func():
     x, y = intArr()
     x, y = 2 * x, 5 * y
     if x > y:
-        return 'Chocolate'
+        return "Chocolate"
     elif x < y:
-        return 'Candy'
-    return 'Either'
+        return "Candy"
+    return "Either"
 
 
 def main():
@@ -81,5 +81,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

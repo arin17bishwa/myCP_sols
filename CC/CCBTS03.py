@@ -66,7 +66,7 @@ def func(n, k):
     if k == 1:
         return 0
     arr.sort()
-    ans = float('inf')
+    ans = float("inf")
     for i in range(n - k + 1):
         ans = min(ans, arr[i + k - 1] - arr[i])
     return ans
@@ -81,6 +81,6 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     arr = []
     main()

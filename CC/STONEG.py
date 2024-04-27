@@ -83,7 +83,7 @@ def func():
         suffix_sum[i] = suffix_sum[i + 1] + (x - arr[i])
         suffix[i] = x
 
-    ans = float('inf')
+    ans = float("inf")
     for i in range(1, n - 1):
         curr = pref_sum[i - 1] + suffix_sum[i + 1]
         curr += max(pref[i], suffix[i]) - arr[i]
@@ -98,5 +98,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

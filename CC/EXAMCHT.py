@@ -13,7 +13,7 @@ def factors(n):
     return len(l1)
 
 
-s = ''
+s = ""
 
 for _ in range(int(input())):
     l1 = [int(i) for i in input().split()]
@@ -21,6 +21,6 @@ for _ in range(int(input())):
     k = factors(b - a)
     if k == 0:
         k = -1
-    s += str(k) + '\n'
+    s += str(k) + "\n"
 
 print(s)

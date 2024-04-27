@@ -58,11 +58,11 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 
 def func(n, s):
-    pre = s.count('1')
+    pre = s.count("1")
     ab = n - pre
     if ab > 30:
-        return 'NO'
-    return 'YES'
+        return "NO"
+    return "YES"
 
 
 def main():
@@ -74,5 +74,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -66,8 +66,8 @@ def In():
 
 
 def func():
-    n=In()
-    return n-10*(n>100)
+    n = In()
+    return n - 10 * (n > 100)
 
 
 def main():
@@ -76,5 +76,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

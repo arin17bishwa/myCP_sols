@@ -1,4 +1,4 @@
-st = ''
+st = ""
 
 
 def func():
@@ -13,9 +13,9 @@ for _ in range(int(input())):
     s = input()
     freq = [0 for _ in range(26)]
     for i in s:
-        freq[ord(i) - ord('a')] += 1
+        freq[ord(i) - ord("a")] += 1
     for _ in range(q):
         c = int(input())
-        st += str(func()) + '\n'
+        st += str(func()) + "\n"
     # freq=[]
 print(st)

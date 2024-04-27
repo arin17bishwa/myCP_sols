@@ -1,4 +1,4 @@
-s = ''
+s = ""
 
 
 def func(l1, a, b, c):
@@ -14,13 +14,16 @@ def func(l1, a, b, c):
         k += abs(l2[len(l2) - 2] - b) + abs(a - l2[len(l2) - 2])
 
     else:
-        k += min(abs(l2[ind2 - 1] - b) + abs(a - l2[ind2 - 1]), abs(l2[ind2 + 1] - b) + abs(a - l2[ind2 + 1]))
+        k += min(
+            abs(l2[ind2 - 1] - b) + abs(a - l2[ind2 - 1]),
+            abs(l2[ind2 + 1] - b) + abs(a - l2[ind2 + 1]),
+        )
 
-    return (k)
+    return k
 
 
 for _ in range(int(input())):
     n, a, b, c = map(int, input().split())
     l1 = list(map(int, input().split()))
-    s += str(func(l1, a, b, c)) + '\n'
+    s += str(func(l1, a, b, c)) + "\n"
 print(s)

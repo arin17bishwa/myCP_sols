@@ -1,6 +1,4 @@
-import math
-
-st = ''
+st = ""
 
 
 def func(l1, l2, m):
@@ -26,6 +24,6 @@ for _ in range(int(input())):
     l2 = list(map(int, input().split()))
     # l1=input().split()
     # l2=input().split()
-    st += str(func(l1, l2, m)) + '\n'
+    st += str(func(l1, l2, m)) + "\n"
 
 print(st)

@@ -63,8 +63,8 @@ def func():
         k >>= 1
     ans = any(map(lambda x: int(x) % k, input().split()))
     if ans:
-        return 'NO'
-    return 'YES'
+        return "NO"
+    return "YES"
 
 
 def main():
@@ -73,5 +73,5 @@ def main():
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

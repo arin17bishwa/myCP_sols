@@ -56,7 +56,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 # endregion
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     for _ in range(int(input())):
         x = 0
         for c in range(int(input())):

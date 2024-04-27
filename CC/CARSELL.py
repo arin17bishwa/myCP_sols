@@ -1,14 +1,10 @@
 # cook your dish here
-import math
-from functools import reduce
-from bisect import bisect_left, bisect, bisect_right
-from itertools import accumulate
-from math import sqrt
 from math import gcd
+from math import sqrt
 
 
 def transformer(i):
-    if i == 'd' or i == 'f':
+    if i == "d" or i == "f":
         return 1
     return 0
 
@@ -16,16 +12,16 @@ def transformer(i):
 def changer(s):
     l = []
     for i in s:
-        if i == 'H':
+        if i == "H":
             l.append(1)
-        elif i == 'T':
+        elif i == "T":
             l.append(0)
     return l
 
 
 def lcm(i, j):
     # print('calc gcd of',i,j)
-    return ((i * j) // gcd(i, j))
+    return (i * j) // gcd(i, j)
 
 
 def Prime_factors(n):
@@ -53,7 +49,7 @@ def leapyear(n):
     return False
 
 
-st = ''
+st = ""
 p = pow(10, 9) + 7
 
 
@@ -78,5 +74,5 @@ for _ in range(int(input())):
     # l1=input().split()
     # l2=input().split()
     # func(n,k)
-    st += str((func(n, l1))) + '\n'
+    st += str((func(n, l1))) + "\n"
 print(st)

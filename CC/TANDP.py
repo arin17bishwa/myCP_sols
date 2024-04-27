@@ -72,8 +72,8 @@ def func():
     t_time = n - x + m - y
     p_time = max(n - a, m - b)
     if p_time >= t_time:
-        return 'YES'
-    return 'NO'
+        return "YES"
+    return "NO"
 
 
 def main():
@@ -82,5 +82,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

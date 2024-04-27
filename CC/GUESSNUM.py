@@ -11,16 +11,16 @@ def divisors(m):
             else:
                 l1.append(i)
                 l1.append(m // i)
-    return (l1)
+    return l1
 
 
 def printDivisors(n):
     list = []
     for i in range(1, int(math.sqrt(n) + 1)):
-        if (n % i == 0):
+        if n % i == 0:
 
             # Check if divisors are equal
-            if (n / i == i):
+            if n / i == i:
                 print(i, end=" ")
             else:
                 # Otherwise print both
@@ -28,7 +28,7 @@ def printDivisors(n):
                 list.append(int(n / i))
 
 
-s = ''
+s = ""
 for _ in range(int(input())):
     l1 = [int(y) for y in input().split()]
     a = l1[0]
@@ -37,7 +37,7 @@ for _ in range(int(input())):
     l1 = divisors(m)
     # print(l1)
     l2 = []
-    for d in (l1):
+    for d in l1:
         n = (m - d) / a
         # print(d,n)
         if (n >= d) and (n % 1) == 0 and (n % d) == 0:
@@ -45,9 +45,9 @@ for _ in range(int(input())):
         # print(l2)
     l2.sort()
     # print(l2)
-    s = s + str(len(l2)) + '\n'
+    s = s + str(len(l2)) + "\n"
     for i in l2:
-        s = s + str(i) + ' '
-    s += '\n'
+        s = s + str(i) + " "
+    s += "\n"
 
 print(s)

@@ -1,4 +1,4 @@
-st = ''
+st = ""
 
 
 def func():
@@ -12,12 +12,12 @@ def func():
             c = 1
         i += 1
     m1, m2 = min(m1, c), max(m2, c)
-    return (str(m1) + ' ' + str(m2))
+    return str(m1) + " " + str(m2)
 
 
 for _ in range(int(input())):
     n = int(input())
     l = list(map(int, input().split()))
     # print(l)
-    st += str(func()) + '\n'
+    st += str(func()) + "\n"
 print(st)

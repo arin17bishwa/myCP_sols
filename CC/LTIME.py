@@ -69,8 +69,8 @@ def ynDec(function):
     def inner1(*args, **kwargs):
         res = function(*args, **kwargs)
         if res:
-            return 'YES'
-        return 'NO'
+            return "YES"
+        return "NO"
 
     return inner1
 
@@ -86,5 +86,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

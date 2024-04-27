@@ -66,10 +66,10 @@ def In():
 
 
 def func():
-    arr=list(intArr())
-    if set(arr[:2])==set(arr[2:4]):
+    arr = list(intArr())
+    if set(arr[:2]) == set(arr[2:4]):
         return 1
-    if set(arr[:2])==set(arr[4:]):
+    if set(arr[:2]) == set(arr[4:]):
         return 2
     return 0
 
@@ -80,5 +80,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

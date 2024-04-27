@@ -60,7 +60,7 @@ def prime_sieve(n):
     """returns a sieve of primes >= 5 and < n"""
     flag = n % 6 == 2
     sieve = bytearray((n // 3 + flag >> 3) + 1)
-    for i in range(1, int(n ** 0.5) // 3 + 1):
+    for i in range(1, int(n**0.5) // 3 + 1):
         if not (sieve[i >> 3] >> (i & 7)) & 1:
             k = (3 * i + 1) | 1
             for j in range(k * k // 3, n // 3 + flag, 2 * k):
@@ -79,7 +79,11 @@ def prime_list(n):
         res.append(3)
     if n > 4:
         sieve = prime_sieve(n + 1)
-        res.extend(3 * i + 1 | 1 for i in range(1, (n + 1) // 3 + (n % 6 == 1)) if not (sieve[i >> 3] >> (i & 7)) & 1)
+        res.extend(
+            3 * i + 1 | 1
+            for i in range(1, (n + 1) // 3 + (n % 6 == 1))
+            if not (sieve[i >> 3] >> (i & 7)) & 1
+        )
     return res
 
 
@@ -89,7 +93,7 @@ from bisect import bisect_right, bisect_left
 
 
 def index(a, x):
-    'Locate the leftmost value exactly equal to x'
+    "Locate the leftmost value exactly equal to x"
     i = bisect_left(a, x)
     if i != len(a) and a[i] == x:
         return i
@@ -97,7 +101,7 @@ def index(a, x):
 
 
 def find_lt(a, x):
-    'Find rightmost value less than x'
+    "Find rightmost value less than x"
     i = bisect_left(a, x)
     if i:
         return a[i - 1]
@@ -105,14 +109,14 @@ def find_lt(a, x):
 
 
 def find_le(a, x):
-    'Find rightmost value less than or equal to x'
+    "Find rightmost value less than or equal to x"
     i = bisect_right(a, x)
     if i or 1:
         return i - 1
 
 
 def find_gt(a, x):
-    'Find leftmost value greater than x'
+    "Find leftmost value greater than x"
     i = bisect_right(a, x)
     if i != len(a):
         return a[i]
@@ -120,7 +124,7 @@ def find_gt(a, x):
 
 
 def find_ge(a, x):
-    'Find leftmost item greater than or equal to x'
+    "Find leftmost item greater than or equal to x"
     i = bisect_left(a, x)
     if i != len(a):
         return a[i]
@@ -168,6 +172,6 @@ def main():
     return
 
 
-if __name__ == '__main__':
-    primes = prime_list(10 ** 7)
+if __name__ == "__main__":
+    primes = prime_list(10**7)
     main()

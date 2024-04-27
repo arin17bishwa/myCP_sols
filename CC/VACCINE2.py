@@ -1,4 +1,5 @@
 from math import ceil
+
 # region smaller_fastio
 from sys import stdin, stdout
 
@@ -16,7 +17,7 @@ def S():
 
 
 def Sn():
-    return stdin.readline().split(' ')
+    return stdin.readline().split(" ")
 
 
 def Out(whatever):
@@ -31,11 +32,11 @@ def func(n, k, arr):
     return ceil(not_risky / k) + ceil((n - not_risky) / k)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     t = I()
-    answers = [' '] * t
+    answers = [" "] * t
     for i in range(t):
         size, d = In()
         ar = list(In())
         answers[i] = str(func(size, d, ar))
-    Out('\n'.join(answers))
+    Out("\n".join(answers))

@@ -1,8 +1,7 @@
-from collections import deque
-
 # region fastio
 import os
 import sys
+from collections import deque
 from io import BytesIO, IOBase
 
 BUFSIZE = 8192
@@ -56,7 +55,7 @@ sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 # endregion
-sys.setrecursionlimit(10 ** 5 + 5)
+sys.setrecursionlimit(10**5 + 5)
 
 
 def intArr():
@@ -75,14 +74,16 @@ class Edge:
         self.flow = flow
 
     def __str__(self):
-        return '(to: {}, from: {}, cap: {}, flow: {})'.format(self.x, self.y, self.cap, self.flow)
+        return "(to: {}, from: {}, cap: {}, flow: {})".format(
+            self.x, self.y, self.cap, self.flow
+        )
 
     def __repr__(self):
         return self.__str__()
 
 
 class DinicFlow:
-    inf = 10 ** 18
+    inf = 10**18
 
     def __init__(self, v: int):
         self.n = v
@@ -202,5 +203,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

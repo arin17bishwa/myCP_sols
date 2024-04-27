@@ -71,7 +71,7 @@ def func():
     while n % 10 == 0:
         n //= 10
         pow10 += 1
-    if bin(n).count('1') != 1:
+    if bin(n).count("1") != 1:
         return 0
     while n & 1 == 0:
         n >>= 1
@@ -81,9 +81,9 @@ def func():
 
 def main():
     for _ in range(In()):
-        print('Yes' if func() else 'No')
+        print("Yes" if func() else "No")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

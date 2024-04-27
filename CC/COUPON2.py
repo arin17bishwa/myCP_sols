@@ -77,11 +77,11 @@ def main():
         if sum(b) < 150:
             coup += d
         if coup < sum(a) + sum(b) + 2 * d:
-            print('YES')
+            print("YES")
         else:
-            print('NO')
+            print("NO")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

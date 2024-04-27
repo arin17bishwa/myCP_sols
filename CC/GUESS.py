@@ -64,7 +64,7 @@ def intArr():
 def In():
     return int(input())
 
-from math import gcd
+
 def func():
     n,m=intArr()
     if n==m==1:

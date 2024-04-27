@@ -98,7 +98,7 @@ def solve(left: int, x: int) -> int:
     for i in range(bt - 1, -1, -1):
         if x & (1 << i):
             if (left & (1 << i)) == 0:
-                x ^= (1 << i)
+                x ^= 1 << i
             else:
                 ans += dp[x ^ (1 << i)][i]
         if x <= left:
@@ -109,11 +109,11 @@ def solve(left: int, x: int) -> int:
 
 def main():
     for _ in range(In()):
-        print(*func(), sep='\n')
+        print(*func(), sep="\n")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     dp = []
     bt = 0
     main()

@@ -64,6 +64,7 @@ def intArr():
 def In():
     return int(input())
 
+
 def func():
     n = int(input())
     l = list(map(int, input().split()))
@@ -79,9 +80,9 @@ def func():
 
 def main():
     for _ in range(In()):
-        print('YES' if func() else 'NO')
+        print("YES" if func() else "NO")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

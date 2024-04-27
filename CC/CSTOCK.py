@@ -72,9 +72,9 @@ def func():
 
 def main():
     for _ in range(In()):
-        print('Yes' if func() else 'No')
+        print("Yes" if func() else "No")
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

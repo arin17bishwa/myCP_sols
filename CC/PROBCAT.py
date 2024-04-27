@@ -68,10 +68,10 @@ def In():
 def func():
     x = In()
     if x < 100:
-        return 'Easy'
+        return "Easy"
     if x < 200:
-        return 'Medium'
-    return 'Hard'
+        return "Medium"
+    return "Hard"
 
 
 def main():
@@ -80,5 +80,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

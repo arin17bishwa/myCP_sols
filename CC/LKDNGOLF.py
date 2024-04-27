@@ -57,7 +57,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
@@ -65,10 +65,10 @@ def In():
 
 
 def func():
-    n,x,k=intArr()
-    if x%k==0 or (n+1-x)%k==0:
-        return 'YES'
-    return 'NO'
+    n, x, k = intArr()
+    if x % k == 0 or (n + 1 - x) % k == 0:
+        return "YES"
+    return "NO"
 
 
 def main():
@@ -77,5 +77,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

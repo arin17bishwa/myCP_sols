@@ -57,12 +57,12 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 
 def main():
-    n=input()
-    while n!='42':
+    n = input()
+    while n != "42":
         print(n)
-        n=input()
+        n = input()
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

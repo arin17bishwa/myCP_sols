@@ -66,7 +66,7 @@ def In():
 
 
 def func(k, a, b):
-    tot = x = (a + b)
+    tot = x = a + b
     l1 = []
     for i in range(1, 5):
         l1.append((pow(2, i, 10) * x) % 10)
@@ -74,10 +74,10 @@ def func(k, a, b):
         tot += x % 10
     if k > 3:
         tot += (((k - 3) // 4) * sum(l1)) % 3
-        tot += sum(l1[:(k - 3) % 4])
+        tot += sum(l1[: (k - 3) % 4])
     if tot % 3:
-        return 'NO'
-    return 'YES'
+        return "NO"
+    return "YES"
 
 
 def main():
@@ -87,5 +87,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

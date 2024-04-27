@@ -71,23 +71,23 @@ def main():
         c = 0
         for _ in range(int(act)):
             inp = input().split()
-            if 'CONTEST_WON' in inp:
+            if "CONTEST_WON" in inp:
                 if int(inp[1]) > 20:
                     c += 300
                 else:
                     c += 300 + 20 - int(inp[1])
-            elif 'TOP_CONTRIBUTOR' in inp:
+            elif "TOP_CONTRIBUTOR" in inp:
                 c += 300
-            elif 'BUG_FOUND' in inp:
+            elif "BUG_FOUND" in inp:
                 c += int(inp[1])
             else:
                 c += 50
-        if orig == 'INDIAN':
+        if orig == "INDIAN":
             print(c // 200)
         else:
             print(c // 400)
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

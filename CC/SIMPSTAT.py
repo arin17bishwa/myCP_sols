@@ -66,9 +66,9 @@ def In():
 
 
 def func():
-    n,k=intArr()
-    arr=sorted(intArr())
-    return sum(arr[k:n-k])/(n-2*k)
+    n, k = intArr()
+    arr = sorted(intArr())
+    return sum(arr[k : n - k]) / (n - 2 * k)
 
 
 def main():
@@ -77,5 +77,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

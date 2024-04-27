@@ -57,7 +57,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 
 def intArr():
-    return map(int,input().split())
+    return map(int, input().split())
 
 
 def In():
@@ -65,78 +65,78 @@ def In():
 
 
 def func(x):
-    global a,b
-    c=len(a[0])
-    r=len(a)
+    global a, b
+    c = len(a[0])
+    r = len(a)
 
-    if c<x and r<x:
+    if c < x and r < x:
         for i in range(r):
             for j in range(c):
-                if a[i][j]!=b[i][j]:
+                if a[i][j] != b[i][j]:
                     return 0
 
-    elif c<x:
+    elif c < x:
         for j in range(c):
-            for i in range(r-x+1):
-                if a[i][j]!=b[i][j]:
-                    p=b[i][j]-a[i][j]
-                    for k in range(i,i+x):
-                        a[k][j]+=p
-                if i+x==r:
-                    for k in range(r-x+1,r):
-                        if a[k][j]!=b[k][j]:
+            for i in range(r - x + 1):
+                if a[i][j] != b[i][j]:
+                    p = b[i][j] - a[i][j]
+                    for k in range(i, i + x):
+                        a[k][j] += p
+                if i + x == r:
+                    for k in range(r - x + 1, r):
+                        if a[k][j] != b[k][j]:
                             return 0
 
-    elif r<x:
+    elif r < x:
         for i in range(r):
-            for j in range(c-x+1):
-                if a[i][j]!=b[i][j]:
-                    p=b[i][j]-a[i][j]
-                    for k in range(j,j+x):
-                        a[i][k]+=p
+            for j in range(c - x + 1):
+                if a[i][j] != b[i][j]:
+                    p = b[i][j] - a[i][j]
+                    for k in range(j, j + x):
+                        a[i][k] += p
 
-                if j+x==c:
-                    for k in range(c-x+1,c):
-                        if a[i][k]!=b[i][k]:
+                if j + x == c:
+                    for k in range(c - x + 1, c):
+                        if a[i][k] != b[i][k]:
                             return 0
 
     else:
         for j in range(c):
-            for i in range(r-x+1):
+            for i in range(r - x + 1):
                 if a[i][j] != b[i][j]:
                     p = b[i][j] - a[i][j]
                     for k in range(i, i + x):
                         a[k][j] += p
 
         for i in range(r):
-            for j in range(c-x+1):
-                if a[i][j]!=b[i][j]:
-                    p=b[i][j]-a[i][j]
-                    for k in range(j,j+x):
-                        a[i][k]+=p
+            for j in range(c - x + 1):
+                if a[i][j] != b[i][j]:
+                    p = b[i][j] - a[i][j]
+                    for k in range(j, j + x):
+                        a[i][k] += p
 
-                if j+x==c:
-                    for k in range(c-x+1,c):
-                        if a[i][k]!=b[i][k]:
+                if j + x == c:
+                    for k in range(c - x + 1, c):
+                        if a[i][k] != b[i][k]:
                             return 0
 
     return 1
 
 
 def main():
-    global a,b
+    global a, b
     for _ in range(In()):
-        r,c,x=intArr()
-        a=[list(intArr()) for _ in range(r)]
-        b=[list(intArr()) for _ in range(r)]
+        r, c, x = intArr()
+        a = [list(intArr()) for _ in range(r)]
+        b = [list(intArr()) for _ in range(r)]
         if func(x):
-            print('Yes')
+            print("Yes")
         else:
-            print('No')
+            print("No")
     return
 
 
-if __name__ == '__main__':
-    a=[]
-    b=[]
+if __name__ == "__main__":
+    a = []
+    b = []
     main()

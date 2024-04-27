@@ -1,9 +1,8 @@
 """Partially correct (30 points)"""
-from collections import deque
-
 # region fastio
 import os
 import sys
+from collections import deque
 from io import BytesIO, IOBase
 
 BUFSIZE = 8192

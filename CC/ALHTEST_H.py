@@ -1,6 +1,5 @@
-from typing import *
-
 from collections import deque
+from typing import *
 
 
 class Solution:

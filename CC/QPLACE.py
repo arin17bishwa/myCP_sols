@@ -67,8 +67,11 @@ def In():
 
 def func():
     n = In()
-    ans = [['Q' if (i == j and j not in (0, 2)) else '.' for j in range(n)] for i in range(n - 1, -1, -1)]
-    return '\n'.join([''.join(i) for i in ans])
+    ans = [
+        ["Q" if (i == j and j not in (0, 2)) else "." for j in range(n)]
+        for i in range(n - 1, -1, -1)
+    ]
+    return "\n".join(["".join(i) for i in ans])
 
 
 def main():
@@ -77,5 +80,5 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

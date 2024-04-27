@@ -84,8 +84,12 @@ def func(n, m, k):
             z = f = 0
             while low <= high:
                 mid = (low + high) >> 1
-                x = arr[i + q - 1][mid + q - 1] - arr[i + q - 1][mid - 1] - arr[i - 1][mid + q - 1] + arr[i - 1][
-                    mid - 1]
+                x = (
+                    arr[i + q - 1][mid + q - 1]
+                    - arr[i + q - 1][mid - 1]
+                    - arr[i - 1][mid + q - 1]
+                    + arr[i - 1][mid - 1]
+                )
                 if x >= k * q * q:
                     high = mid - 1
                     z = mid
@@ -111,6 +115,6 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     arr = []
     main()

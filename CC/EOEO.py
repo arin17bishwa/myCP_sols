@@ -1,11 +1,11 @@
-st = ''
+st = ""
 from sys import setrecursionlimit
 
-setrecursionlimit(10 ** 6)
+setrecursionlimit(10**6)
 
 
 def transformer(i):
-    if i == 'x':
+    if i == "x":
         return 0
     return 1
 
@@ -27,5 +27,5 @@ for _ in range(int(input())):
     # l2=input().split()
     # func(l1,n,m)
     # print(func(a,b))
-    st += str((n - 1) // ((n & (~(n - 1))) << 1)) + '\n'
+    st += str((n - 1) // ((n & (~(n - 1))) << 1)) + "\n"
 print(st)

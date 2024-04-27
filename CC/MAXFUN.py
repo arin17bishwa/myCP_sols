@@ -63,7 +63,10 @@ def func():
     arr.sort()
     ans = -1
     for j in range(1, n - 1):
-        ans = max(ans, abs(arr[0] - arr[j]) + abs(arr[j] - arr[n - 1]) + abs(arr[n - 1] - arr[0]))
+        ans = max(
+            ans,
+            abs(arr[0] - arr[j]) + abs(arr[j] - arr[n - 1]) + abs(arr[n - 1] - arr[0]),
+        )
     return ans
 
 
@@ -76,6 +79,6 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     arr = []
     main()

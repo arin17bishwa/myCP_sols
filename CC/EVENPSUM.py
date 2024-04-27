@@ -15,7 +15,7 @@ def S():
 
 
 def Sn():
-    return stdin.readline().split(' ')
+    return stdin.readline().split(" ")
 
 
 def Out(whatever):
@@ -33,10 +33,10 @@ def func(a, b):
     return even1 * even2 + odd1 * odd2
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     t = I()
-    answer = [' '] * t
+    answer = [" "] * t
     for i in range(t):
         x, y = In()
         answer[i] = str(func(x, y))
-    Out('\n'.join(answer))
+    Out("\n".join(answer))
