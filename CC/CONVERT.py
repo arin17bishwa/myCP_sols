@@ -28,7 +28,7 @@ class FastIO(IOBase):
         self.newlines = 0
         return self.buffer.read()
 
-    def readline(self):
+    def readline(self, *args, **kwargs) -> bytes:
         while self.newlines == 0:
             b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
             self.newlines = b.count(b"\n") + (not b)
@@ -59,11 +59,11 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 # endregion
 
 
-def intArr() -> Iterable[int]:
+def int_arr() -> Iterable[int]:
     return map(int, input().split())
 
 
-def In() -> int:
+def iin() -> int:
     return int(input())
 
 
@@ -72,22 +72,21 @@ def yn_dec(function) -> Callable:
 
     def inner1(*args, **kwargs) -> str:
         res = function(*args, **kwargs)
+        ans = "yes" if res else "no"
         if letter_case == "upper":
-            return "YES" if res else "NO"
+            return ans.upper()
         if letter_case == "title":
-            return "Yes" if res else "No"
+            return ans.title()
         if letter_case == "lower":
-            return "yes" if res else "no"
-        if res:
-            return "YES"
-        return "NO"
+            return ans.lower()
+        return res
 
     return inner1
 
 
 @yn_dec
 def func():
-    n, k = intArr()
+    n, k = int_arr()
     s1, s2 = input(), input()
     c1 = Counter(s1)
     c2 = Counter(s2)
@@ -97,16 +96,14 @@ def func():
     remaining_moves = k - (hamming_distance // 2)
     if remaining_moves < 0:
         return False
-    if remaining_moves > 0:
-        if n == 2 and s1[0] != s1[1]:
-            return not remaining_moves & 1
+    if remaining_moves > 0 and n == 2 and s1[0] != s1[1]:
+        return not remaining_moves & 1
     return True
 
 
 def main():
-    for _ in range(In()):
+    for _ in range(iin()):
         print(func())
-    return
 
 
 if __name__ == "__main__":
