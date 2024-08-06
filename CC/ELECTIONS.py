@@ -1,5 +1,4 @@
 from typing import Iterable, Callable
-from collections import Counter
 
 # region fast io
 import os
@@ -84,10 +83,15 @@ def yn_dec(function) -> Callable:
     return inner1
 
 
-@yn_dec
 def func():
-    _ = input()
-    return not any(i > 2 for i in Counter(int_arr()).values())
+    a, b, c = int_arr()
+    if a > 50:
+        return "A"
+    if b > 50:
+        return "B"
+    if c > 50:
+        return "C"
+    return "NOTA"
 
 
 def main():

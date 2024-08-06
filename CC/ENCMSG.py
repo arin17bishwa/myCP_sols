@@ -1,5 +1,5 @@
 from typing import Iterable, Callable
-from collections import Counter
+import string
 
 # region fast io
 import os
@@ -84,10 +84,16 @@ def yn_dec(function) -> Callable:
     return inner1
 
 
-@yn_dec
 def func():
-    _ = input()
-    return not any(i > 2 for i in Counter(int_arr()).values())
+    n = iin()
+    inp = list(input())
+    for i in range(0, n - 1 if n & 1 == 0 else n - 2, 2):
+        inp[i], inp[i + 1] = inp[i + 1], inp[i]
+
+    encoding = {
+        string.ascii_lowercase[i]: string.ascii_lowercase[-i - 1] for i in range(26)
+    }
+    return "".join(map(lambda x: encoding[x], inp))
 
 
 def main():

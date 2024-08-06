@@ -1,5 +1,4 @@
 from typing import Iterable, Callable
-from collections import Counter
 
 # region fast io
 import os
@@ -84,10 +83,17 @@ def yn_dec(function) -> Callable:
     return inner1
 
 
-@yn_dec
 def func():
-    _ = input()
-    return not any(i > 2 for i in Counter(int_arr()).values())
+    a, b = int_arr()
+    for turn_no in range(1, 2000):
+        if turn_no & 1:
+            a -= turn_no
+        else:
+            b -= turn_no
+        if a < 0:
+            return "Bob"
+        elif b < 0:
+            return "Limak"
 
 
 def main():

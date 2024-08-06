@@ -1,5 +1,4 @@
 from typing import Iterable, Callable
-from collections import Counter
 
 # region fast io
 import os
@@ -84,15 +83,20 @@ def yn_dec(function) -> Callable:
     return inner1
 
 
-@yn_dec
 def func():
-    _ = input()
-    return not any(i > 2 for i in Counter(int_arr()).values())
+    n, k = int_arr()
+    protein_stored: int = 0
+    for day_no, protein_bought in enumerate(int_arr(), start=1):
+        protein_stored += protein_bought - k
+        if protein_stored < 0:
+            print("NO", day_no)
+            return
+    print("YES")
 
 
 def main():
     for _ in range(iin()):
-        print(func())
+        func()
 
 
 if __name__ == "__main__":
