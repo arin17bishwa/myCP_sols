@@ -1,5 +1,4 @@
 from typing import Iterable, Callable
-from collections import deque
 
 # region fast io
 import os
@@ -85,16 +84,8 @@ def yn_dec(function) -> Callable:
 
 
 def func():
-    _ = iin()
-    d = deque()
-    for ch in input():
-        if not d or ch == "(":
-            d.append(ch)
-        elif d[-1] == "(":
-            d.pop()
-        else:
-            d.append(")")
-    return len(d) // 2
+    n, k = int_arr()
+    return int(n % k != 0)
 
 
 def main():
