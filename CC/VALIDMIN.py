@@ -1,4 +1,3 @@
-import string
 from typing import Iterable, Callable
 
 # region fast io
@@ -85,12 +84,10 @@ def yn_dec(function) -> Callable:
     return inner1
 
 
+@yn_dec
 def func():
-    prices = {i: j for i, j in zip(string.ascii_lowercase, int_arr())}
-    return sum(map(lambda x: prices[x], set(string.ascii_lowercase) - set(input())))
-
-
-1
+    arr = sorted(int_arr())
+    return arr[0] == arr[1]
 
 
 def main():
