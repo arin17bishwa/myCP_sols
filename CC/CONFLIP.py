@@ -1,4 +1,6 @@
-# region fastio
+from typing import Iterable, Callable
+
+# region fast io
 import os
 import sys
 from io import BytesIO, IOBase
@@ -25,7 +27,7 @@ class FastIO(IOBase):
         self.newlines = 0
         return self.buffer.read()
 
-    def readline(self):
+    def readline(self, *args, **kwargs) -> bytes:
         while self.newlines == 0:
             b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
             self.newlines = b.count(b"\n") + (not b)
@@ -53,37 +55,52 @@ class IOWrapper(IOBase):
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
-
 # endregion
 
 
-def intArr():
+def int_arr() -> Iterable[int]:
     return map(int, input().split())
 
 
-def In():
+def iin() -> int:
     return int(input())
 
 
-def func(initial, n, q):
-    initial %= 2
+def yn_dec(function) -> Callable:
+    letter_case: str = "upper"
+
+    def inner1(*args, **kwargs) -> str:
+        res = function(*args, **kwargs)
+        ans = "yes" if res else "no"
+        if letter_case == "upper":
+            return ans.upper()
+        if letter_case == "title":
+            return ans.title()
+        if letter_case == "lower":
+            return ans.lower()
+        return res
+
+    return inner1
+
+
+def func():
+    i, n, q = int_arr()
+    i %= 2
     q %= 2
     l1 = [0, 0]
     if n & 1:
-        l1[initial] = n // 2
-        l1[(initial + 1) % 2] = n - n // 2
+        l1[i] = n // 2
+        l1[(i + 1) % 2] = n - n // 2
     else:
-        l1[initial] = n - n // 2
-        l1[(initial + 1) % 2] = n // 2
+        l1[i] = n - n // 2
+        l1[(i + 1) % 2] = n // 2
     return l1[q]
 
 
 def main():
-    for _ in range(In()):
-        for _ in range(In()):
-            initial, n, q = intArr()
-            print(func(initial, n, q))
-    return
+    for _ in range(iin()):
+        for _ in range(iin()):
+            print(func())
 
 
 if __name__ == "__main__":
