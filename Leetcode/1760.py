@@ -6,7 +6,7 @@ class Solution:
     def minimumSize(self, nums: List[int], maxOperations: int) -> int:
         arr = nums
         low = 1
-        ans = high = 10 ** 9
+        ans = high = max(arr)
 
         while low <= high:
             mid = (low + high) >> 1
