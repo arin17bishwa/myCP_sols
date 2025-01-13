@@ -85,10 +85,20 @@ def yn_dec(function) -> Callable:
 
 
 def func():
-    n = iin()
-    likes = list(int_arr())
-    comments = list(int_arr())
-    return sorted(zip(likes, comments, range(n)), reverse=True)[0][2] + 1
+    _ = iin()
+    mx_likes = mx_comments = -1
+    ans = 0
+
+    for idx, (like_cnt, comment_cnt) in enumerate(zip(int_arr(), int_arr())):
+        if like_cnt > mx_likes:
+            mx_likes = like_cnt
+            mx_comments = comment_cnt
+            ans = idx
+        elif like_cnt == mx_likes:
+            if comment_cnt > mx_comments:
+                mx_comments = comment_cnt
+                ans = idx
+    return ans + 1
 
 
 def main():
