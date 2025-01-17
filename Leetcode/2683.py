@@ -1,7 +1,10 @@
-from functools import reduce
 from typing import List
 
 
 class Solution:
     def doesValidArrayExist(self, derived: List[int]) -> bool:
-        return reduce(lambda x, y: x ^ y, derived) == 0
+        curr = 0
+        for i in derived:
+            curr ^= i
+
+        return curr == 0
