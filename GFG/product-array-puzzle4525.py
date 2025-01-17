@@ -3,17 +3,17 @@ from typing import List
 
 class Solution:
     def productExceptSelf(self, arr: List[int]) -> List[int]:
-        prefix = arr[:]
-        suffix = arr[:]
         n = len(arr)
-        for i in range(1, n):
-            prefix[i] *= prefix[i - 1]
+        zeroes = arr.count(0)
 
-        for i in range(n - 2, -1, -1):
-            suffix[i] *= suffix[i + 1]
-
+        if zeroes > 1:
+            return [0] * n
+        total_product = 1
+        for i in arr:
+            if i:
+                total_product *= i
         return (
-                [suffix[1]]
-                + [prefix[i - 1] * suffix[i + 1] for i in range(1, n - 1)]
-                + [prefix[-2]]
+            [0 if i else total_product for i in arr]
+            if zeroes == 1
+            else [total_product // i for i in arr]
         )
