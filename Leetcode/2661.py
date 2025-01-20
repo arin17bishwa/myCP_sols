@@ -1,4 +1,3 @@
-from collections import defaultdict
 from typing import List, Tuple, Dict
 
 
@@ -8,8 +7,8 @@ class Solution:
         indices: Dict[int, Tuple[int, int]] = {
             mat[i][j]: (i, j) for i in range(m) for j in range(n)
         }
-        row_freq = defaultdict(int)
-        column_freq = defaultdict(int)
+        row_freq = [0] * m
+        column_freq = [0] * n
 
         for idx, x in enumerate(arr):
             i, j = indices[x]
