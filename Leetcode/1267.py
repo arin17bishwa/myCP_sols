@@ -4,10 +4,9 @@ from typing import List
 
 class Solution:
     def countServers(self, grid: List[List[int]]) -> int:
-        row_counter = Counter()
-        col_counter = Counter()
         m, n = len(grid), len(grid[0])
-
+        row_counter = [0] * m
+        col_counter = [0] * n
         for i in range(m):
             for j in range(n):
                 if grid[i][j]:
