@@ -86,7 +86,6 @@ def yn_dec(function) -> Callable:
 def func():
     n, p = int_arr()
     arr = list(int_arr())
-    # print(arr)
     ans = [float("inf") if arr[i] else 0 for i in range(n)]
     curr_mx = arr[0]
     for i in range(arr.index(0), n):
@@ -96,7 +95,6 @@ def func():
             continue
         curr_mx = max(curr_mx, curr)
         ans[i] = min(curr_mx, ans[i])
-    # print(ans)
     curr_mx = 0
     last_zero_idx = n - 1
     for last_zero_idx in range(n - 1, -1, -1):
@@ -109,7 +107,6 @@ def func():
             continue
         curr_mx = max(curr_mx, curr)
         ans[i] = min(curr_mx, ans[i])
-    # print(ans)
     return [ceil(i / p) for i in ans]
 
 
