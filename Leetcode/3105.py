@@ -3,18 +3,17 @@ from typing import List
 
 class Solution:
     def longestMonotonicSubarray(self, nums: List[int]) -> int:
+        arr = nums
+        n = len(arr)
+        curr = ans = 1
+        slope = 1  # 1 is increasing, -1 is decreasing
 
-        def longest_increasing_length(arr: List[int]):
-            ans = curr = 1
-            n = len(arr)
-            for i in range(1, n):
-                if arr[i - 1] < arr[i]:
-                    curr += 1
-                    ans = max(ans, curr)
-                else:
-                    curr = 1
-            return ans
+        for i in range(1, n):
+            if slope * (arr[i] - arr[i - 1]) > 0:
+                curr += 1
+            else:
+                slope *= -1
+                curr = 1 if arr[i] == arr[i - 1] else 2
+            ans = max(ans, curr)
 
-        return max(
-            longest_increasing_length(nums), longest_increasing_length(nums[::-1])
-        )
+        return ans
