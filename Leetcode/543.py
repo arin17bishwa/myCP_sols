@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Tuple
 
 
 class TreeNode:
@@ -11,7 +11,7 @@ class TreeNode:
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
 
-        def dfs(node: Optional[TreeNode]):
+        def dfs(node: Optional[TreeNode]) -> Tuple[int, int]:
             if not node:
                 return -1, -1
             left_self, left_mixed = dfs(node.left)
