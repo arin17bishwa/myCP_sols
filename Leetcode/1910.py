@@ -12,24 +12,10 @@ class Solution:
         for ch in s:
             stack.append(ch)
             curr.append(ch)
-            # print(1, stack)
-            # print(2, curr)
             if len(curr) > m:
                 curr.popleft()
-            if ch == part[-1] and part_list == curr:
+            if ch == part[-1] and len(curr) == m and part_list == curr:
                 for _ in range(m):
                     stack.pop()
                 curr = deque(stack[-m:])
         return "".join(stack)
-
-
-def main():
-    obj = Solution()
-    s = "daabcbaabcbc"
-    t = "abc"
-    ans = obj.removeOccurrences(s, t)
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
