@@ -1,6 +1,6 @@
-from typing import List
 import heapq
 from math import ceil
+from typing import List
 
 
 class Solution:
@@ -8,8 +8,9 @@ class Solution:
         heap = [-i for i in nums]
         heapq.heapify(heap)
         ans = 0
-        for _ in range(k):
-            mx = -heapq.heappop(heap)
-            ans += mx
-            heapq.heappush(heap, -ceil(mx / 3))
+        while k and heap[0] < 0:
+            x = -heapq.heappop(heap)
+            ans += x
+            k -= 1
+            heapq.heappush(heap, -ceil(x / 3))
         return ans
