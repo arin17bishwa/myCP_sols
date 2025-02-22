@@ -1,3 +1,4 @@
+import random
 from typing import Dict, Optional
 
 
@@ -64,7 +65,7 @@ class RandomizedSet:
             self.curr_ptr = self.curr_ptr.nxt
         else:
             self.curr_ptr = self.head.nxt
-        return val
+        return random.choice(tuple(self.elements.values())).val
 
 
 # Your RandomizedSet object will be instantiated and called as such:
