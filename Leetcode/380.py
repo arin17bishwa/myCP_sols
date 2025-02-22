@@ -66,33 +66,3 @@ class RandomizedSet:
         else:
             self.curr_ptr = self.head.nxt
         return random.choice(tuple(self.elements.values())).val
-
-
-# Your RandomizedSet object will be instantiated and called as such:
-# obj = RandomizedSet()
-# param_1 = obj.insert(val)
-# param_2 = obj.remove(val)
-# param_3 = obj.getRandom()
-
-
-def main():
-    obj = RandomizedSet()
-
-    obj.insert(0)
-    print(obj.head, obj.elements, obj.curr_ptr)
-
-    obj.remove(0)
-    print(obj.head, obj.elements, obj.curr_ptr)
-
-    obj.insert(-1)
-    print(obj.head, obj.elements, obj.curr_ptr)
-
-    obj.remove(0)
-
-    print(obj.head)
-    print(obj.curr_ptr)
-    print(obj.elements)
-
-
-if __name__ == "__main__":
-    main()
