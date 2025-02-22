@@ -15,17 +15,3 @@ class Solution:
             else:
                 hi = mid - 1
         return ans
-
-
-def main():
-    obj = Solution()
-    arr = [3, 0, 6, 1, 5]
-    # arr = [1, 3, 1]
-    # arr = [0]
-
-    ans = obj.hIndex(arr)
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
