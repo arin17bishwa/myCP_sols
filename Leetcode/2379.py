@@ -1,25 +1,16 @@
+from typing import List
+
+
 class Solution:
     def minimumRecolors(self, blocks: str, k: int) -> int:
         s = blocks
-        ans = n = len(s)
-        tail = 0
-        curr_cost = 0
-        curr_block = 0
+        n = len(s)
+        cost: List[int] = [0] + [int(i == "W") for i in s]
 
-        for head in range(n):
-            if s[head] == "W":
-                curr_cost += 1
+        for i in range(1, n + 1):
+            cost[i] += cost[i - 1]
 
-            curr_block += 1
-
-            while tail <= head and curr_block > k:
-                if s[tail] == "W":
-                    curr_cost -= 1
-                curr_block -= 1
-                tail += 1
-            if curr_block >= k:
-                ans = min(ans, curr_cost)
-        return ans
+        return min([cost[i] - cost[i - k] for i in range(k, n + 1)])
 
 
 def main():
@@ -27,6 +18,13 @@ def main():
 
     s = "WBBWWBBWBW"
     k = 7
+
+    s = "WBWW"
+    k = 2
+
+    s = "WWBBBWBBBBBWWBWWWB"
+    k = 16
+    # print(len(s))
 
     ans = obj.minimumRecolors(s, k)
 
