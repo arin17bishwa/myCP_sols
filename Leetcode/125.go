@@ -1,23 +1,23 @@
 package Leetcode
 
 import (
-	"strings"
+	"unicode"
 )
 
 func isPalindrome(s string) bool {
 	n := len(s)
 
 	for head, tail := 0, n-1; head < tail; {
-		for head < tail && !isAlphaNumeric(s[head]) {
+		for head < tail && !isAlphaNumeric(rune(s[head])) {
 			head++
 		}
-		for head < tail && !isAlphaNumeric(s[tail]) {
+		for head < tail && !isAlphaNumeric(rune(s[tail])) {
 			tail--
 		}
 		if head == tail {
 			return true
 		}
-		if strings.ToLower(string(s[head])) != strings.ToLower(string(s[tail])) {
+		if unicode.ToLower(rune(s[head])) != unicode.ToLower(rune(s[tail])) {
 			return false
 		}
 		head++
@@ -26,6 +26,6 @@ func isPalindrome(s string) bool {
 	return true
 }
 
-func isAlphaNumeric(ch uint8) bool {
-	return (ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122)
+func isAlphaNumeric(ch rune) bool {
+	return unicode.IsDigit(ch) || unicode.IsLetter(ch)
 }
