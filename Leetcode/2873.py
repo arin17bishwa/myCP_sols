@@ -6,8 +6,14 @@ class Solution:
         arr = nums
         n = len(arr)
         ans = 0
-        for i in range(n):
-            for j in range(i + 1, n):
-                for k in range(j + 1, n):
-                    ans = max(ans, (arr[i] - arr[j]) * arr[k])
+        prefix_max = arr[:]
+        suffix_max = arr[:]
+
+        for i in range(1, n):
+            prefix_max[i] = max(prefix_max[i], prefix_max[i - 1])
+        for i in range(n - 2, -1, -1):
+            suffix_max[i] = max(suffix_max[i], suffix_max[i + 1])
+
+        for j in range(1, n - 1):
+            ans = max(ans, (prefix_max[j - 1] - arr[j]) * suffix_max[j + 1])
         return ans
