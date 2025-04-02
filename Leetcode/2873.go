@@ -3,12 +3,19 @@ package Leetcode
 func maximumTripletValue(nums []int) int64 {
 	n := len(nums)
 	var ans int64 = 0
-	for i := 0; i < n; i++ {
-		for j := i + 1; j < n; j++ {
-			for k := j + 1; k < n; k++ {
-				ans = max(ans, int64((nums[i]-nums[j])*nums[k]))
-			}
-		}
+	prefixMax := append(make([]int, 0), nums...)
+	suffixMax := append(make([]int, 0), nums...)
+
+	for i := 1; i < n; i++ {
+		prefixMax[i] = max(prefixMax[i-1], prefixMax[i])
 	}
+	for i := n - 2; i > -1; i-- {
+		suffixMax[i] = max(suffixMax[i], suffixMax[i+1])
+	}
+
+	for j := 1; j < n-1; j++ {
+		ans = max(ans, int64((prefixMax[j-1]-nums[j])*suffixMax[j+1]))
+	}
+
 	return ans
 }
