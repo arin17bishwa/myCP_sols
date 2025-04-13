@@ -4,10 +4,6 @@ class Solution:
         prime_cnt = 4
         ans = 1
         mod = 10**9 + 7
-        for i in range(n):
-            if not i & 1:
-                ans *= even_cnt
-            else:
-                ans *= prime_cnt
-            ans %= mod
-        return ans
+        odd_places = n >> 1
+        even_places = n - odd_places
+        return (pow(even_cnt, even_places, mod) * pow(prime_cnt, odd_places, mod)) % mod
