@@ -8,5 +8,4 @@ func threeConsecutiveOdds(arr []int) bool {
 		}
 	}
 	return false
-
 }
