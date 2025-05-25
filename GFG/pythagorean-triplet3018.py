@@ -2,19 +2,10 @@ class Solution:
     def pythagoreanTriplet(self, arr: list[int]):
         arr.sort()
         n = len(arr)
-        elements = set(arr)
-
-        for i, a in enumerate(arr):
-            for j in range(i + 1, n):
-                b = arr[j]
-                x2 = a * a + b * b
-                if not self.is_perfect_square(x2):
-                    continue
-                if int(pow(x2, 0.5)) in elements:
+        squares = set(map(lambda x: x * x, arr))
+        mx = max(arr)
+        for i in range(1, mx + 1):
+            for j in range(i + 1, mx + 1):
+                if all(map(lambda x: x in squares, (i * i, j * j, i * i + j * j))):
                     return True
         return False
-
-    @staticmethod
-    def is_perfect_square(n: int):
-        t = pow(n, 0.5)
-        return t % 1 == 0 and t * t == n
