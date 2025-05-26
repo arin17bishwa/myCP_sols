@@ -2,7 +2,6 @@ package Leetcode
 
 type NumArray struct {
 	prefixSum []int
-	nums      []int
 }
 
 func Constructor(nums []int) NumArray {
@@ -13,7 +12,6 @@ func Constructor(nums []int) NumArray {
 	}
 	return NumArray{
 		prefixSum: prefixSum,
-		nums:      nums,
 	}
 }
 
