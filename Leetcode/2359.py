@@ -34,30 +34,9 @@ class Solution:
 
         min_dist = min(max(i, j) for i, j in zip(d1, d2))
 
-        print(d1)
-        print(d2)
-        print(min_dist)
-
         if min_dist == float("inf"):
             return -1
         for idx, (i, j) in enumerate(zip(d1, d2)):
             if max(i, j) == min_dist:
                 return idx
-
-
-def main():
-    obj = Solution()
-
-    arr = [4, 3, 0, 5, 3, -1]
-    n1, n2 = 4, 0
-
-    arr = [4, 4, 8, -1, 9, 8, 4, 4, 1, 1]
-    n1, n2 = 5, 6
-
-    ans = obj.closestMeetingNode(arr, n1, n2)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
+        return -1
