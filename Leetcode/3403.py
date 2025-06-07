@@ -1,8 +1,10 @@
 class Solution:
     def answerString(self, word: str, numFriends: int) -> str:
-        s = word
-        n = len(s)
-        if n == 1 or numFriends == 1:
-            return s
+        n = len(word)
 
-        return max(s[i: i + n - numFriends + 1] for i in range(n))
+        if n == 1 or numFriends == 1:
+            return word
+
+        if n == numFriends:
+            return max(word)
+        return max(word[i : i + (n - numFriends + 1)] for i in range(n))
