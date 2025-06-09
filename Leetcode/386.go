@@ -7,12 +7,12 @@ func lexicalOrder(n int) []int {
 		if len(ans) > n {
 			break
 		}
-		dfs(startDigit, n, &ans)
+		dfsLexicalOrder(startDigit, n, &ans)
 	}
 	return ans
 }
 
-func dfs(curr, limit int, ans *[]int) {
+func dfsLexicalOrder(curr, limit int, ans *[]int) {
 	if curr > limit {
 		return
 	}
@@ -22,7 +22,7 @@ func dfs(curr, limit int, ans *[]int) {
 	}
 
 	for i := range 10 {
-		dfs(curr*10+i, limit, ans)
+		dfsLexicalOrder(curr*10+i, limit, ans)
 	}
 
 }
