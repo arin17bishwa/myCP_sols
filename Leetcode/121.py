@@ -4,9 +4,11 @@ from typing import List
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         arr = prices
-        mn = arr[0]
         ans = 0
+        mn = arr[0]
         for i in arr:
-            ans = max(ans, i - mn)
-            mn = min(mn, i)
+            if i <= mn:
+                mn = i
+            else:
+                ans = max(ans, i - mn)
         return ans
