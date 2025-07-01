@@ -4,16 +4,11 @@ from typing import List
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         arr = intervals
-        n = len(arr)
         arr.sort()
         ans = []
-        curr = arr[0]
-        for idx in range(1, n):
-            start, end = arr[idx]
-            if start <= curr[1]:
-                curr[1] = max(curr[1], end)
+        for start, end in arr:
+            if ans and ans[-1][1] >= start:
+                ans[-1][1] = max(ans[-1][1], end)
             else:
-                ans.append(curr[:])
-                curr = [start, end]
-        ans.append(curr[:])
+                ans.append([start, end])
         return ans
