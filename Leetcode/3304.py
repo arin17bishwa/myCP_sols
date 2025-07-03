@@ -7,6 +7,5 @@ class Solution:
             return transformed
 
         while len(ans) < k:
-            nxt = next_chars(ans)
-            ans.extend(nxt)
+            ans.extend(next_chars(arr=ans))
         return ans[k - 1]
