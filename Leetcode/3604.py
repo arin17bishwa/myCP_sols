@@ -31,23 +31,3 @@ class Solution:
                     heapq.heappush(heap, (time + 1, nei))
 
         return -1
-
-
-def main():
-    obj = Solution()
-
-    n = 3
-    arr = [[0, 1, 0, 1], [1, 2, 2, 5]]
-
-    # n = 4
-    # arr = [[0, 1, 0, 3], [1, 3, 7, 8], [0, 2, 1, 5], [2, 3, 4, 7]]
-
-    # n = 3
-    # arr = [[1, 0, 1, 3], [1, 2, 3, 5]]
-
-    # ans = obj.minTime(n, arr)
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
