@@ -10,10 +10,9 @@ class Solution:
         if n == 0:
             return "0"
         chars = list(string.digits + string.ascii_uppercase)
-        curr = base
         ans = []
 
         while n:
             ans.append(chars[n % base])
-            n //= curr
+            n //= base
         return "".join(ans[::-1])
