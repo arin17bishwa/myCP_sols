@@ -56,7 +56,7 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 # endregion
 
 
-def intArr():
+def int_arr():
     return map(int, input().split())
 
 
