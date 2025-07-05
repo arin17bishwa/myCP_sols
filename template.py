@@ -60,7 +60,7 @@ def int_arr():
     return map(int, input().split())
 
 
-def In():
+def iin():
     return int(input())
 
 
@@ -69,7 +69,7 @@ def func():
 
 
 def main():
-    for _ in range(In()):
+    for _ in range(iin()):
         print(func())
     return
 
