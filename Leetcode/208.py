@@ -1,25 +1,20 @@
 from collections import defaultdict
 
 
-class TrieNode:
-    def __init__(self):
-        self.tree = defaultdict(TrieNode)
-        self.ends: bool = False
-
-
 class Trie:
 
     def __init__(self):
-        self.tree: dict[str, TrieNode] = defaultdict(TrieNode)
+        self.tree: dict[str, Trie] = defaultdict(Trie)
+        self.ends: bool = False
 
     def insert(self, word: str) -> None:
-        curr: TrieNode | Trie = self
+        curr: Trie = self
         for ch in word:
             curr = curr.tree[ch]
         curr.ends = True
 
     def search(self, word: str) -> bool:
-        curr: Trie | TrieNode = self
+        curr: Trie = self
         for ch in word:
             if ch not in curr.tree:
                 return False
@@ -27,7 +22,7 @@ class Trie:
         return curr.ends
 
     def startsWith(self, prefix: str) -> bool:
-        curr: Trie | TrieNode = self
+        curr: Trie = self
         for ch in prefix:
             if ch not in curr.tree:
                 return False
