@@ -15,8 +15,8 @@ class Solution:
         ans = 0
         curr = head
         while curr:
-            ans *= 2
+            ans <<= 1
             if curr.val:
-                ans += 1
+                ans |= 1
             curr = curr.next
         return ans
