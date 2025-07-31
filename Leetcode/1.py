@@ -4,17 +4,14 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        arr = nums
-        indices = defaultdict(list)
-        for idx, ele in enumerate(arr):
-            indices[ele].append(idx)
-        for ele in indices:
-            comp = target - ele
+        mapping = defaultdict(list)
+        for idx, val in enumerate(nums):
+            mapping[val].append(idx)
 
-            if comp in indices:
-                if comp == ele:
-                    if len(indices[ele]) > 1:
-                        return indices[ele][:2]
-                else:
-                    return sorted([indices[ele][0], indices[comp][0]])
-        return [-1, -1]
+        for k in mapping:
+            if target == (k << 1):
+                if len(mapping[k]) > 1:
+                    return mapping[k][:2]
+            elif target - k in mapping:
+                return [mapping[k][0], mapping[target - k][0]]
+        return []
