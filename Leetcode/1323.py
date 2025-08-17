@@ -5,15 +5,3 @@ class Solution:
                 num += 3 * (pow(10, i))
                 break
         return num
-
-
-def main():
-    obj = Solution()
-    n = 9669
-    ans = obj.maximum69Number(n)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
