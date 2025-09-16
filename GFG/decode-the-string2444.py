@@ -2,22 +2,20 @@ class Solution:
     def decodedString(self, s):
         # code here
         stack = []
-        curstr = ""
-        curdig = ""
-        prevdig = ""
-        prevstr = ""
+        curr_str = ""
+        curr_digit = ""
         for i in range(len(s)):
             if s[i] == "[":
-                stack.append(curstr)
-                stack.append(curdig)
-                curdig = ""
-                curstr = ""
+                stack.append(curr_str)
+                stack.append(curr_digit)
+                curr_digit = ""
+                curr_str = ""
             elif s[i] == "]":
-                prevdig = stack.pop()
-                prevstr = stack.pop()
-                curstr = prevstr + curstr * int(prevdig)
+                prev_digit = stack.pop()
+                prev_str = stack.pop()
+                curr_str = prev_str + curr_str * int(prev_digit)
             elif s[i].isdigit():
-                curdig += s[i]
+                curr_digit += s[i]
             else:
-                curstr += s[i]
-        return curstr
+                curr_str += s[i]
+        return curr_str
