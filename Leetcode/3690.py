@@ -25,20 +25,3 @@ class Solution:
                             seen.add(nxt)
                             q.append((nxt, steps + 1))
         return -1
-
-
-def main():
-    obj = Solution()
-    arr1 = [3, 1, 2]
-    arr2 = [1, 2, 3]
-
-    # arr1=[1,1,2,3,4,5]
-    # arr2=[5,4,3,2,1,1]
-
-    ans = obj.minSplitMerge(arr1, arr2)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
