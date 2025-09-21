@@ -48,24 +48,3 @@ class Solution:
                     heapq.heappush(heap, (-subarray_value(*right_sub), left + 1, right))
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [1, 3, 2]
-    k = 2
-
-    # arr = [4, 2, 5, 1]
-    # k = 3
-
-    # arr = [28, 21, 50, 32]
-    # k = 10
-
-    ans = obj.maxTotalValue(arr, k)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
