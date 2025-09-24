@@ -1,6 +1,5 @@
 import heapq
 from collections import deque
-from time import sleep
 
 
 class SpecialQueue:
@@ -50,20 +49,12 @@ class SpecialQueue:
             heapq.heappop(self.max_heap)
         return -self.max_heap[0][0]
 
-    def print(self):
-        print(self.dq)
-        print(self.lower_bound, self.upper_bound)
-        print(self.min_heap)
-        print(self.max_heap)
-
-
 
 def main():
     obj = SpecialQueue()
 
     obj.enqueue(4)
     obj.enqueue(2)
-    obj.print()
     print(obj.getFront())
     print(obj.getMin())
     print(obj.dequeue())
