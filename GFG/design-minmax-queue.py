@@ -5,18 +5,15 @@ from collections import deque
 class SpecialQueue:
     def __init__(self):
         self.dq = deque()
-        self.counter = 0
-        self.lower_bound = self.counter
-        self.upper_bound = self.counter
+        self.lower_bound = 0
+        self.upper_bound = 0
         self.min_heap = []
         self.max_heap = []
 
     def _insertion_bookkeeping(self):
-        self.counter += 1
         self.upper_bound += 1
 
     def _deletion_bookkeeping(self):
-        self.counter -= 1
         self.lower_bound += 1
 
     def enqueue(self, x):
