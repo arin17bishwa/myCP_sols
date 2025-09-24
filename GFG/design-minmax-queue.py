@@ -48,18 +48,3 @@ class SpecialQueue:
         ):
             heapq.heappop(self.max_heap)
         return -self.max_heap[0][0]
-
-
-def main():
-    obj = SpecialQueue()
-
-    obj.enqueue(4)
-    obj.enqueue(2)
-    print(obj.getFront())
-    print(obj.getMin())
-    print(obj.dequeue())
-    print(obj.getMax())
-
-
-if __name__ == "__main__":
-    main()
