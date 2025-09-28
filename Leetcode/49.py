@@ -1,17 +1,15 @@
-from typing import List, Tuple, Dict
-from collections import defaultdict
+import string
+from collections import Counter, defaultdict
+from typing import List
 
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        freq_groups: defaultdict = defaultdict(list)
+        def freq(s: str) -> tuple[int, ...]:
+            counter = Counter(s)
+            return tuple(counter[i] for i in string.ascii_lowercase)
 
-        def create_count_tuple(s: str) -> Tuple[int]:
-            freq = [0] * 26
-            for ch in s:
-                freq[ord(ch) - 97] += 1
-            return tuple(freq)
-
-        for st in strs:
-            freq_groups[create_count_tuple(st)].append(st)
-        return list(freq_groups.values())
+        groups: defaultdict[tuple[int, ...], list[str]] = defaultdict(list)
+        for x in strs:
+            groups[freq(x)].append(x)
+        return list(groups.values())
