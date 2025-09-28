@@ -32,16 +32,3 @@ class Solution:
             if is_inc[i] and is_dec[i + 1]:
                 ans = min(ans, abs(prefix_sum[i] - (prefix_sum[-1] - prefix_sum[i])))
         return -1 if ans == 10**18 else ans
-
-
-def main():
-    obj = Solution()
-    arr = [1, 3, 2]
-
-    ans = obj.splitArray(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
