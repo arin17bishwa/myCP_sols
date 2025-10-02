@@ -8,18 +8,6 @@ class TreeNode:
         self.left = left
         self.right = right
 
-    def dfs(self)->None:
-        ans=[]
-        def _dfs(node:TreeNode)->None:
-            if not node:
-                return
-            _dfs(node.left)
-            ans.append(node.val)
-            _dfs(node.right)
-
-        _dfs(self)
-        print(ans)
-
 
 class Solution:
     def trimBST(
@@ -42,5 +30,3 @@ class Solution:
                 return node
 
         return dfs(root)
-
-
