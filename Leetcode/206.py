@@ -11,14 +11,11 @@ class ListNode:
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head is None:
-            return
+            return None
 
         curr: Optional[ListNode] = head
         prev: Optional[ListNode] = None
 
         while curr:
-            t = curr.next
-            curr.next = prev
-            prev = curr
-            curr = t
+            curr.next, prev, curr = prev, curr, curr.next
         return prev
