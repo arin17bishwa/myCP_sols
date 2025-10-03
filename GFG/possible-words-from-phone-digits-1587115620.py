@@ -27,24 +27,8 @@ class Solution:
                     func(idx + 1, curr)
                     curr.pop()
             else:
-                func(idx+1, curr)
+                func(idx + 1, curr)
 
         func(0, [])
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [2, 3]
-    arr = [2]
-    arr=[8,8,1]
-
-    ans = obj.possibleWords(arr)
-
-    # print(sorted(ans))
-
-
-if __name__ == "__main__":
-    main()
