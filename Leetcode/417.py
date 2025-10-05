@@ -31,8 +31,8 @@ class Solution:
                         final_nodes.add((_x, _y))
             return final_nodes
 
-        pacific_borders = [[0, j] for j in range(n)] + [[i, 0] for i in range(1, m)]
-        atlantic_borders = [[m - 1, j] for j in range(n)] + [
-            [i, n - 1] for i in range(m - 1)
+        return [
+            list(i)
+            for i in bfs([[0, j] for j in range(n)] + [[i, 0] for i in range(1, m)])
+            & bfs([[m - 1, j] for j in range(n)] + [[i, n - 1] for i in range(m - 1)])
         ]
-        return [list(i) for i in bfs(pacific_borders) & bfs(atlantic_borders)]
