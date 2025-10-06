@@ -41,17 +41,3 @@ class Solution:
         except Exception as _:
             res = ans
         return res
-
-
-def main():
-    obj = Solution()
-
-    n = 5
-
-    # ans = obj.knightTour(n)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
