@@ -10,17 +10,16 @@ class Solution:
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
-        if not p or not q:
+        if not root or not p or not q:
             return root
 
-        def func(node: TreeNode | None):
-            nonlocal p, q
-            if not node:
-                return None
-            if max(p.val, q.val) < node.val:
-                return func(node.left)
-            if min(p.val, q.val) > node.val:
-                return func(node.right)
-            return node
+        curr = root
 
-        return func(node=root)
+        while curr:
+            if max(p.val, q.val) < curr.val:
+                curr = curr.left
+            elif min(p.val, q.val) > curr.val:
+                curr = curr.right
+            else:
+                return curr
+        return curr
