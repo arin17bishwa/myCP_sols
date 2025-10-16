@@ -1,6 +1,7 @@
-from typing import Optional, Tuple
+from typing import Optional
 
 
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -10,15 +11,17 @@ class TreeNode:
 
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        ans = 0
 
-        def dfs(node: Optional[TreeNode]) -> Tuple[int, int]:
+        def func(node: TreeNode | None) -> int:
+            nonlocal ans
             if not node:
-                return -1, -1
-            left_self, left_mixed = dfs(node.left)
-            right_self, right_mixed = dfs(node.right)
-            return (
-                max(left_self, right_self, left_mixed + right_mixed + 2),
-                max(left_mixed, right_mixed) + 1,
-            )
+                return 0
+            left_ht = func(node.left)
+            right_ht = func(node.right)
+            ans = max(ans, left_ht + right_ht)
+            return 1 + max(left_ht, right_ht)
 
-        return max(dfs(root))
+        func(root)
+
+        return ans
