@@ -11,7 +11,7 @@ class Solution:
             if v - 1 > n - freq[k]:
                 return ""
 
-        heap = [[-j, i] for i, j in freq.items()]
+        heap = [(-j, i) for i, j in freq.items()]
         heapq.heapify(heap)
 
         last = heapq.heappop(heap)
@@ -19,22 +19,8 @@ class Solution:
         for _ in range(n - 1):
             curr = heapq.heappop(heap)
             if last[0] != -1:
-                heapq.heappush(heap, [last[0] + 1, last[1]])
+                heapq.heappush(heap, (last[0] + 1, last[1]))
             ans.append(curr[1])
             last = curr
 
         return "".join(ans)
-
-
-def main():
-    obj = Solution()
-
-    s = "vvvlo"
-
-    ans = obj.reorganizeString(s)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
