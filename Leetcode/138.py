@@ -11,23 +11,29 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: Optional[Node]) -> Optional[Node]:
+        if not head:
+            return
         dummy = Node(0)
-        copy_curr = dummy
         curr = head
-        copy_mapping: dict[Node | None, Node | None] = {}
+
         while curr:
-            new_node = Node(curr.val)
-            copy_mapping[curr] = new_node
-            copy_curr.next = new_node
-            curr = curr.next
-            copy_curr = copy_curr.next
+            nxt = curr.next
+            curr.next = Node(curr.val, nxt)
+            curr = curr.next.next
 
         curr = head
-        curr_copy = dummy.next
+
         while curr:
             if curr.random:
-                curr_copy.random = copy_mapping[curr.random]
-            curr = curr.next
-            curr_copy = curr_copy.next
+                curr.next.random = curr.random.next
+            curr = curr.next.next
 
-        return dummy.next
+        copy_header = Node(0)
+        copy_curr = copy_header
+
+        curr = head
+        while curr:
+            copy_curr.next = curr.next
+            curr = curr.next.next
+            copy_curr = copy_curr.next
+        return copy_header.next
