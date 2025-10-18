@@ -1,4 +1,3 @@
-import heapq
 from collections import Counter
 
 
@@ -7,20 +6,17 @@ class Solution:
         freq = Counter(s)
         n = len(s)
 
-        for k, v in freq.items():
-            if v - 1 > n - freq[k]:
-                return ""
+        if any(v > (1 + n) // 2 for v in freq.values()):
+            return ""
 
-        heap = [(-j, i) for i, j in freq.items()]
-        heapq.heapify(heap)
-
-        last = heapq.heappop(heap)
-        ans = [last[1]]
-        for _ in range(n - 1):
-            curr = heapq.heappop(heap)
-            if last[0] != -1:
-                heapq.heappush(heap, (last[0] + 1, last[1]))
-            ans.append(curr[1])
-            last = curr
+        chars = sorted(freq.keys(), key=lambda x: freq[x], reverse=True)
+        ans: list[str] = [""] * n
+        curr_idx = 0
+        for ch in chars:
+            for _ in range(freq[ch]):
+                if curr_idx >= n:
+                    curr_idx = 1
+                ans[curr_idx] = ch
+                curr_idx += 2
 
         return "".join(ans)
