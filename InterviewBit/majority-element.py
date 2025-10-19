@@ -2,16 +2,19 @@ from typing import List
 
 
 class Solution:
-    def majorityElement(self, arr: List[int]) -> int:
+    # @param A : tuple of integers
+    # @return an integer
+    def majorityElement(self, A: List[int]) -> int:
+        arr = A
         n = len(arr)
         candidate = arr[0]
-        current_freq = 1
-        for i in range(1, n):
+        curr_freq = 0
+        for i in range(n):
             if arr[i] == candidate:
-                current_freq += 1
+                curr_freq += 1
             else:
-                current_freq -= 1
-            if current_freq <= 0:
-                candidate = arr[i]
-                current_freq = 1
+                curr_freq -= 1
+                if curr_freq < 0:
+                    candidate = arr[i]
+                    curr_freq = 1
         return candidate

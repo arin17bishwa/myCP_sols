@@ -10,18 +10,10 @@ class TreeNode:
 
 
 class Solution:
-    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        ans = 0
-
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
         def func(node: TreeNode | None) -> int:
-            nonlocal ans
             if not node:
                 return 0
-            left_ht = func(node.left)
-            right_ht = func(node.right)
-            ans = max(ans, left_ht + right_ht)
-            return 1 + max(left_ht, right_ht)
+            return 1 + max(func(node.left), func(node.right))
 
-        func(root)
-
-        return ans
+        return func(root)
