@@ -36,19 +36,3 @@ class Solution:
             elapsed_time += 1
 
         return -1 if any(1 in row for row in grid) else max(0, elapsed_time - 1)
-
-
-def main():
-    obj = Solution()
-    arr = [[2, 1, 1], [1, 1, 0], [0, 1, 1]]
-    arr = [[2, 1, 1], [0, 1, 1], [1, 0, 1]]
-    arr = [[0, 2]]
-    arr = [[2, 2], [1, 1], [0, 0], [2, 0]]
-
-    ans = obj.orangesRotting(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
