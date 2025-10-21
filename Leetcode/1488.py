@@ -12,14 +12,11 @@ class Solution:
         def dfs(node: TreeNode | None, running_max: int) -> int:
             if not node:
                 return 0
-            if node.val >= running_max:
-                return 1 + dfs(node.left, node.val) + dfs(node.right, node.val)
+
             return (
-                1
-                if node.val >= running_max
-                else 0
+                (1 if node.val >= running_max else 0)
                 + dfs(node.left, max(node.val, running_max))
                 + dfs(node.right, max(node.val, running_max))
             )
 
-        return dfs(root, root.val)
+        return dfs(root, -(10**9))
