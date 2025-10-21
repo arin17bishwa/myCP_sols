@@ -21,12 +21,11 @@ class Solution:
             row: list[int] = []
             for _ in range(len(q)):
                 curr = q.popleft()
-                if not curr:
-                    continue
                 row.append(curr.val)
-                q.append(curr.left)
-                q.append(curr.right)
-            if row:
-                ans.append(row[:])
+                if curr.left:
+                    q.append(curr.left)
+                if curr.right:
+                    q.append(curr.right)
+            ans.append(row[:])
 
         return ans
