@@ -14,20 +14,3 @@ class Solution:
 
             arr[idx] = heapq.heappop(heap)
         return
-
-
-def main():
-    obj = Solution()
-
-    arr = [2, 3, 1, 4]
-    k = 2
-
-    arr = [7, 9, 14]
-    k = 1
-    obj.nearlySorted(arr, k)
-
-    # print(arr)
-
-
-if __name__ == "__main__":
-    main()
