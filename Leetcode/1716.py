@@ -1,10 +1,8 @@
 class Solution:
     def totalMoney(self, n: int) -> int:
-        if n <= 7:
-            return sum(list(range(1, 8))[:n])
         k, mod = divmod(n, 7)
         ans = 28 * k + 7 * ((k * (k - 1)) // 2)
-        return ans + ((k - 0) * mod + self.totalMoney(mod))
+        return ans + k * mod + ((mod * (mod + 1)) >> 1)
 
 
 def main():
