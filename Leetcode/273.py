@@ -10,7 +10,6 @@ class Solution:
             return self.spell_1(s)
         elif len(s) < 3:
             return self.spell_2(s)
-
         return self.spell_3(s)
 
     def helper(self, s: str) -> str:
@@ -91,18 +90,3 @@ class Solution:
         }
 
         return spell_map[s].title()
-
-
-def main():
-    obj = Solution()
-    n = 1234919
-    n = 1234567
-    n = 1000000
-
-    ans = obj.numberToWords(n)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
