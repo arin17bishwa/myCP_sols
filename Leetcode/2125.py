@@ -17,18 +17,3 @@ class Solution:
         for i in range(1, len(arr)):
             ans += arr[i] * arr[i - 1]
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = ["011001", "000000", "010100", "001000"]
-    arr = ["000", "111", "000"]
-
-    ans = obj.numberOfBeams(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
