@@ -21,28 +21,3 @@ class Solution:
                 vis.add((top_i, top_j + 1))
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr1 = [6, 6, 9, 10, 10, 11, 12]
-    arr2 = [4, 5, 5, 6, 10, 11, 13]
-    k = 10
-
-    arr1 = [2, 8, 9, 12]
-    arr2 = [2, 8, 9, 12]
-    k = 26
-    temp = []
-    for i in arr1:
-        for j in arr2:
-            temp.append([i, j])
-
-    ans = obj.kSmallestPair(arr1, arr2, k)
-
-    # print(ans)
-    # print(sorted(temp, key=lambda x: sum(x))[:k])
-
-
-if __name__ == "__main__":
-    main()
