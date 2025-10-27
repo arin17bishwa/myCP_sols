@@ -1,6 +1,7 @@
 from typing import Optional
 
 
+# Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -8,20 +9,25 @@ class ListNode:
 
 
 class Solution:
-    def swapPairs(self, head: ListNode) -> ListNode:
+    def swapPairs(self, A: Optional[ListNode]) -> Optional[ListNode]:
+        head = A
         if not head:
-            return head
-        prev = ListNode(0)
-        prev.next = head
+            return None
 
-        sentry = prev
-        first: ListNode = head
-        second: Optional[ListNode] = first.next
-        while first and first.next:
-            second = first.next
-            third: Optional[ListNode] = second.next
-            second.next = first
-            first.next = third
-            prev.next = second
-            first, prev = third, first
-        return sentry.next
+        dummy = ListNode(0)
+        dummy.next = head
+
+        prev, a, b = dummy, head, head.next
+
+        while a and b:
+            tmp = b.next
+
+            prev.next = b
+            b.next = a
+            a.next = tmp
+
+            prev = a
+            b = prev.next.next if prev.next else None
+            a = prev.next
+
+        return dummy.next
