@@ -5,6 +5,7 @@ class Solution:
     def countValidSelections(self, nums: List[int]) -> int:
         arr = nums
         n = len(arr)
+
         if n == 1:
             return int(arr[0] == 0) * 2
 
@@ -31,20 +32,3 @@ class Solution:
                     ans += 2
 
         return ans
-
-
-def main():
-    obj = Solution()
-    arr = [1, 0, 2, 0, 3]
-    arr = [2, 3, 4, 0, 4, 1, 0]
-    arr = [16, 13, 10, 0, 0, 0, 10, 6, 7, 8, 7]
-    arr = [0, 1]
-    arr = [0, 0, 0, 0, 0, 0, 0, 0]
-
-    ans = obj.countValidSelections(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
