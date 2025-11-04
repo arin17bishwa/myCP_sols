@@ -15,18 +15,3 @@ class Solution:
                 for i in sorted(freq.items(), key=lambda y: (y[1], y[0]), reverse=True)
             ][:x]
         )
-
-
-def main():
-    obj = Solution()
-
-    arr = [1, 1, 2, 2, 3, 4, 2, 3]
-    k, x = 6, 2
-
-    ans = obj.findXSum(arr, k, x)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
