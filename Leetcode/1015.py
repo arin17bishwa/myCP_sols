@@ -13,16 +13,3 @@ class Solution:
             seen.add(mod)
             curr = mod * 10 + 1
         return -1
-
-
-def main():
-    obj = Solution()
-    k = 4
-
-    ans = obj.smallestRepunitDivByK(k)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
