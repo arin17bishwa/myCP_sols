@@ -1,4 +1,4 @@
-from typing import Optional, List, Set
+from typing import Optional, List
 
 
 # Definition for singly-linked list.
@@ -12,14 +12,16 @@ class Solution:
     def modifiedList(
         self, nums: List[int], head: Optional[ListNode]
     ) -> Optional[ListNode]:
-        nums_set: Set[int] = set(nums)
+        s: set[int] = set(nums)
         dummy = ListNode(0, head)
-        curr: Optional[ListNode] = dummy.next
-        prev: Optional[ListNode] = dummy
+        prev = dummy
+        curr = head
+
         while curr:
-            if curr.val in nums_set:
+            if curr.val in s:
                 prev.next = curr.next
             else:
-                prev = curr
+                prev = prev.next
             curr = curr.next
+
         return dummy.next
