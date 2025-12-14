@@ -31,18 +31,3 @@ class Solution:
                 )
             )
         ]
-
-
-def main():
-    obj = Solution()
-    code = ["SAVE20", "", "PHARMA5", "SAVE@20"]
-    bl = ["restaurant", "grocery", "pharmacy", "restaurant"]
-    act = [True, True, True, True]
-
-    ans = obj.validateCoupons(code, bl, act)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
