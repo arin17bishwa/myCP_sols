@@ -11,14 +11,11 @@ class Solution:
                 mat[i][j] += mat[i - 1][j] + mat[i][j - 1] - mat[i - 1][j - 1]
         ans = []
         for r1, c1, r2, c2 in queries:
-            tot = mat[r2][c2]
-            if r1 == c1 == 0:
-                pass
-            elif r1 == 0:
-                tot -= mat[r2][c1 - 1]
-            elif c1 == 0:
-                tot -= mat[r1 - 1][c2]
-            else:
-                tot = tot - (mat[r1 - 1][c2] + mat[r2][c1 - 1] - mat[r1 - 1][c1 - 1])
+            tot = (
+                mat[r2][c2]
+                - (mat[r2][c1 - 1] * (c1 != 0))
+                - (mat[r1 - 1][c2] * (r1 != 0))
+                + (mat[r1 - 1][c1 - 1] * (r1 != 0 and c1 != 0))
+            )
             ans.append(tot)
         return ans
