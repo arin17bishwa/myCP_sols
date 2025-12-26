@@ -1,15 +1,10 @@
 class Solution:
     def kthMissing(self, arr: list[int], k: int) -> int:
-        idx = curr = 0
         n = len(arr)
-        for i in range(1, n + k + 1):
-            if idx < n and arr[idx] == i:
-                idx += 1
-            else:
-                curr += 1
-                if curr == k:
-                    return i
-        return -1
+        for i in range(n):
+            if arr[i] > i + k:
+                return i + k
+        return n + k
 
 
 def func():
