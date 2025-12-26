@@ -15,19 +15,3 @@ class Solution:
             curr_customers += s[i] == "Y"
 
         return ans if min_penalty <= (n - total_customers) else n
-
-
-def func():
-    obj = Solution()
-
-    s = "YYNY"
-
-    # s = "NNNYNN"
-
-    ans = obj.bestClosingTime(s)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    func()
