@@ -14,17 +14,3 @@ class Solution:
                 prefix_freq[sorted_keys[i - 1]] + freq[sorted_keys[i]]
             )
         return [prefix_freq[i] - freq[i] for i in arr]
-
-
-def main():
-    obj = Solution()
-
-    arr = [8, 1, 2, 2, 3]
-
-    ans = obj.smallerNumbersThanCurrent(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
