@@ -26,8 +26,6 @@ class Solution:
                     call_stack.pop()
                     if call_stack:
                         call_stack[-1][-1] = ts + 1
-                else:
-                    ans[func_id] -= 1
         return ans
 
 
