@@ -17,21 +17,3 @@ class Solution:
             else:
                 break
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [1, 3]
-    n = 3
-
-    arr = [1, 2, 3]
-    n = 3
-
-    ans = obj.buildArray(arr, n)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
