@@ -16,7 +16,6 @@ class Solution:
                 return int(op1 / op2)
 
         arr = tokens
-        n = len(arr)
         q: deque[int] = deque()
 
         for ele in arr:
