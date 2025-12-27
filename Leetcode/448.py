@@ -9,8 +9,4 @@ class Solution:
         for ele in arr:
             if arr[abs(ele) - 1] > 0:
                 arr[abs(ele) - 1] *= -1
-        ans = []
-        for i in range(n):
-            if arr[i] > 0:
-                ans.append(i + 1)
-        return ans
+        return [i + 1 for i in range(n) if arr[i] > 0]
