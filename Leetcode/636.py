@@ -11,7 +11,6 @@ class Solution:
             func_id, log_type, ts = log.split(":")
             func_id = int(func_id)
             ts = int(ts)
-            # print(call_stack, ans)
 
             if log_type == "start":
                 if call_stack:
@@ -27,24 +26,3 @@ class Solution:
                     if call_stack:
                         call_stack[-1][-1] = ts + 1
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = ["0:start:0", "1:start:2", "1:end:5", "0:end:6"]
-    n = 2
-
-    arr = ["0:start:0", "0:start:2", "0:end:5", "0:start:6", "0:end:6", "0:end:7"]
-    n = 1
-
-    arr = ["0:start:0", "0:start:2", "0:end:5", "1:start:6", "1:end:6", "0:end:7"]
-    n = 2
-
-    ans = obj.exclusiveTime(n, arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
