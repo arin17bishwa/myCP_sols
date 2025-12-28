@@ -14,19 +14,3 @@ class Solution:
             curr += arr[i]
             ans = max(ans, curr - suffix[i + 1])
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [10, -1, 3, -4, -5]
-    arr = [-7, -5, 3]
-    arr = [1, 1]
-
-    ans = obj.maximumScore(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
