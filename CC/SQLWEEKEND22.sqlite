@@ -1,0 +1,10 @@
+with monthly_sales as (
+    select strftime('%Y-%m', sale_date) as sale_month, amount
+    from Sales
+)
+select sale_month, sum(amount) total_sales
+from monthly_sales
+group by sale_month
+having sum(amount)>4000
+order by total_sales desc
+;
