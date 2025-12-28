@@ -3,15 +3,18 @@ from collections import deque
 
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
-        last_occ: dict[str, int] = {}
+        bitmask = 0
         ans: deque[str] = deque()
-
+        last_occ = {}
         for idx, ch in enumerate(s):
             last_occ[ch] = idx
 
         for idx, ch in enumerate(s):
-            if ch not in ans:
-                while ans and ans[-1] > ch and last_occ[ans[-1]] > idx:
-                    ans.pop()
+            ch_bitmask = 1 << (ord(ch) - 97)
+            if not bitmask & ch_bitmask:
+                while ans and ch <= ans[-1] and last_occ[ans[-1]] > idx:
+                    popped = ans.pop()
+                    bitmask &= ~(1 << (ord(popped) - 97))
                 ans.append(ch)
+                bitmask |= ch_bitmask
         return "".join(ans)
