@@ -18,19 +18,3 @@ class Solution:
                 ans.append(ch)
                 bitmask |= ch_bitmask
         return "".join(ans)
-
-
-def main():
-    obj = Solution()
-
-    # s = "bcabc"
-    s = "cbacdcbc"
-    # s = "bcbcbcababa"
-    s = "cbaacabcaaccaacababa"
-
-    ans = obj.smallestSubsequence(s)
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
