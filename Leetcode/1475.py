@@ -15,19 +15,3 @@ class Solution:
                 ans[i] -= q[0]
             q.appendleft(arr[i])
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [8, 4, 6, 2, 3]
-    arr = [1, 2, 3, 4, 5]
-    arr = [10, 1, 1, 6]
-
-    ans = obj.finalPrices(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
