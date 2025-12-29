@@ -18,18 +18,3 @@ class Solution:
                 flag = 1
                 j += 1
         return a[i - 1] if flag == 0 else b[j - 1]
-
-
-def main():
-    obj = Solution()
-    a = [2, 3, 6, 7, 9]
-    b = [1, 4, 8, 10]
-    k = 1
-
-    ans = obj.kthElement(a, b, k)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
