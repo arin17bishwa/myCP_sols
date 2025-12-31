@@ -19,17 +19,3 @@ class Solution:
                 ans = min(ans, prefix_min + arr[i] + suffix_min[i])
             prefix_min = min(prefix_min, arr[i])
         return ans if not ans >= int_max else -1
-
-
-def main():
-    obj = Solution()
-
-    arr = [5, 4, 8, 7, 10, 2]
-
-    ans = obj.minimumSum(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
