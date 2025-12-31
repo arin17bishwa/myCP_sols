@@ -5,20 +5,19 @@ class Solution:
     def minimumSum(self, nums: List[int]) -> int:
         arr = nums
         n = len(arr)
-        int_max = (1 << 32) - 1
-        prefix_min = [int_max] * n
+        int_max = 1 << 31
         suffix_min = [int_max] * n
 
-        for i in range(1, n):
-            prefix_min[i] = min(prefix_min[i - 1], arr[i - 1])
+        prefix_min: int = arr[0]
 
         for i in range(n - 2, -1, -1):
             suffix_min[i] = min(suffix_min[i + 1], arr[i + 1])
 
         ans = int_max
         for i in range(1, n - 1):
-            if prefix_min[i] < arr[i] and suffix_min[i] < arr[i]:
-                ans = min(ans, prefix_min[i] + arr[i] + suffix_min[i])
+            if prefix_min < arr[i] and suffix_min[i] < arr[i]:
+                ans = min(ans, prefix_min + arr[i] + suffix_min[i])
+            prefix_min = min(prefix_min, arr[i])
         return ans if not ans >= int_max else -1
 
 
