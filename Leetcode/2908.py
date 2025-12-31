@@ -15,10 +15,6 @@ class Solution:
         for i in range(n - 2, -1, -1):
             suffix_min[i] = min(suffix_min[i + 1], arr[i + 1])
 
-        # print(arr)
-        # print(prefix_min)
-        # print(suffix_min)
-
         ans = int_max
         for i in range(1, n - 1):
             if prefix_min[i] < arr[i] and suffix_min[i] < arr[i]:
