@@ -47,9 +47,6 @@ class Solution:
         h2 = reverse_ll(h2)
         h1 = head
 
-        # print_ll(h1)
-        # print_ll(h2)
-
         while h1 and h2:
             if h1.data != h2.data:
                 return False
