@@ -1,6 +1,5 @@
 class Solution:
     def getSecondLargest(self, arr: list[int]) -> int:
-        n = len(arr)
         mx = max(arr)
         ans = -1
 
