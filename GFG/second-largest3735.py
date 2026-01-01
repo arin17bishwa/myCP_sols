@@ -1,15 +1,20 @@
 class Solution:
     def getSecondLargest(self, arr: list[int]) -> int:
-        arr=sorted(set(arr))
-        if len(arr)<2:
-            return -1
-        return arr[-2]
+        n = len(arr)
+        mx = max(arr)
+        ans = -1
+
+        for ele in arr:
+            if ele < mx:
+                ans = max(ans, ele)
+        return ans
+
 
 def main():
     obj = Solution()
 
     arr = [10, 5, 10]
-    arr=[10,10,1]
+    arr = [10, 10, 1]
 
     ans = obj.getSecondLargest(arr)
 
