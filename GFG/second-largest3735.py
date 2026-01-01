@@ -10,18 +10,3 @@ class Solution:
             elif largest > ele > second_largest:
                 second_largest = ele
         return -1 if largest == second_largest else second_largest
-
-
-def main():
-    obj = Solution()
-
-    arr = [10, 5, 10]
-    # arr = [10, 10, 1]
-
-    ans = obj.getSecondLargest(arr)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
