@@ -82,28 +82,19 @@ def yn_dec(function) -> Callable:
     return inner1
 
 
-def func() -> str:
-    n = iin()
-
-    names: list[str] = [
-        "Sheldon",
-        "Leonard",
-        "Penny",
-        "Rajesh",
-        "Howard",
-    ]
-
-    block_size = 1
-
-    while 5 * block_size < n:
-        n -= 5 * block_size
-        block_size <<= 1
-
-    return names[(n - 1) // block_size]
+def func():
+    s = input()
+    digs = "1234567890"
+    ans = last_pos = 0
+    for ch in s:
+        req_idx = digs.index(ch)
+        ans += 1 + abs(last_pos - req_idx)
+        last_pos = req_idx
+    return ans
 
 
 def main():
-    for _ in range(1):
+    for _ in range(iin()):
         print(func())
 
 

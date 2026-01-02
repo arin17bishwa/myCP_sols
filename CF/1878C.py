@@ -82,28 +82,16 @@ def yn_dec(function) -> Callable:
     return inner1
 
 
-def func() -> str:
-    n = iin()
-
-    names: list[str] = [
-        "Sheldon",
-        "Leonard",
-        "Penny",
-        "Rajesh",
-        "Howard",
-    ]
-
-    block_size = 1
-
-    while 5 * block_size < n:
-        n -= 5 * block_size
-        block_size <<= 1
-
-    return names[(n - 1) // block_size]
+@yn_dec
+def func():
+    n, k, s = int_arr()
+    mn = (k * (k + 1)) >> 1
+    mx = k * (n - k + 1) + ((k * (k - 1)) >> 1)
+    return mn <= s <= mx
 
 
 def main():
-    for _ in range(1):
+    for _ in range(iin()):
         print(func())
 
 

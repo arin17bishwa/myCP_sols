@@ -82,29 +82,27 @@ def yn_dec(function) -> Callable:
     return inner1
 
 
-def func() -> str:
-    n = iin()
+def func():
+    q = iin()
+    mp: dict[int, int] = {}
+    for _ in range(q):
+        s = list(int_arr())
+        if s[0] == 1:
+            t, p = s[1:]
+            mp[t] = p
+        elif s[0] == 2:
+            mp.pop(s[1])
+        elif s[0] == 3:
+            print(min(mp.values()), max(mp.values()))
+        else:
+            print(mp[max(mp.keys())])
 
-    names: list[str] = [
-        "Sheldon",
-        "Leonard",
-        "Penny",
-        "Rajesh",
-        "Howard",
-    ]
-
-    block_size = 1
-
-    while 5 * block_size < n:
-        n -= 5 * block_size
-        block_size <<= 1
-
-    return names[(n - 1) // block_size]
+        # print(mp)
 
 
 def main():
     for _ in range(1):
-        print(func())
+        (func())
 
 
 if __name__ == "__main__":

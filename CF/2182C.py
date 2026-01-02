@@ -82,28 +82,19 @@ def yn_dec(function) -> Callable:
     return inner1
 
 
-def func() -> str:
+def func():
     n = iin()
+    a = list(int_arr())
+    b = list(int_arr())
+    c = list(int_arr())
 
-    names: list[str] = [
-        "Sheldon",
-        "Leonard",
-        "Penny",
-        "Rajesh",
-        "Howard",
-    ]
-
-    block_size = 1
-
-    while 5 * block_size < n:
-        n -= 5 * block_size
-        block_size <<= 1
-
-    return names[(n - 1) // block_size]
+    good_ab = sum(all(a[i] < b[(i + d) % n] for i in range(n)) for d in range(n))
+    good_bc = sum(all(b[i] < c[(i + d) % n] for i in range(n)) for d in range(n))
+    return good_ab * good_bc * n
 
 
 def main():
-    for _ in range(1):
+    for _ in range(iin()):
         print(func())
 
 

@@ -81,29 +81,38 @@ def yn_dec(function) -> Callable:
 
     return inner1
 
+def total_cost(n:int,white_first:bool=True):
+    cost=[0,0]
+    k=1
+    curr=0 if white_first else 1
 
-def func() -> str:
-    n = iin()
+    for i in range(n):
+        cost[curr]+=k
+        curr^=1
+        k<<=1
+    return cost
 
-    names: list[str] = [
-        "Sheldon",
-        "Leonard",
-        "Penny",
-        "Rajesh",
-        "Howard",
-    ]
+def func():
+    a,b=int_arr()
+    ans=0
 
-    block_size = 1
+    for candidate in range(1,65):
+        a1,b1=total_cost(candidate)
+        # print(candidate, a1,b1)
+        if a1<=a and b1<=b:
+            ans=candidate
+        else:
+            a2,b2=total_cost(candidate, white_first=False)
+            if a2<=a and b2<=b:
+                ans=candidate
+            else:
+                break
+    return ans
 
-    while 5 * block_size < n:
-        n -= 5 * block_size
-        block_size <<= 1
-
-    return names[(n - 1) // block_size]
 
 
 def main():
-    for _ in range(1):
+    for _ in range(iin()):
         print(func())
 
 
