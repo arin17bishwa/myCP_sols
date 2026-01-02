@@ -14,17 +14,3 @@ class Solution:
                 tail -= 1
             else:
                 curr += 1
-
-
-def main():
-    obj = Solution()
-
-    arr = [2, 2, 2, 1, 0, 1, 0, 1, 1]
-
-    obj.sort012(arr)
-
-    # print(arr)
-
-
-if __name__ == "__main__":
-    main()
