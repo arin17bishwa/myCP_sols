@@ -1,15 +1,17 @@
-import string
-from collections import Counter, defaultdict
+from collections import defaultdict
 from typing import List
+
+
+def make_key(s: str) -> tuple[int, ...]:
+    freq = [0] * 26
+    for ch in s:
+        freq[ord(ch) - 97] += 1
+    return tuple(freq)
 
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        def freq(s: str) -> tuple[int, ...]:
-            counter = Counter(s)
-            return tuple(counter[i] for i in string.ascii_lowercase)
-
-        groups: defaultdict[tuple[int, ...], list[str]] = defaultdict(list)
-        for x in strs:
-            groups[freq(x)].append(x)
-        return list(groups.values())
+        mp: dict[tuple[int, ...], list[str]] = defaultdict(list)
+        for s in strs:
+            mp[make_key(s)].append(s)
+        return list(mp.values())
