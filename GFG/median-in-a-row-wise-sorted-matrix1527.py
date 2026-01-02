@@ -32,19 +32,3 @@ class Solution:
                 hi = mid - 1
 
         return ans + 1
-
-
-def main():
-    obj = Solution()
-
-    # arr = [[1, 3, 5], [2, 6, 9], [3, 6, 9]]
-    arr = [[2, 4, 9], [3, 6, 7], [4, 7, 10]]
-    # arr = [[3], [4], [8]]
-
-    ans = obj.median(arr)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
