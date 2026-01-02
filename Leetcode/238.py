@@ -5,20 +5,15 @@ class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         arr = nums
         n = len(arr)
-        prefix = arr[:]
-        suffix = arr[:]
-
-        for i in range(1, n):
-            prefix[i] *= prefix[i - 1]
-        for i in range(n - 2, -1, -1):
-            suffix[i] *= suffix[i + 1]
-
-        ans = [1] * n
-        ans[0] = suffix[1]
-        ans[n - 1] = prefix[n - 2]
-
+        ans = arr[:]
         for i in range(1, n - 1):
-            ans[i] = prefix[i - 1] * suffix[i + 1]
+            ans[i] *= ans[i - 1]
+        ans[-1] = ans[-2]
+        curr = arr[-1]
+        for i in range(n - 2, 0, -1):
+            ans[i] = ans[i - 1] * curr
+            curr *= arr[i]
+        ans[0] = curr
         return ans
 
 
