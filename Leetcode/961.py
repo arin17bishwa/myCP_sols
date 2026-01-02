@@ -7,6 +7,7 @@ class Solution:
         m = len(arr)
 
         for i in range(m):
-            if arr[i] in arr[i + 1 : i + 4]:
-                return arr[i]
+            for j in range(i + 1, min(m, i + 4)):
+                if arr[i] == arr[j]:
+                    return arr[i]
         return -1
