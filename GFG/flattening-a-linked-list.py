@@ -1,4 +1,4 @@
-import heapq
+from typing import Optional
 
 
 class Node:
@@ -9,26 +9,29 @@ class Node:
 
 
 class Solution:
-    def flatten(self, root: Node) -> Node:
-        heap: list[tuple[int, int, Node]] = []
+    def flatten(self, root: Node) -> Optional[Node]:
+        if not root or not root.next:
+            return root
+        root.next = self.flatten(root.next)
+        root.next = self.merge(root, root.next)
+        return root
+
+    @staticmethod
+    def merge(h1: Optional[Node], h2: Optional[Node]) -> Optional[Node]:
         dummy = Node(0)
-        curr = root
-        it = iter(range(10**9))
-        while curr:
-            heapq.heappush(heap, (curr.data, next(it), curr))
-            curr = curr.next
-
         curr = dummy
-
-        while heap:
-            _, _, node = heapq.heappop(heap)
-            curr.bottom = node
-
-            if node.bottom:
-                t = node.bottom
-                heapq.heappush(heap, (t.data, next(it), t))
-                node.bottom = None
+        while h1 and h2:
+            if h1.data <= h2.data:
+                curr.bottom = h1
+                h1 = h1.bottom
+            else:
+                curr.bottom = h2
+                h2 = h2.bottom
             curr = curr.bottom
+        if h1:
+            curr.bottom = h1
+        elif h2:
+            curr.bottom = h2
         return dummy.bottom
 
 
