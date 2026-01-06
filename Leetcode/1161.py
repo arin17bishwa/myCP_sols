@@ -1,5 +1,5 @@
 from typing import Optional
-from collections import defaultdict
+from collections import deque
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -10,24 +10,30 @@ class TreeNode:
 
 class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
-        tot=defaultdict(int)
+        if not root:
+            return 0
+        q=deque([root])
 
-        def dfs(node:Optional[TreeNode], lvl:int=1):
-            nonlocal tot
-            if not node:
-                return
-
-            tot[lvl]+=node.val
-            dfs(node.left, lvl+1)
-            dfs(node.right, lvl+1)
-
-        dfs(root,1)
-
-        mx=-(10**9)
+        curr_lvl=0
         ans=1
-        for k,v in tot.items():
-            if v>mx:
-                mx=v
-                ans=k
+        curr_mx=-(10**9)
+
+        while q:
+            lvl_sum=0
+            curr_lvl+=1
+            for _ in range(len(q)):
+                node=q.popleft()
+                lvl_sum+=node.val
+
+                if node.left:
+                    q.append(node.left)
+
+                if node.right:
+                    q.append(node.right)
+
+            if lvl_sum>curr_mx:
+                ans=curr_lvl
+                curr_mx=lvl_sum
+
         return ans
 
