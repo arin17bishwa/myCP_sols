@@ -17,17 +17,3 @@ class Solution:
             )
             last = curr
         return ans
-
-
-def main():
-    obj = Solution()
-    arr = [[1, 1], [3, 4], [-1, 0]]
-    arr = [[3, 2], [-2, 2]]
-
-    ans = obj.minTimeToVisitAllPoints(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
