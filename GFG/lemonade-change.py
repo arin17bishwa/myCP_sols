@@ -17,18 +17,3 @@ class Solution:
             if to_return:
                 return False
         return True
-
-
-def main():
-    obj = Solution()
-
-    arr = [5, 5, 5, 10, 20]
-    arr = [5, 5, 10, 10, 20]
-
-    ans = obj.canServe(arr)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
