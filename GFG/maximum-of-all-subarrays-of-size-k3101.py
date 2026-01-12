@@ -20,21 +20,3 @@ class Solution:
         ans.append(-heap[0][0])
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [1, 2, 3, 1, 4, 5, 2, 3, 6]
-    k = 3
-
-    arr = [5, 1, 3, 4, 2]
-    k = 1
-
-    ans = obj.maxOfSubarrays(arr, k)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
