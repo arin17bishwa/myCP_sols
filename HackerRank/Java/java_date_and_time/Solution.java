@@ -4,7 +4,6 @@ import java.io.*;
 import java.time.LocalDate;
 
 class Result {
-
     /*
      * Complete the 'findDay' function below.
      *
@@ -14,7 +13,6 @@ class Result {
      *  2. INTEGER day
      *  3. INTEGER year
      */
-
     public static String findDay(int month, int day, int year) {
         LocalDate date = LocalDate.of(year, month, day);
         return date.getDayOfWeek().name();
