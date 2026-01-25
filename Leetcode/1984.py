@@ -7,14 +7,7 @@ class Solution:
         arr.sort()
         n = len(arr)
 
-        ans = 10**9
-
-        if k == n:
-            return arr[-1] - arr[0]
-
-        for i in range(k - 1, n):
-            ans = min(ans, arr[i] - arr[i - k + 1])
-        return ans
+        return min(arr[i] - arr[i - k + 1] for i in range(k - 1, n))
 
 
 def main():
