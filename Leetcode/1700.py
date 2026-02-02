@@ -3,23 +3,17 @@ from typing import List
 
 class Solution:
     def countStudents(self, students: List[int], sandwiches: List[int]) -> int:
-        arr = students
+        arr = sandwiches
         n = len(arr)
-        ones = arr.count(1)
-        zeros = n - ones
+        zeros = students.count(0)
         ans = n
-        for sandwich in sandwiches:
-            if sandwich == 1:
-                if ones > 0:
-                    ones -= 1
-                else:
-                    return ans
-            else:
-                if zeros > 0:
-                    zeros -= 1
-                else:
-                    return ans
+        cnt = [zeros, n - zeros]
+
+        for i in sandwiches:
+            if cnt[i] < 1:
+                break
             ans -= 1
+            cnt[i] -= 1
         return ans
 
 
