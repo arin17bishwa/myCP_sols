@@ -1,6 +1,11 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
-        return int(bin(n)[2:].zfill(32)[::-1], 2)
+        ans = 0
+        for i in range(31):
+            ans |= n & 1
+            n >>= 1
+            ans <<= 1
+        return ans
 
 
 def main():
