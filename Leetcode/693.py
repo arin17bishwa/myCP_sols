@@ -7,19 +7,3 @@ class Solution:
                 return False
             n >>= 1
         return True
-
-
-def main():
-    obj = Solution()
-
-    n = 5
-    n = 7
-    n = 11
-
-    ans = obj.hasAlternatingBits(n)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
