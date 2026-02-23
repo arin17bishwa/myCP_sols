@@ -7,9 +7,10 @@ class Solution:
         for i in range(k):
             curr = (curr << 1) | (1 if s[i] == "1" else 0)
         seen = {curr}
+        mask = (1 << k) - 1
         for i in range(k, n):
             curr = (curr << 1) | (1 if s[i] == "1" else 0)
-            curr &= (1 << k) - 1
+            curr &= mask
             seen.add(curr)
         return len(seen) == (1 << k)
 
