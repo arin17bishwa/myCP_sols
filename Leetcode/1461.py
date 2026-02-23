@@ -13,21 +13,3 @@ class Solution:
             curr &= mask
             seen.add(curr)
         return len(seen) == (1 << k)
-
-
-def main():
-    obj = Solution()
-
-    s = "00110110"
-    k = 2
-
-    s = "0110"
-    k = 2
-
-    ans = obj.hasAllCodes(s, k)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
