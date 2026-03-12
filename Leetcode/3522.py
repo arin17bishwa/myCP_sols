@@ -16,23 +16,3 @@ class Solution:
                 idx=idx+values[idx]
 
         return ans
-
-def main():
-    obj=Solution()
-
-    ins=["jump","add","add","jump","add","jump"]
-    val=[2,1,3,1,-2,-3]
-
-    ins=["jump","add","add"]
-    val=[3,1,1]
-
-    ins=['jump']
-    val=[0]
-
-    ans=obj.calculateScore(ins,val)
-
-    print(ans)
-
-if __name__ == '__main__':
-    main()
-
