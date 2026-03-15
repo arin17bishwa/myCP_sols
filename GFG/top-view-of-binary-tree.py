@@ -1,5 +1,4 @@
-from collections import deque
-from typing import Dict, Optional, Deque, Tuple
+from typing import Optional
 
 
 # Tree Node
@@ -14,24 +13,22 @@ class Solution:
     # Function to return a list of nodes visible from the top view
     # from left to right in Binary Tree.
     def topView(self, root: Optional[Node]):
-        view: Dict[int, int] = {0: root.data}
-        queue: Deque[Tuple[Node, int]] = deque([(root, 0)])
+        view: dict[int, tuple[int, int]] = dict()
 
-        while queue:
-            curr, pos = queue.popleft()
-            if not curr:
-                continue
-            if pos not in view:
-                view[pos] = curr.data
+        def dfs(node: Optional[Node], idx: int = 0, depth: int = 0):
+            nonlocal view
 
-            queue.append((curr.left, pos - 1))
-            queue.append((curr.right, pos + 1))
+            if not node:
+                return
 
-        mn = min(view.keys())
-        mx = max(view.keys())
-        ans = [0] * (mx - mn + 1)
+            if idx not in view:
+                view[idx] = (depth, node.data)
+            elif depth < view[idx][0]:
+                view[idx] = (depth, node.data)
 
-        for pos, val in view.items():
-            ans[pos - mn] = val
+            dfs(node.left, idx - 1, depth + 1)
+            dfs(node.right, idx + 1, depth + 1)
 
-        return ans
+        dfs(root, idx=0, depth=0)
+
+        return [view[i][1] for i in sorted(view.keys())]
