@@ -25,8 +25,4 @@ class Solution:
             q.append([node.left, x - 1])
             q.append([node.right, x + 1])
 
-        ans: list[list[int]] = []
-
-        for idx in sorted(view.keys()):
-            ans.append(view[idx])
-        return ans
+        return [view[idx] for idx in sorted(view.keys())]
