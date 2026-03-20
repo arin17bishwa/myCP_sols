@@ -16,7 +16,6 @@ class Solution:
                 for x in range(k):
                     for y in range(k):
                         arr[k * x + y] = grid[i + x][j + y]
-                        # arr.append(grid[i + x][j + y])
                 arr.sort()
                 curr = mx
 
