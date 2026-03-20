@@ -55,6 +55,7 @@ class Solution:
 
         prev: Optional[ListNode] = None
         curr: Optional[ListNode] = head
+
         while curr:
             t = curr.next
             curr.next = prev
