@@ -12,10 +12,11 @@ class Solution:
 
         for i in range(m - k + 1):
             for j in range(n - k + 1):
-                arr = []
+                arr = [0] * (k * k)
                 for x in range(k):
                     for y in range(k):
-                        arr.append(grid[i + x][j + y])
+                        arr[k * x + y] = grid[i + x][j + y]
+                        # arr.append(grid[i + x][j + y])
                 arr.sort()
                 curr = mx
 
