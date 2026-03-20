@@ -27,18 +27,3 @@ class Solution:
                 ans[i][j] = curr if curr != mx else 0
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [[1, -2, 3], [2, 3, 5]]
-    k = 2
-
-    ans = obj.minAbsDiff(arr, k)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
