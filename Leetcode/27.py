@@ -15,24 +15,3 @@ class Solution:
                 head += 1
 
         return tail + 1
-
-
-def main():
-    obj = Solution()
-
-    arr = [3, 2, 2, 3]
-    k = 3
-
-    # arr = [0, 1, 2, 2, 3, 0, 4, 2]
-    # k = 2
-
-    # arr=[1]
-    # k=1
-
-    ans = obj.removeElement(arr, k)
-
-    print(arr[:ans], arr)
-
-
-if __name__ == "__main__":
-    main()
