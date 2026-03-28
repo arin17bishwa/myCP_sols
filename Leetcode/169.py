@@ -13,7 +13,7 @@ class Solution:
                 freq += 1
             else:
                 freq -= 1
-                if freq == -1:
+                if freq < 0:
                     candidate = i
                     freq = 1
         return candidate
