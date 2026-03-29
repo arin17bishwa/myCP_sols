@@ -1,7 +1,7 @@
 class MyHashMap:
 
     def __init__(self):
-        self.p = 11
+        self.p = 9
         self.m = 1 << self.p
         self.arr: list[list[tuple[int, int]]] = [[] for _ in range(self.m)]
 
