@@ -22,8 +22,8 @@ class MyHashSet:
         return key_hash % self.m
 
     @staticmethod
-    def _hash(val) -> int:
-        return hash(val)
+    def _hash(key) -> int:
+        return ((key * 1031237) & (1 << 20) - 1) >> 5
 
 
 # Your MyHashSet object will be instantiated and called as such:
