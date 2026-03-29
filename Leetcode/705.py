@@ -1,7 +1,7 @@
 class MyHashSet:
 
     def __init__(self):
-        self.m = 10**5
+        self.m = 10**3
         self.arr: list[list[int]] = [[] for _ in range(self.m)]
 
     def add(self, key: int) -> None:
