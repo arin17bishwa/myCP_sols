@@ -1,7 +1,8 @@
 class MyHashSet:
 
     def __init__(self):
-        self.m = 10**3
+        self.p = 10
+        self.m = 1 << self.p
         self.arr: list[list[int]] = [[] for _ in range(self.m)]
 
     def add(self, key: int) -> None:
@@ -19,7 +20,7 @@ class MyHashSet:
 
     def _get_key_idx(self, key: int) -> int:
         key_hash = self._hash(key)
-        return key_hash % self.m
+        return key_hash & self.m - 1
 
     @staticmethod
     def _hash(key) -> int:
