@@ -10,16 +10,18 @@ class Solution:
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
-        if not root or not p or not q:
+        if None in (root, p, q):
             return root
+
+        mx, mn = max(p.val, q.val), min(p.val, q.val)
 
         curr = root
 
         while curr:
-            if max(p.val, q.val) < curr.val:
-                curr = curr.left
-            elif min(p.val, q.val) > curr.val:
+            if mn > curr.val:
                 curr = curr.right
+            elif mx < curr.val:
+                curr = curr.left
             else:
                 return curr
         return curr
