@@ -18,14 +18,7 @@ class Solution:
 
         def dfs(x0: int, y0: int, side_len: int) -> Node:
             if side_len == 1:
-                return Node(
-                    val=grid[x0][y0] == 1,
-                    isLeaf=True,
-                    topLeft=None,
-                    topRight=None,
-                    bottomLeft=None,
-                    bottomRight=None,
-                )
+                return Node(grid[x0][y0] == 1, True, None, None, None, None)
             else:
                 new_side_len = side_len >> 1
                 top_left = dfs(x0, y0, new_side_len)
