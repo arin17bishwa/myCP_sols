@@ -1,4 +1,3 @@
-from functools import cache
 from typing import Optional
 
 
@@ -15,7 +14,6 @@ class Solution:
         if not root:
             return 0
 
-        @cache
         def dfs(node: TreeNode | None) -> tuple[int, int]:
             if not node:
                 return 0, 0
