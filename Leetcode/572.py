@@ -15,6 +15,7 @@ class Solution:
             return True
         if root is None:
             return False
+
         return (
             self.is_same_tree(root, subRoot)
             or self.isSubtree(root.left, subRoot)
@@ -22,14 +23,12 @@ class Solution:
         )
 
     def is_same_tree(
-        self, node1: Optional[TreeNode], node2: Optional[TreeNode]
+        self, root1: Optional[TreeNode], root2: Optional[TreeNode]
     ) -> bool:
-        if node1 is None and node2 is None:
+        if not root1 and not root2:
             return True
-        if node1 is None or node2 is None:
+        if root1 is None or root2 is None or (root1.val != root2.val):
             return False
-        return (
-            node1.val == node2.val
-            and self.is_same_tree(node1.left, node2.left)
-            and self.is_same_tree(node1.right, node2.right)
+        return self.is_same_tree(root1.left, root2.left) and self.is_same_tree(
+            root1.right, root2.right
         )
