@@ -35,7 +35,6 @@ class Codec:
                 else:
                     ans.append(self.NULL_PLACEHOLDER)
 
-        print(self.SEP.join(ans))
         return self.SEP.join(ans)
 
     def deserialize(self, data: str) -> TreeNode | None:
