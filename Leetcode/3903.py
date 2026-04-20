@@ -2,16 +2,14 @@ class Solution:
     def firstStableIndex(self, nums: list[int], k: int) -> int:
         arr = nums
         n = len(arr)
-        prefix = arr[:]
+        mx = arr[0]
         suffix = arr[:]
-
-        for i in range(1, n):
-            prefix[i] = max(prefix[i], prefix[i - 1])
 
         for i in range(n - 2, -1, -1):
             suffix[i] = min(suffix[i], suffix[i + 1])
 
         for i in range(n):
-            if prefix[i] - suffix[i] <= k:
+            mx = max(mx, arr[i])
+            if mx - suffix[i] <= k:
                 return i
         return -1
