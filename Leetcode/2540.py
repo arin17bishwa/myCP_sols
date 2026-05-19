@@ -16,18 +16,3 @@ class Solution:
             else:
                 j += 1
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr1 = [1, 2, 3]
-    arr2 = [2, 4]
-
-    ans = obj.getCommon(arr1, arr2)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
