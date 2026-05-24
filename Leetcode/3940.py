@@ -4,7 +4,6 @@ from collections import Counter
 class Solution:
     def limitOccurrences(self, nums: list[int], k: int) -> list[int]:
         arr = nums
-        n = len(arr)
         freq = Counter(arr)
 
         ans: list[int] = []
