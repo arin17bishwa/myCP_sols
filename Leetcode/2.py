@@ -25,18 +25,13 @@ class Solution:
             h1 = h1.next
             h2 = h2.next
 
-        while h1:
-            current_sm = carry + h1.val
-            curr.next = ListNode(current_sm % 10)
-            curr = curr.next
-            h1 = h1.next
-            carry = current_sm // 10
+        residual=h1 or h2
 
-        while h2:
-            current_sm = carry + h2.val
+        while residual:
+            current_sm = carry + residual.val
             curr.next = ListNode(current_sm % 10)
             curr = curr.next
-            h2 = h2.next
+            residual = residual.next
             carry = current_sm // 10
 
         if carry:
