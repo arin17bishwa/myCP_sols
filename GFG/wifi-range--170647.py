@@ -18,18 +18,3 @@ class Solution:
             arr[i] += arr[i - 1]
 
         return all(arr[i] > 0 for i in range(n))
-
-
-def main():
-    obj = Solution()
-
-    s = "01111110000101111010011"
-    x = 2
-
-    ans = obj.wifiRange(s, x)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
