@@ -12,32 +12,29 @@ class Solution:
     def addTwoNumbers(
         self, l1: Optional[ListNode], l2: Optional[ListNode]
     ) -> Optional[ListNode]:
-        sentry: ListNode = ListNode()
-        curr = sentry
-        h1, h2 = l1, l2
         carry: int = 0
+        ans: ListNode = ListNode(0)
+        curr = ans
+        h1, h2 = l1, l2
+
         while h1 and h2:
-            sm = h1.val + h2.val + carry
-            curr.next = ListNode(sm % 10)
-            carry = sm // 10
+            current_sm: int = carry + h1.val + h2.val
+            curr.next = ListNode(current_sm % 10)
             curr = curr.next
+            carry = current_sm // 10
             h1 = h1.next
             h2 = h2.next
-        if h1:
-            remaining = h1
-        elif h2:
-            remaining = h2
-        else:
-            remaining = None
 
-        while remaining:
-            sm = remaining.val + carry
-            curr.next = ListNode(sm % 10)
-            carry = sm // 10
+        residual=h1 or h2
+
+        while residual:
+            current_sm = carry + residual.val
+            curr.next = ListNode(current_sm % 10)
             curr = curr.next
-            remaining = remaining.next
+            residual = residual.next
+            carry = current_sm // 10
 
         if carry:
             curr.next = ListNode(carry)
 
-        return sentry.next
+        return ans.next

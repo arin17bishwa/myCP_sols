@@ -11,15 +11,16 @@ class TreeNode:
 
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        def dfs(node: Optional[TreeNode], curr=None):
-            if curr is None:
-                curr = []
-            if not node:
-                return curr
-            dfs(node.left, curr)
-            curr.append(node.val)
-            dfs(node.right, curr)
+        ans: list[int] = []
 
-        ans = []
-        _ = dfs(root, ans)
+        def dfs(node: Optional[TreeNode]):
+            nonlocal ans
+            if not node:
+                return
+
+            dfs(node.left)
+            ans.append(node.val)
+            dfs(node.right)
+
+        dfs(root)
         return ans

@@ -128,3 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /random_tests/
+
+# todo
+/Leetcode/1878.py
