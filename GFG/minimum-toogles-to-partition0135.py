@@ -2,11 +2,10 @@ class Solution:
     def minToggle(self, arr: list[int]) -> int:
         n = len(arr)
         ones = sum(arr)
-        zeroes = n - ones
-        if zeroes == 0 or zeroes == n:
+        if ones == 0 or ones == n:
             return 0
 
-        ans = min(zeroes, ones)
+        ans = min(ones, n - ones)
         running_ones = running_zeroes = 0
 
         for i in arr:
@@ -15,7 +14,7 @@ class Solution:
             else:
                 running_zeroes += 1
 
-            ans = min(ans, running_ones + (zeroes - running_zeroes))
+            ans = min(ans, running_ones + (n - ones - running_zeroes))
 
         return ans
 
