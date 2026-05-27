@@ -13,4 +13,7 @@ class Solution:
             else:
                 upper[ch.lower()] = min(upper[ch.lower()], idx)
 
-        return sum((ch.lower() in lower and ch.lower() in upper) and lower[ch.lower()] < upper[ch.lower()] for ch in lower.keys())
+        return sum(
+            (ch in lower and ch in upper) and lower[ch] < upper[ch]
+            for ch in lower.keys()
+        )
