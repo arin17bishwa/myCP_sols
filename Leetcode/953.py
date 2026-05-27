@@ -16,18 +16,3 @@ class Solution:
                 return False
             prev = i
         return True
-
-
-def main():
-    obj = Solution()
-
-    arr = ["hello", "leetcode"]
-    s = "hlabcdefgijkmnopqrstuvwxyz"
-
-    ans = obj.isAlienSorted(arr, s)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
