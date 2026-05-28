@@ -13,21 +13,26 @@ class Solution:
 
         def add(s: str, idx: int):
             nonlocal trie, smallest_word_idx
+            n=len(s)
+
             node = trie
 
-            if len(wordsContainer[smallest_word_idx]) > len(s):
+            if len(wordsContainer[smallest_word_idx]) > n:
                 smallest_word_idx = idx
 
-            for ch in s:
+            for i in range(n-1,-1,-1):
+                ch=s[i]
+
                 if ch not in node:
                     node[ch] = (idx, get_new_node())
                 else:
                     prev_idx = node[ch][0]
 
-                    if len(wordsContainer[prev_idx]) > len(s):
+                    if len(wordsContainer[prev_idx]) > n:
                         node[ch] = (idx, node[ch][1])
-                    elif len(wordsContainer[prev_idx]) == len(s):
+                    elif len(wordsContainer[prev_idx]) == n:
                         node[ch] = (min(node[ch][0], idx), node[ch][1])
+
                 node = node[ch][1]
             return
 
@@ -36,7 +41,9 @@ class Solution:
 
             node = trie
             prev = smallest_word_idx
-            for ch in s:
+            n=len(s)
+            for i in range(n-1,-1,-1):
+                ch=s[i]
                 if ch not in node:
                     return prev
                 else:
@@ -45,9 +52,9 @@ class Solution:
             return prev
 
         for _idx, word in enumerate(wordsContainer):
-            add(word[::-1], _idx)
+            add(word, _idx)
 
-        return [calculate_nearest(word[::-1]) for word in wordsQuery]
+        return [calculate_nearest(word) for word in wordsQuery]
 
 
 def main():
