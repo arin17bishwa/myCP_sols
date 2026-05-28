@@ -13,15 +13,15 @@ class Solution:
 
         def add(s: str, idx: int):
             nonlocal trie, smallest_word_idx
-            n=len(s)
+            n = len(s)
 
             node = trie
 
             if len(wordsContainer[smallest_word_idx]) > n:
                 smallest_word_idx = idx
 
-            for i in range(n-1,-1,-1):
-                ch=s[i]
+            for i in range(n - 1, -1, -1):
+                ch = s[i]
 
                 if ch not in node:
                     node[ch] = (idx, get_new_node())
@@ -41,9 +41,9 @@ class Solution:
 
             node = trie
             prev = smallest_word_idx
-            n=len(s)
-            for i in range(n-1,-1,-1):
-                ch=s[i]
+            n = len(s)
+            for i in range(n - 1, -1, -1):
+                ch = s[i]
                 if ch not in node:
                     return prev
                 else:
@@ -55,34 +55,3 @@ class Solution:
             add(word, _idx)
 
         return [calculate_nearest(word) for word in wordsQuery]
-
-
-def main():
-    obj = Solution()
-
-    l1 = ["dggjjdvdb", "dgdjvjjg"]
-    l2 = [
-        "bdddv",
-        "bbggdbvv",
-        "vdvvv",
-        "djgvb",
-        "dbdgjddd",
-        "vvjbd",
-        "bdjdjjvb",
-        "gdbvjdbdvb",
-        "jvvgbbb",
-        "vgvbd",
-        "gbjjbb",
-        "dvvgvjd",
-        "gdgbddgjd",
-        "vvjbgdbjdv",
-        "vdbjbgbd",
-    ]
-
-    ans = obj.stringIndices(l1, l2)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
