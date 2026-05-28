@@ -44,12 +44,10 @@ class Solution:
                     node = node[ch][1]
             return prev
 
-        # build the trie
         for _idx, word in enumerate(wordsContainer):
             add(word[::-1], _idx)
 
-        ans = [calculate_nearest(word[::-1]) for word in wordsQuery]
-        return ans
+        return [calculate_nearest(word[::-1]) for word in wordsQuery]
 
 
 def main():
