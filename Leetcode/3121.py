@@ -1,20 +1,19 @@
 from collections import defaultdict
-import string
 
 
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        lower = defaultdict(int)
-        upper = defaultdict(int)
-        for idx, ch in enumerate(word, start=1):
+        n = len(word)
+        lower = defaultdict(lambda: -1)
+        upper = defaultdict(lambda: n)
+
+        for idx, ch in enumerate(word):
             if ch.islower():
-                lower[ch] = idx
-            elif upper[ch] == 0:
-                upper[ch] = idx
-        ans = 0
-        for ch in string.ascii_lowercase:
-            if lower[ch] == 0 or upper[ch.upper()] == 0:
-                continue
-            if lower[ch] < upper[ch.upper()]:
-                ans += 1
-        return ans
+                lower[ch] = max(lower[ch], idx)
+            else:
+                upper[ch.lower()] = min(upper[ch.lower()], idx)
+
+        return sum(
+            (ch in lower and ch in upper) and lower[ch] < upper[ch]
+            for ch in lower.keys()
+        )
