@@ -14,6 +14,7 @@ class Solution:
         ans: list[int] = []
 
         def dfs(node: TreeNode | None):
+            nonlocal ans
             if not node:
                 return
             ans.append(node.val)
