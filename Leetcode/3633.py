@@ -23,17 +23,3 @@ class Solution:
                 ans = min(ans, max(end_water, landStartTime[i]) + landDuration[i])
 
         return ans
-
-
-def main():
-    obj = Solution()
-    a, b, c, d = [2, 8], [4, 1], [6], [3]
-    a, b, c, d = [5], [3], [1], [10]
-
-    ans = obj.earliestFinishTime(a, b, c, d)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
