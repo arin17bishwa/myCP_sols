@@ -3,21 +3,12 @@ class Solution:
         def transform(p: int) -> int:
             return sum(map(lambda x: pow(int(x), 2), str(p)))
 
-        seen: set[int] = set()
+        slow = transform(n)
+        fast = transform(slow)
 
-        if n == 1:
-            return True
-        if n <= 3:
-            return False
-
-        while True:
-            t = transform(n)
-            if t == 1:
-                return True
-            elif t <= 3:
+        while fast != 1:
+            if fast == slow:
                 return False
-            elif t in seen:
-                return False
-            else:
-                seen.add(t)
-                n = t
+            slow = transform(slow)
+            fast = transform(transform(fast))
+        return True
