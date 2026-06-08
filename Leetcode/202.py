@@ -1,12 +1,7 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
         def transform(p: int) -> int:
-            sm = 0
-            while p:
-                d = p % 10
-                sm += d * d
-                p //= 10
-            return sm
+            return sum(map(lambda x: pow(int(x), 2), str(p)))
 
         seen: set[int] = set()
 
