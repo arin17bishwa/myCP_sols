@@ -26,7 +26,6 @@ class Solution:
                     yield _x + dx, _y + dy
 
         d: deque[tuple[int, int]] = deque()
-
         fresh_count: int = 0
 
         for i in range(m):
@@ -49,6 +48,7 @@ class Solution:
                     if grid[nx][ny] == 1:
                         d.append((nx, ny))
                         grid[nx][ny] = 2
+                        fresh_count -= 1
             ans += 1
 
-        return ans if not any(1 in row for row in grid) else -1
+        return ans if fresh_count == 0 else -1
