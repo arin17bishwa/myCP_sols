@@ -26,6 +26,7 @@ class Solution:
                     yield _x + dx, _y + dy
 
         d: deque[tuple[int, int]] = deque()
+
         fresh_count: int = 0
 
         for i in range(m):
