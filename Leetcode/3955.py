@@ -17,8 +17,14 @@ class Solution:
             for i in range(2):
                 if curr and curr[-1] == 1 and i == 1:
                     continue
+
+                new_cost = curr_cost + i * len(curr)
+
+                if new_cost > k:
+                    continue
+
                 curr.append(i)
-                func(curr, curr_cost + i * (len(curr) - 1))
+                func(curr, new_cost)
                 curr.pop()
 
             return
