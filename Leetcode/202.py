@@ -9,6 +9,7 @@ class Solution:
             return sm
 
         seen: set[int] = set()
+
         if n == 1:
             return True
         if n <= 3:
