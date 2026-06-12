@@ -16,24 +16,3 @@ class Solution:
         if len(freq) == 1:
             return True
         return 1 in freq.values()
-
-
-def main():
-    obj = Solution()
-
-    s = "abcbedabcabc"
-    k = 3
-
-    s = "bdac"
-    k = 2
-
-    s = "abcdabcd"
-    k = 2
-
-    ans = obj.kSubstr(s, k)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
