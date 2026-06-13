@@ -11,21 +11,17 @@ class Solution:
             g[v].append(u)
 
         max_depth = 0
-        vis: set[int] = set()
 
-        def dfs(node: int, curr_depth: int = 0):
-            nonlocal max_depth, vis
-
-            if node in vis:
-                return
-            vis.add(node)
+        def dfs(node: int, prev: int, curr_depth: int = 0):
+            nonlocal max_depth
 
             max_depth = max(max_depth, curr_depth)
 
             for child in g[node]:
-                dfs(child, curr_depth + 1)
+                if child != prev:
+                    dfs(child, node, curr_depth + 1)
 
-        dfs(1, 0)
+        dfs(1, 0, 0)
 
         return pow(2, max_depth - 1, 10**9 + 7)
 
