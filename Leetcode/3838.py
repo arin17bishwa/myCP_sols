@@ -4,10 +4,9 @@ from typing import List
 class Solution:
     def mapWordWeights(self, words: List[str], weights: List[int]) -> str:
 
-        ans = []
-
-        for word in words:
-            total_weight = sum(weights[ord(ch) - 97] for ch in word)
-            ans.append(chr(ord("z") - (total_weight % 26)))
+        ans = [
+            chr(ord("z") - (sum(weights[ord(ch) - ord("a")] for ch in word) % 26))
+            for word in words
+        ]
 
         return "".join(ans)
