@@ -83,8 +83,7 @@ def yn_dec(function) -> Callable:
 
 
 def func():
-    s: str = input()
-    return "".join(filter(lambda x: x.isdigit(), s))
+    return "".join(filter(lambda x: x.isdigit(), input()))
 
 
 def main():
