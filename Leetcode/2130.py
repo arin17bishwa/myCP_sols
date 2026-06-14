@@ -13,14 +13,39 @@ class Solution:
         if not head:
             return 0
 
-        arr: list[int] = []
+        ans: int = 0
+        fast = slow = prev = head
+        while fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
 
+        mid = prev.next
+        prev.next = None
+        h2 = self.reverse(mid)
+
+        h1 = head
+
+        while h1:
+            ans = max(ans, h1.val + h2.val)
+            h1 = h1.next
+            h2 = h2.next
+
+        return ans
+
+    @staticmethod
+    def reverse(head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+
+        dummy = ListNode(0)
+        prev = None
         curr = head
 
         while curr:
-            arr.append(curr.val)
-            curr = curr.next
+            t = curr.next
+            curr.next = prev
+            prev = curr
+            curr = t
 
-        n = len(arr)
-
-        return max(arr[i] + arr[n - 1 - i] for i in range(n // 2 + 1))
+        return prev
