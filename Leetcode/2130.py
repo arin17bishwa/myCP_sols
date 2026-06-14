@@ -10,29 +10,17 @@ class ListNode:
 
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
-        fast = slow = head
-        prev = slow
-        while fast and fast.next:
-            fast = fast.next.next
-            prev = slow
-            slow = slow.next
-        prev.next = None
-        mid = self.reverse_ll(slow)
-        h1, h2 = head, mid
-        ans = 0
-        while h1 and h2:
-            ans = max(h1.val + h2.val, ans)
-            h1 = h1.next
-            h2 = h2.next
-        return ans
+        if not head:
+            return 0
 
-    @staticmethod
-    def reverse_ll(head: ListNode) -> ListNode:
+        arr: list[int] = []
+
         curr = head
-        prev = None
 
         while curr:
-            temp = curr.next
-            curr.next, prev = prev, curr
-            curr = temp
-        return prev
+            arr.append(curr.val)
+            curr = curr.next
+
+        n = len(arr)
+
+        return max(arr[i] + arr[n - 1 - i] for i in range(n // 2 + 1))
