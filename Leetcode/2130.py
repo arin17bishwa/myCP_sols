@@ -38,7 +38,6 @@ class Solution:
         if not head:
             return None
 
-        dummy = ListNode(0)
         prev = None
         curr = head
 
