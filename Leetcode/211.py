@@ -15,8 +15,6 @@ class Trie:
     def dfs(self, s: str, idx: int = 0) -> bool:
         curr = self
         n = len(s)
-        # if idx == n:
-        #     return True
 
         for i in range(idx, n):
             if s[i] == ".":
