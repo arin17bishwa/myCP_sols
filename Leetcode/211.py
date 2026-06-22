@@ -20,11 +20,7 @@ class Trie:
             if s[i] == ".":
                 if not curr.trie:
                     return False
-                for node in curr.trie.values():
-                    x = node.dfs(s, i + 1)
-                    if x:
-                        return True
-                return False
+                return any(node.dfs(s, i + 1) for node in curr.trie.values())
             else:
                 nxt = curr.trie.get(s[i])
                 if not nxt:
