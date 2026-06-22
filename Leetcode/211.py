@@ -49,23 +49,3 @@ class WordDictionary:
 # obj = WordDictionary()
 # obj.addWord(word)
 # param_2 = obj.search(word)
-
-
-def main():
-    obj = WordDictionary()
-
-    w1 = ["bad", "dad", "mad"]
-    # w1=['ab']
-    for i in w1:
-        obj.addWord(i)
-
-    w2 = ["bad", ".ad", "b.."]
-    # w2=['a.']
-    for i in w2:
-        ans = obj.search(i)
-        print(ans)
-        pass
-
-
-if __name__ == "__main__":
-    main()
