@@ -11,24 +11,3 @@ class Solution:
                 if mat[i][(j + diff) % n] != mat[i][j]:
                     return False
         return True
-
-
-def main():
-    obj = Solution()
-
-    arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    k = 4
-
-    arr = [[1, 2, 1, 2], [5, 5, 5, 5], [6, 3, 6, 3]]
-    k = 2
-
-    arr = [[2, 2], [2, 2]]
-    k = 3
-
-    ans = obj.areSimilar(arr, k)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
