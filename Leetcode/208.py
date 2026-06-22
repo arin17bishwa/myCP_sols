@@ -1,32 +1,35 @@
-from collections import defaultdict
-
-
 class Trie:
 
     def __init__(self):
-        self.tree: dict[str, Trie] = defaultdict(Trie)
-        self.ends: bool = False
+        self.trie: dict[str, Trie] = dict()
+        self.is_end: bool = False
 
     def insert(self, word: str) -> None:
-        curr: Trie = self
+        curr = self
+
         for ch in word:
-            curr = curr.tree[ch]
-        curr.ends = True
+            if ch not in curr.trie:
+                curr.trie[ch] = Trie()
+            curr = curr.trie[ch]
+        curr.is_end = True
 
     def search(self, word: str) -> bool:
-        curr: Trie = self
+        curr = self
+
         for ch in word:
-            if ch not in curr.tree:
+            nxt = curr.trie.get(ch)
+            if nxt is None:
                 return False
-            curr = curr.tree[ch]
-        return curr.ends
+            curr = nxt
+        return curr.is_end
 
     def startsWith(self, prefix: str) -> bool:
-        curr: Trie = self
+        curr = self
+
         for ch in prefix:
-            if ch not in curr.tree:
+            curr = curr.trie.get(ch)
+            if curr is None:
                 return False
-            curr = curr.tree[ch]
         return True
 
 
