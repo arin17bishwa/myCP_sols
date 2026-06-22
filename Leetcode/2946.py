@@ -8,11 +8,10 @@ class Solution:
 
         for i in range(m):
             diff = (k % n) * (1 if i & 1 else -1)
-
             for j in range(n):
-                arr[i][(j + diff) % n] = mat[i][j]
-
-        return mat == arr
+                if mat[i][(j + diff) % n] != mat[i][j]:
+                    return False
+        return True
 
 
 def main():
