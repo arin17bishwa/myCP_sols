@@ -3,7 +3,14 @@ class Solution:
         def sum_of_squares(n: int) -> int:
             return ((n * (n + 1) * ((n << 1) | 1)) // 3) >> 1
 
-        for i in range(1, 10**5):
-            if sum_of_squares(i) > p:
-                return i - 1
-        return 0
+        lo, hi = 0, 10**9
+        ans = lo
+        while lo <= hi:
+            mid = (lo + hi) >> 1
+            sm = sum_of_squares(mid)
+            if sm <= p:
+                ans = mid
+                lo = mid + 1
+            else:
+                hi = mid - 1
+        return ans
