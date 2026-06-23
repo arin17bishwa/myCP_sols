@@ -4,4 +4,4 @@ from typing import List
 
 class Solution:
     def largestAltitude(self, gain: List[int]) -> int:
-        return max(accumulate(gain, initial=0), default=0)
+        return max(accumulate(gain, initial=0))
