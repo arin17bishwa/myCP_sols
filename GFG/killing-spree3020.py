@@ -3,12 +3,11 @@ class Solution:
         def sum_of_squares(n: int) -> int:
             return ((n * (n + 1) * ((n << 1) | 1)) // 3) >> 1
 
-        lo, hi = 0, 10**9
+        lo, hi = 0, 10**3
         ans = lo
         while lo <= hi:
             mid = (lo + hi) >> 1
-            sm = sum_of_squares(mid)
-            if sm <= p:
+            if sum_of_squares(mid) <= p:
                 ans = mid
                 lo = mid + 1
             else:
