@@ -25,17 +25,3 @@ class Solution:
             backtrack(arr)
             arr.pop()
         return ans
-
-
-def main():
-    obj = Solution()
-
-    n = 1
-
-    ans = obj.increasingNumbers(n)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
