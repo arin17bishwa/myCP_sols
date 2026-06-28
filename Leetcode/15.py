@@ -40,19 +40,3 @@ class Solution:
                     ans.append([arr[curr]] + res)
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [-1, 0, 1, 2, -1, -4]
-    # arr = [0, 1, 1]
-    arr = [0, 0, 0, 0]
-
-    ans = obj.threeSum(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
