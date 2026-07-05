@@ -1,11 +1,8 @@
-from collections import defaultdict
-
-
 class Solution:
 
     def maxCharGap(self, s: str) -> int:
-        first_seen: defaultdict[str, int] = defaultdict(lambda: 1 << 31)
-        ans = -1
+        first_seen: dict[str, int] = {}
+        ans: int = -1
 
         for idx, ch in enumerate(s):
             if ch not in first_seen:
