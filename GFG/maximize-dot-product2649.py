@@ -16,26 +16,3 @@ class Solution:
             return max(a[i] * b[j] + func(i - 1, j - 1), func(i - 1, j))
 
         return func(len(a) - 1, len(b) - 1)
-
-
-def main():
-    obj = Solution()
-
-    a = [2, 3, 1, 7, 8]
-    b = [3, 6, 7]
-
-    a = [1, 2, 3]
-    b = [4]
-
-    a = [5, 8]
-    b = [9, 1]
-
-    ans = obj.maxDotProduct(a, b)
-
-    # print(ans)
-
-    return ans
-
-
-if __name__ == "__main__":
-    main()
