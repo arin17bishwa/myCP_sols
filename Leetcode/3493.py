@@ -8,9 +8,9 @@ class DSU:
         self.rank = [1] * n
 
     def find_parent(self, x: int) -> int:
-        if self.parent[x] == x:
-            return x
-        return self.find_parent(self.parent[x])
+        while x != self.parent[x]:
+            x = self.parent[x]
+        return x
 
     def union(self, x: int, y: int):
         p1, p2 = self.find_parent(x), self.find_parent(y)
