@@ -20,21 +20,3 @@ class Solution:
             max_cols = max(max_cols, cols[i] - cols[i - 1] - 1)
 
         return max_rows * max_cols
-
-
-def main():
-    obj = Solution()
-
-    n, m = 5, 5
-    arr = [[2, 3], [5, 1]]
-
-    n, m = 2, 2
-    arr = [[2, 2]]
-
-    ans = obj.largestArea(n, m, arr)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
