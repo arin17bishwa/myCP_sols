@@ -13,21 +13,3 @@ class Solution:
             )
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [2, 2, 1, 7, 5, 3]
-    k = 4
-
-    arr = [5, 9, 36, 74, 52, 31, 42]
-    k = 3
-
-    ans = obj.countKdivPairs(arr, k)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
