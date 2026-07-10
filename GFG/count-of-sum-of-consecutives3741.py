@@ -9,17 +9,3 @@ class Solution:
             ans += (n - x) % k == 0
             k += 1
         return ans
-
-
-def main():
-    obj = Solution()
-
-    n = 15
-
-    ans = obj.getCount(n)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
