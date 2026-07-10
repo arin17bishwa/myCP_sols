@@ -34,10 +34,10 @@ class Solution:
 
             return vis
 
-        b1 = bfs([(0, j) for j in range(m)] + [(i, 0) for i in range(n)])
-        b2 = bfs([(i, m - 1) for i in range(n)] + [(n - 1, j) for j in range(m)])
-
-        return len(b1 & b2)
+        return len(
+            bfs([(0, j) for j in range(m)] + [(i, 0) for i in range(n)])
+            & bfs([(i, m - 1) for i in range(n)] + [(n - 1, j) for j in range(m)])
+        )
 
 
 def main():
