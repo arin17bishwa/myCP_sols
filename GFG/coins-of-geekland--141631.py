@@ -26,21 +26,3 @@ class Solution:
 
         # print(*mat, sep="\n")
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [[1, 2, -1, 4], [-8, -3, 4, 2], [3, 8, 10, -8], [-4, -1, 1, 7]]
-    k = 3
-
-    arr = [[-1, 2], [3, -4]]
-    k = 1
-
-    ans = obj.maximumSum(arr, k)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
