@@ -3,31 +3,18 @@ package Leetcode.JavaSolutions;
 public class Solution1404 {
     class Solution {
         public int numSteps(String s) {
-            int ans = 0;
-            StringBuilder sb = new StringBuilder(s);
+            int ops = 0, carry = 0;
 
-            while (sb.length() > 1) {
-                ans++;
-
-                int n = sb.length();
-                if (sb.charAt(n - 1) == '0') {
-                    sb.deleteCharAt(n - 1);
+            for (int i = s.length() - 1; i > 0; i--) {
+                if (((s.charAt(i) - '0' + carry) & 1) == 0) {
+                    ops++;
                 } else {
-                    int idx = n - 1;
-                    while (idx >= 0 && sb.charAt(idx) == '1') {
-                        sb.setCharAt(idx, '0');
-                        idx--;
-                    }
-
-                    if (idx >= 0) {
-                        sb.setCharAt(idx, '1');
-                    } else {
-                        sb.insert(0, '1');
-                    }
+                    ops += 2;
+                    carry = 1;
                 }
             }
 
-            return ans;
+            return ops + carry;
         }
     }
 
