@@ -11,8 +11,7 @@ class Solution:
                     a_pos = idx
                     ans = 0
                 chars_seen.add("a")
-                continue
-            if chr(ord(ch) - 1) in chars_seen:
+            elif chr(ord(ch) - 1) in chars_seen:
                 chars_seen.add(ch)
                 ans = idx - a_pos
 
