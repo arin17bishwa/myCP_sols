@@ -2,7 +2,7 @@ class Solution:
     def levelSort(self, arr: list[int]) -> list[list[int]]:
         n = len(arr)
         ans: list[list[int]] = []
-        break_point = 1
+        break_point: int = 1
         curr: list[int] = []
         curr_cnt: int = 0
 
