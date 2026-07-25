@@ -17,20 +17,3 @@ class Solution:
                 ans = idx - a_pos
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    s = "aaabcb"
-    s = "xynjir"
-    s = "abcbzzd"
-    s = "paqzvngzxwniidg"
-
-    ans = obj.maxIndexDifference(s)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
