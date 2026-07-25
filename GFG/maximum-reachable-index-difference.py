@@ -9,7 +9,7 @@ class Solution:
             if ch == "a":
                 if a_pos == n:
                     a_pos = idx
-                    ans = max(ans, 0)
+                    ans = 0
                 chars_seen.add("a")
                 continue
             if chr(ord(ch) - 1) in chars_seen:
