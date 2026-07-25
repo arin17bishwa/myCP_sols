@@ -2,7 +2,6 @@ class Solution:
     def levelSort(self, arr: list[int]) -> list[list[int]]:
         n = len(arr)
         ans: list[list[int]] = []
-        idx = 1
         break_point = 1
         curr: list[int] = []
         curr_cnt: int = 0
@@ -14,7 +13,7 @@ class Solution:
                 ans.append(sorted(curr))
                 curr = []
                 curr_cnt = 0
-                break_point = break_point << 1
+                break_point <<= 1
 
         if curr:
             ans.append(sorted(curr))
