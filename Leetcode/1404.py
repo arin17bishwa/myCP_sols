@@ -1,7 +1,6 @@
 class Solution:
     def numSteps(self, s: str) -> int:
         arr: list[str] = list(s)
-        n = len(arr)
         ans = 0
         while len(arr) > 1:
             ans += 1
