@@ -6,7 +6,6 @@ public class Solution1404 {
             int ans = 0;
             StringBuilder sb = new StringBuilder(s);
 
-
             while (sb.length() > 1) {
                 ans++;
 
