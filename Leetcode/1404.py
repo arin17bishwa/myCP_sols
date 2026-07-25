@@ -1,26 +1,17 @@
 class Solution:
     def numSteps(self, s: str) -> int:
-        arr: list[str] = list(s)
-        ans = 0
-        while len(arr) > 1:
-            ans += 1
-            if arr[-1] == "0":
-                arr.pop()
+        ops: int = 0
+        n: int = len(s)
+        carry: int = 0
+        for i in range(n - 1, 0, -1):
+
+            if ((s[i] == "1") + carry) & 1:
+                ops += 2
+                carry = 1
             else:
-                carry: int = 1
-                idx = len(arr) - 1
+                ops += 1
 
-                while carry and idx >= 0:
-                    if arr[idx] == "0":
-                        arr[idx] = "1"
-                        carry = 0
-                    else:
-                        arr[idx] = "0"
-                    idx -= 1
-                if carry:
-                    arr = ["1"] + arr
-
-        return ans
+        return ops + carry
 
 
 def main():
