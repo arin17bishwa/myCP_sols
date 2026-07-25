@@ -19,17 +19,3 @@ class Solution:
             ans.append(sorted(curr))
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [7, 6, 5, 4, 3, 2, 1]
-
-    ans = obj.levelSort(arr)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
