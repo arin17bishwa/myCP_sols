@@ -8,4 +8,4 @@ class Solution:
         """
         n = len(s)
         for i in range(n >> 1):
-            s[i], s[n - i - 1] = s[n - i - 1], s[i]
+            s[i], s[n - 1 - i] = s[n - 1 - i], s[i]
