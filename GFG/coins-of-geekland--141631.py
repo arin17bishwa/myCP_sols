@@ -1,8 +1,6 @@
 class Solution:
     def maximumSum(self, mat: list[list[int]], k: int) -> int:
         n = len(mat)
-        # print(*mat, sep="\n")
-        # print("-" * 30)
 
         for i in range(1, n):
             mat[0][i] += mat[0][i - 1]
@@ -24,5 +22,4 @@ class Solution:
                     + (0 if (i == k - 1 or j == k - 1) else mat[i - k][j - k]),
                 )
 
-        # print(*mat, sep="\n")
         return ans
