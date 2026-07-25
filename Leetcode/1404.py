@@ -20,7 +20,6 @@ class Solution:
                     idx -= 1
                 if carry:
                     arr = ["1"] + arr
-                    carry = 0
 
         return ans
 
