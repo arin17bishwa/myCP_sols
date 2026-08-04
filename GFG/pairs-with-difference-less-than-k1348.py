@@ -3,22 +3,29 @@ class Solution:
         arr.sort()
         n = len(arr)
 
-        def search(x: int) -> int:
-            nonlocal arr, n
-            lo, hi = 0, n - 1
-            fin = 0
+        ans = j = 0
 
-            while lo <= hi:
-                mid = (lo + hi) >> 1
-                if arr[mid] < x:
-                    lo = mid + 1
-                    fin = mid
-                else:
-                    hi = mid - 1
-            return fin
-
-        ans = 0
         for i in range(n):
-            ans += max(0, search(arr[i] + k) - i)
+            while j < n and arr[j] - arr[i] < k:
+                j += 1
+            ans += j - i - 1
 
         return ans
+
+
+def main():
+    obj = Solution()
+
+    arr = [1, 10, 4, 2]
+    k = 3
+
+    arr = [2, 3, 4]
+    k = 5
+
+    ans = obj.countPairs(arr, k)
+
+    # print(ans)
+
+
+if __name__ == "__main__":
+    main()
