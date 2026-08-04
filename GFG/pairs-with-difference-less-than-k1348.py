@@ -11,21 +11,3 @@ class Solution:
             ans += j - i - 1
 
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [1, 10, 4, 2]
-    k = 3
-
-    arr = [2, 3, 4]
-    k = 5
-
-    ans = obj.countPairs(arr, k)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
