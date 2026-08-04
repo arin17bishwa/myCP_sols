@@ -13,21 +13,3 @@ class Solution:
             curr += arr[i] - arr[i - k]
             ans = max(ans, curr, curr + pre[i - k])
         return ans
-
-
-def main():
-    obj = Solution()
-
-    arr = [1, -2, 2, -3]
-    k = 3
-
-    # arr=[1, 1, 1, 1, 1, 1]
-    # k=2
-
-    ans = obj.maxSumWithK(arr, k)
-
-    # print(ans)
-
-
-if __name__ == "__main__":
-    main()
