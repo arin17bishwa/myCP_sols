@@ -26,12 +26,6 @@ class DSU:
             self.rank[p2] += self.rank[p1]
             self.parent[p1] = p2
 
-        # print(f"x:{x},y:{y},p1:{p1},p2:{p2}")
-        # print(self.parent)
-
-    def is_sibling(self, x: int, y: int) -> bool:
-        return self.parent[x] == self.parent[y]
-
 
 class Solution:
     def minEdgesReq(self, n: int, edges: list[list[int]]) -> int:
@@ -39,12 +33,6 @@ class Solution:
 
         for u, v in edges:
             dsu.add(u, v)
-
-        # print(list(range(n)))
-        # print(dsu.parent)
-        # print(dsu.rank)
-        # print(dsu.components)
-        # print(dsu.extras)
 
         if dsu.extras < dsu.components - 1:
             return -1
