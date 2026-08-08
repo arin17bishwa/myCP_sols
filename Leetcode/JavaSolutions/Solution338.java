@@ -10,12 +10,12 @@ public class Solution338 {
             if (n == 0)
                 return ans;
 
-            int highestPower = 0;
+            int highestPower = 1;
 
             for (int i = 1; i <= n; i++) {
-                if ((1 << (highestPower + 1)) <= i)
-                    highestPower++;
-                ans[i] = ans[i - (1 << highestPower)] + 1;
+                if ((highestPower << 1) <= i)
+                    highestPower <<= 1;
+                ans[i] = ans[i - highestPower] + 1;
             }
             return ans;
         }
