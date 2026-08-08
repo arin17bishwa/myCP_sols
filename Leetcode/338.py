@@ -6,9 +6,12 @@ class Solution:
         if n == 0:
             return [0]
         ans: list[int] = [0] * (n + 1)
-        ans[1] = 1
+        highest_power:int=0
 
-        for i in range(2, n + 1):
-            ans[i] = ans[i >> 1] + (i & 1)
+        for i in range(1,n+1):
+            if (1<<(highest_power+1))<=i:
+                highest_power+=1
+
+            ans[i]=ans[i-(1<<highest_power)]+1
 
         return ans
