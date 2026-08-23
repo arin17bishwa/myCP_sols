@@ -27,19 +27,3 @@ class Solution:
                 return left_sm != right_sm
             else:
                 return 9 * (left_q - right_q) != 2 * (right_sm - left_sm)
-
-
-def main():
-    obj = Solution()
-
-    arr = "5023"
-    arr = "25??"
-    arr = "?3295???"
-
-    ans = obj.sumGame(arr)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
