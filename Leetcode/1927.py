@@ -18,9 +18,7 @@ class Solution:
         if left_q + right_q == 0:
             return left_sm != right_sm
 
-        total_q = left_q + right_q
-
-        if total_q & 1:
+        if (left_q + right_q) & 1:
             return True
         else:
             if left_q == right_q:
