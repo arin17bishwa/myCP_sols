@@ -15,9 +15,6 @@ class Solution:
             else:
                 right_sm += int(num[i])
 
-        print(left_sm, left_q)
-        print(right_sm, right_q)
-
         if left_q + right_q == 0:
             return left_sm != right_sm
 
