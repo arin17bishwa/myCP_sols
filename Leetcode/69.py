@@ -1,19 +1,13 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
-        lo, hi = 0, x
-        ans = 0
-        while lo <= hi:
-            mid = (lo + hi) >> 1
-            k = mid * mid
+        def func(n: int) -> int:
+            if n < 2:
+                return n
+            lower_bound = func(n >> 2) << 1
+            upper_bound = lower_bound + 1
+            return lower_bound if upper_bound * upper_bound > n else upper_bound
 
-            if k > x:
-                hi = mid - 1
-            elif k < x:
-                ans = mid
-                lo = mid + 1
-            else:
-                return mid
-        return int(ans)
+        return func(x)
 
 
 def main():
@@ -22,9 +16,9 @@ def main():
     n = 4
     n = 8
     n = 1
-    # n = 36
-    # n = 0
-    # n = 2147395599
+    n = 36
+    n = 0
+    n = 2147395599
 
     ans = obj.mySqrt(n)
 
