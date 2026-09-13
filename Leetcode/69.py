@@ -1,13 +1,9 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
-        def func(n: int) -> int:
-            if n < 2:
-                return n
-            lower_bound = func(n >> 2) << 1
-            upper_bound = lower_bound + 1
-            return lower_bound if upper_bound * upper_bound > n else upper_bound
-
-        return func(x)
+        r = x
+        while r * r > x:
+            r = (r + x // r) >> 1
+        return r
 
 
 def main():
