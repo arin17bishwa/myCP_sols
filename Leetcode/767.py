@@ -19,19 +19,3 @@ class Solution:
                 v -= 1
 
         return "".join(ans)
-
-
-def main():
-    obj = Solution()
-
-    s = "aab"
-    s = "aaab"
-    s = "baaba"
-
-    ans = obj.reorganizeString(s)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
