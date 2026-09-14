@@ -18,27 +18,3 @@ class Solution:
                 diffs[(x2 - x1, y2 - y1)] += 1
 
         return diffs.most_common(1)[0][1]
-
-
-def main():
-    obj = Solution()
-
-    img1 = [[1, 1, 0], [0, 1, 0], [0, 1, 0]]
-    img2 = [[0, 0, 0], [0, 1, 1], [0, 0, 1]]
-
-    img1 = [[1]]
-    img2 = [[1]]
-
-    img1 = [[0]]
-    img2 = [[0]]
-
-    img1 = [[0, 0, 0, 1], [1, 1, 1, 0], [0, 0, 0, 1], [0, 1, 0, 0]]
-    img2 = [[0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 1, 0], [0, 0, 0, 0]]
-
-    ans = obj.largestOverlap(img1, img2)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
