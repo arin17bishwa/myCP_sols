@@ -19,6 +19,7 @@ class Solution:
             else:
                 cnt1 -= 1
                 cnt2 -= 1
+
         ans: list[int] = []
 
         for candidate in (candidate1, candidate2):
