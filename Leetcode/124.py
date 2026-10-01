@@ -15,13 +15,14 @@ class Solution:
                 return mn, mn
             left_straight, left_loop = func(node.left)
             right_straight, right_loop = func(node.right)
-            return node.val + max(0, left_straight, right_straight), max(
-                left_loop,
-                right_loop,
-                node.val,
-                max(0,left_straight) + max(0,right_straight) + node.val,
+            return (
+                node.val + max(0, left_straight, right_straight),
+                max(
+                    left_loop,
+                    right_loop,
+                    node.val,
+                    max(0, left_straight) + max(0, right_straight) + node.val,
+                ),
             )
 
-        ans = func(root)
-
-        return max(ans)
+        return max(func(root))
