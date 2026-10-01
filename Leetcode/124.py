@@ -1,6 +1,3 @@
-from typing import Optional
-
-
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -10,19 +7,21 @@ class TreeNode:
 
 
 class Solution:
-    def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        ans = -(10**18)
+    def maxPathSum(self, root: TreeNode | None) -> int:
+        mn: int = -(10**18)
 
-        def dfs(node: TreeNode | None) -> int:
-            nonlocal ans
+        def func(node: TreeNode | None) -> tuple[int, int]:
             if not node:
-                return -(10**18)
+                return mn, mn
+            left_straight, left_loop = func(node.left)
+            right_straight, right_loop = func(node.right)
+            return node.val + max(0, left_straight, right_straight), max(
+                left_loop,
+                right_loop,
+                node.val,
+                max(0,left_straight) + max(0,right_straight) + node.val,
+            )
 
-            left = dfs(node.left)
-            right = dfs(node.right)
-            curr = max(node.val, node.val + left, node.val + right)
-            ans = max(ans, left, right, curr, left + node.val + right)
-            return curr
+        ans = func(root)
 
-        dfs(root)
-        return ans
+        return max(ans)
