@@ -1,23 +1,18 @@
 class Solution:
     def removeOuterParentheses(self, s: str) -> str:
-        n = len(s)
-        arr: list[int] = [0] * n
+        ans: list[str] = []
         curr = 0
 
         for idx, ele in enumerate(s):
             if ele == "(":
                 curr += 1
+                if curr > 1:
+                    ans.append(ele)
             else:
                 curr -= 1
-            arr[idx] = curr
-        return "".join(
-            (
-                s[idx]
-                if ((ele > 1 and s[idx] == "(") or (ele > 0 and s[idx] == ")"))
-                else ""
-            )
-            for idx, ele in enumerate(arr)
-        )
+                if curr > 0:
+                    ans.append(ele)
+        return "".join(ans)
 
 
 def main():
