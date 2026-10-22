@@ -15,7 +15,6 @@ class Solution:
             i += 1
             j -= 1
 
-
         prev = "?"
         ans: int = 0
         for ch in s:
