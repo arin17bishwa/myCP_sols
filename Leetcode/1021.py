@@ -13,19 +13,3 @@ class Solution:
                 if curr > 0:
                     ans.append(ele)
         return "".join(ans)
-
-
-def main():
-    obj = Solution()
-
-    s = "(()())(())"
-    s = "(()())(())(()(()))"
-    s = "()()"
-
-    ans = obj.removeOuterParentheses(s)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
