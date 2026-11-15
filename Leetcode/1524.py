@@ -1,7 +1,6 @@
 class Solution:
     def numOfSubarrays(self, arr: list[int]) -> int:
         mod = 10**9 + 7
-        arr = [i % 2 for i in arr]
         ans = curr = odds = 0
         evens = 1
 
