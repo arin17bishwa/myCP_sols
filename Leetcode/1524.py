@@ -14,5 +14,6 @@ class Solution:
             else:
                 evens += 1
                 ans += odds
-            ans %= mod
+            if ans >= mod:
+                ans -= mod
         return ans
