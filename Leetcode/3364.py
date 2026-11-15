@@ -16,27 +16,3 @@ class Solution:
                     ans = min(ans, curr)
 
         return -1 if ans == 10**18 else ans
-
-
-def main():
-    obj = Solution()
-
-    nums = [3, -2, 1, 4]
-    l = 2
-    r = 3
-
-    nums = [-2, 2, -3, 1]
-    l = 2
-    r = 3
-
-    nums = [1, 2, 3, 4]
-    l = 2
-    r = 4
-
-    ans = obj.minimumSumSubarray(nums, l, r)
-
-    print(ans)
-
-
-if __name__ == "__main__":
-    main()
