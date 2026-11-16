@@ -3,9 +3,9 @@ class Solution:
 
         def func(t: str) -> str:
             nonlocal k
-            n = len(t)
-            temp = [str(sum(map(int, t[i : i + k]))) for i in range(0, n, k)]
-            return "".join(temp)
+            return "".join(
+                (str(sum(map(int, t[i : i + k]))) for i in range(0, len(t), k))
+            )
 
         while len(s) > k:
             s = func(s)
