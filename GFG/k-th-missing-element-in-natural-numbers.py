@@ -1,14 +1,23 @@
 class Solution:
     def findKthSmall(self, arr: list[int], k: int) -> int:
-        curr = cnt = 1
+        arr.sort()
+        ans = k
+        for ele in arr:
+            if ele <= ans:
+                ans += 1
+        return ans
 
-        s = set(arr)
 
-        for _ in range(10**7):
-            if curr in s:
-                cnt -= 1
-            if cnt == k:
-                return curr
-            curr += 1
-            cnt += 1
-        return -1
+def main():
+    obj = Solution()
+
+    arr = [1, 9, 5, 2]
+    k = 6
+
+    ans = obj.findKthSmall(arr, k)
+
+    # print(ans)
+
+
+if __name__ == "__main__":
+    main()
