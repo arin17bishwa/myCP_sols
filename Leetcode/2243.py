@@ -1,15 +1,9 @@
 class Solution:
     def digitSum(self, s: str, k: int) -> str:
 
-        def func(t: str) -> str:
-            nonlocal k
-            return "".join(
-                (str(sum(map(int, t[i : i + k]))) for i in range(0, len(t), k))
-            )
-
         while len(s) > k:
-            s = func(s)
-        return "".join(s)
+            s = "".join((str(sum(map(int, s[i : i + k]))) for i in range(0, len(s), k)))
+        return s
 
 
 def main():
