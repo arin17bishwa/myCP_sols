@@ -12,20 +12,3 @@ class Solution:
                 #     return False
                 curr -= 1
         return curr == 0
-
-
-def main():
-    obj = Solution()
-
-    s = 'xxxyyyxy'
-    s = 'xxxyyyx'
-    s = 'xxyyxy'
-    # s='xxxyyyxxyxyy'
-
-    ans = obj.findPattern(s)
-
-    print(ans)
-
-
-if __name__ == '__main__':
-    main()
