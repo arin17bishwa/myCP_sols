@@ -8,8 +8,8 @@ class Solution:
                     return False
                 curr += 1
             else:
-                if curr < 1:
-                    return False
+                # if curr < 1:
+                #     return False
                 curr -= 1
         return curr == 0
 
